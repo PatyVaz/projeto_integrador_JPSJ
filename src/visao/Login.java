@@ -13,12 +13,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JPasswordField;
 
 public class Login extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textUsuario;
-	private JTextField textSenha;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -63,18 +64,12 @@ public class Login extends JFrame {
 		contentPane.add(textUsuario);
 		textUsuario.setColumns(20);
 
-		textSenha = new JTextField();
-		textSenha.setBackground(new Color(245, 245, 220));
-		textSenha.setBounds(177, 115, 106, 20);
-		contentPane.add(textSenha);
-		textSenha.setColumns(14);
-
 		JButton btnEntar = new JButton("ENTRAR");
 		btnEntar.setBackground(UIManager.getColor("Tree.selectionBackground"));
 		btnEntar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String usuario = textUsuario.getText();
-				String senha = textSenha.getText();
+				String senha = passwordField.getText();
 				MD5 cifragem = new MD5();
 				String senhacifrada = cifragem.getMd5(senha);
 
@@ -93,5 +88,9 @@ public class Login extends JFrame {
 		});
 		btnEntar.setBounds(177, 208, 89, 23);
 		contentPane.add(btnEntar);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(177, 118, 106, 20);
+		contentPane.add(passwordField);
 	}
 }

@@ -6,6 +6,9 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,11 +18,19 @@ import javax.swing.border.EmptyBorder;
 public class TelaInicio extends JFrame {
 
 	private JPanel contentPane;
-
+	static Connection conexao;
+	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+			 conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/deemodb", "root", "sasalegal123");
+		}catch(SQLException e)
+		{
+			System.out.println("Erro ao conectar � base de dados.");
+		}
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -141,8 +152,8 @@ public class TelaInicio extends JFrame {
 		btnNewButton_4.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Fornecedor fornecedor = new Fornecedor();
-				// fornecedor.setVisible(true);
+				 TelaFornecedores fornecedor = new TelaFornecedores();
+				 fornecedor.setVisible(true);
 				setVisible(false);
 			}
 		});
