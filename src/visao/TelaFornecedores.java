@@ -152,7 +152,7 @@ public class TelaFornecedores extends JFrame {
 				 
 				try {
 					
-					  PreparedStatement ps = conexao.prepareStatement("insert into fornecedor values(?,?,?,?)");
+					  PreparedStatement ps = conexao.prepareStatement("insert into fornecedor(nome,cnpj,telefone,email) values(?,?,?,?)");
 					
 					ps.setString(1,nome);
 					
