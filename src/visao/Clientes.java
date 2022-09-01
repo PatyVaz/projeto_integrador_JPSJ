@@ -33,6 +33,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Dimension;
+import java.awt.Color;
 public class Clientes extends JFrame {
 
 	private JPanel contentPane;
@@ -52,6 +53,13 @@ public class Clientes extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+			 conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/deemodb", "root", "sasalegal123");
+			 
+		}catch(SQLException e)
+		{
+			System.out.println("Erro ao conectar ï¿½ base de dados.");
+		}
 		
 		
 		EventQueue.invokeLater(new Runnable() {
@@ -81,6 +89,7 @@ public class Clientes extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1600, 1200);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -202,7 +211,7 @@ public class Clientes extends JFrame {
 					
 					}catch(SQLException e1)
 					{
-						System.out.println("Erro ao conectar � base de dados.");
+						System.out.println("Erro ao conectar ï¿½ base de dados.");
 					}
 				
 				
@@ -331,7 +340,7 @@ public class Clientes extends JFrame {
 		contentPane.add(textField_7);
 		textField_7.setColumns(10);
 		
-		JButton btnNewButton = new JButton("←");
+		JButton btnNewButton = new JButton("â†�");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -461,7 +470,7 @@ public class Clientes extends JFrame {
 					
 					}catch(SQLException e1)
 					{
-						System.out.println("Erro ao conectar � base de dados.");
+						System.out.println("Erro ao conectar ï¿½ base de dados.");
 					}
 				textField.setText("");
 				textField_1.setText("");

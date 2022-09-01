@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import java.awt.Color;
 
 public class CadastroUsuario extends JFrame {
 
@@ -32,7 +33,7 @@ public class CadastroUsuario extends JFrame {
 			 conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/deemodb", "root", "sasalegal123");
 		}catch(SQLException e)
 		{
-			System.out.println("Erro ao conectar � base de dados.");
+			System.out.println("Erro ao conectar ï¿½ base de dados.");
 		}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -56,12 +57,13 @@ public class CadastroUsuario extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 1200);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("←");
+		JButton btnNewButton = new JButton("â†�");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Administrador administrador = new Administrador();
@@ -122,7 +124,7 @@ public class CadastroUsuario extends JFrame {
 				
 				}catch(SQLException e1)
 				{
-					System.out.println("Erro ao conectar � base de dados.");
+					System.out.println("Erro ao conectar ï¿½ base de dados.");
 				}
 			
 			

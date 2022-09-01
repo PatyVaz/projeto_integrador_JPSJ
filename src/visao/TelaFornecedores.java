@@ -20,6 +20,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
 import java.sql.*;
+import java.awt.Color;
 public class TelaFornecedores extends JFrame {
 
 	private JPanel contentPane;
@@ -63,6 +64,7 @@ public class TelaFornecedores extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 1200);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -168,7 +170,7 @@ public class TelaFornecedores extends JFrame {
 					
 					}catch(SQLException e1)
 					{
-						System.out.println("Erro ao conectar � base de dados.");
+						System.out.println("Erro ao conectar ï¿½ base de dados.");
 					}
 				textField.setText("");
 				textField_2.setText("");
@@ -245,7 +247,7 @@ public class TelaFornecedores extends JFrame {
 					
 					}catch(SQLException e1)
 					{
-						System.out.println("Erro ao conectar � base de dados.");
+						System.out.println("Erro ao conectar ï¿½ base de dados.");
 					}
 				textField.setText("");
 				textField_1.setText("");
@@ -341,7 +343,7 @@ public class TelaFornecedores extends JFrame {
 		
 		
 	
-		JButton btnNewButton_1 = new JButton("←");
+		JButton btnNewButton_1 = new JButton("â†�");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaInicio telainicio = new TelaInicio();
