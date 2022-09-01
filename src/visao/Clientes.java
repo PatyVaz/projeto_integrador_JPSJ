@@ -142,7 +142,7 @@ public class Clientes extends JFrame {
 				
 			},
 			new String[] {
-				"nome", "cpf", "email", "rua", "bairro", "telefone", "cep", "cidade"
+				"ID","nome", "cpf", "email", "rua", "bairro", "telefone", "cep", "cidade"
 			}
 		));
 		
@@ -155,12 +155,12 @@ public class Clientes extends JFrame {
 			
 			
 			
-			 PreparedStatement ps = conexao.prepareStatement ("select * from cadastro");
+			 PreparedStatement ps = conexao.prepareStatement ("select * from cadastro order by nome");
 		    ResultSet rs = ps.executeQuery();
 		    DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 		     while( rs.next() ){
 		    
-		    	modelo.addRow(new Object[] {rs.getString("nome"),rs.getString("cpf"),rs.getString("email"),rs.getString("rua"),rs.getString("bairro"),rs.getString("telefone"),rs.getString("cep"),rs.getString("cidade")});
+		    	modelo.addRow(new Object[] {rs.getString("id_cadastro"), rs.getString("nome"),rs.getString("cpf"),rs.getString("email"),rs.getString("rua"),rs.getString("bairro"),rs.getString("telefone"),rs.getString("cep"),rs.getString("cidade")});
 		    	 
 		            		          
 		        }
@@ -186,7 +186,7 @@ public class Clientes extends JFrame {
 				
 				try {
 					
-					  PreparedStatement ps = conexao.prepareStatement("insert into cadastro values(?,?,?,?,?,?,?,?)");
+					  PreparedStatement ps = conexao.prepareStatement("insert into cadastro (nome, cpf, email, rua,bairro, telefone, cep, cidade) values(?,?,?,?,?,?,?,?)");
 					
 					ps.setString(1,nome);
 					ps.setString(2,cpf);
@@ -267,12 +267,12 @@ public class Clientes extends JFrame {
 					
 					
 					
-					 PreparedStatement ps = conexao.prepareStatement ("select * from cadastro");
+					 PreparedStatement ps = conexao.prepareStatement ("select * from cadastro order by nome");
 				    ResultSet rs = ps.executeQuery();
 				    DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 				     while( rs.next() ){
 				    	 
-				    	modelo.addRow(new Object[] {rs.getString("nome"),rs.getString("cpf"),rs.getString("email"),rs.getString("rua"),rs.getString("bairro"),rs.getString("telefone"),rs.getString("cep"),rs.getString("cidade")});
+				    	modelo.addRow(new Object[] {rs.getString("id_cadastro"), rs.getString("nome"),rs.getString("cpf"),rs.getString("email"),rs.getString("rua"),rs.getString("bairro"),rs.getString("telefone"),rs.getString("cep"),rs.getString("cidade")});
 				    	 
 				            		          
 				        }
@@ -341,12 +341,13 @@ public class Clientes extends JFrame {
 		});
 		btnNewButton.setBounds(0, 0, 61, 23);
 		contentPane.add(btnNewButton);
-		
+		JButton btnNewButton_3 = new JButton("Alterar");
 		JButton btnNewButton_2 = new JButton("Excluir");
+		btnNewButton_2.setEnabled(false);
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textField_1.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
+				textField_1.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
 				 String a = textField_1.getText();
 				 int x = Integer.parseInt(a);
 				try {
@@ -361,11 +362,132 @@ public class Clientes extends JFrame {
 					}
 				textField_1.setText("");
 				 ((DefaultTableModel) table.getModel()).removeRow(table.getSelectedRow());
+				 btnNewButton_2.setEnabled(false);
+				 btnNewButton_3.setEnabled(false);
 			
 			}
 		});
 		btnNewButton_2.setBounds(14, 652, 109, 35);
 		contentPane.add(btnNewButton_2);
+		
+		
+		btnNewButton_3.setEnabled(false);
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				 try {
+					 String nome = textField.getText();
+						String cpf = textField_1.getText();
+						String email = textField_2.getText();
+						String rua = textField_3.getText();
+						String bairro = textField_5.getText();
+						String telefone = textField_4.getText();
+						String cep = textField_6.getText();
+						String cidade = textField_7.getText();
+						 String a = (table.getValueAt(table.getSelectedRow(), 0).toString());
+						 int x = Integer.parseInt(a);
+					 PreparedStatement	ps = conexao.prepareStatement("update cadastro set nome=? where id_cadastro = ?");
+						ps.setString(1,nome);
+						ps.setInt(2, x);
+						ps.executeUpdate();
+						ps = conexao.prepareStatement("update cadastro set cpf=? where id_cadastro = ?");
+						ps.setString(1,cpf);
+						ps.setInt(2, x);
+						ps.executeUpdate();
+						ps = conexao.prepareStatement("update cadastro set email=? where id_cadastro = ?");
+						ps.setString(1,email);
+						ps.setInt(2, x);
+						ps.executeUpdate();
+						ps = conexao.prepareStatement("update cadastro set rua=? where id_cadastro = ?");
+						ps.setString(1,rua);
+						ps.setInt(2, x);
+						ps.executeUpdate();
+						ps = conexao.prepareStatement("update cadastro set bairro=? where id_cadastro = ?");
+						ps.setString(1,bairro);
+						ps.setInt(2, x);
+						ps.executeUpdate();
+						ps = conexao.prepareStatement("update cadastro set telefone=? where id_cadastro = ?");
+						ps.setString(1,telefone);
+						ps.setInt(2, x);
+						ps.executeUpdate();
+						ps = conexao.prepareStatement("update cadastro set cep=? where id_cadastro = ?");
+						ps.setString(1,cep);
+						ps.setInt(2, x);
+						ps.executeUpdate();
+						ps = conexao.prepareStatement("update cadastro set cidade=? where id_cadastro = ?");
+						ps.setString(1,cidade);
+						ps.setInt(2, x);
+						ps.executeUpdate();
+					} catch (SQLException e1) {
+						
+						e1.printStackTrace();
+					}
+					while(table.getModel().getRowCount()>0){
+						 ((DefaultTableModel) table.getModel()).removeRow(0);
+					}
+							 
+						
+							try {
+								
+								
+								
+								
+								 PreparedStatement ps = conexao.prepareStatement ("select * from cadastro order by nome");
+							    ResultSet rs = ps.executeQuery();
+							    DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+							     while( rs.next() ){
+							    	 
+								    	modelo.addRow(new Object[] {rs.getString("id_cadastro"), rs.getString("nome"),rs.getString("cpf"),rs.getString("email"),rs.getString("rua"),rs.getString("bairro"),rs.getString("telefone"),rs.getString("cep"),rs.getString("cidade")});
+							    	 
+							            		          
+							        }
+							    
+							} catch (SQLException e2) {
+								
+								e2.printStackTrace();
+							}
+							textField.setText("");
+							textField_2.setText("");
+							textField_3.setText("");
+							textField_4.setText("");
+							textField_5.setText("");
+							textField_6.setText("");
+							textField_7.setText("");
+							textField_1.setText("");
+							
+							btnNewButton_2.setEnabled(false);
+							btnNewButton_3.setEnabled(false);
+			}
+		});
+		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton_3.setBounds(259, 652, 109, 35);
+		contentPane.add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("selecionar");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+int posicaoPessoa = table.getSelectedRow();
+				
+				if(posicaoPessoa > -1) {
+					btnNewButton_2.setEnabled(true);
+					btnNewButton_3.setEnabled(true);
+					textField.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
+					textField_1.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
+					textField_2.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
+					textField_3.setText(table.getValueAt(table.getSelectedRow(), 4).toString());
+					textField_5.setText(table.getValueAt(table.getSelectedRow(), 5).toString());
+					textField_4.setText(table.getValueAt(table.getSelectedRow(), 6).toString());
+					textField_6.setText(table.getValueAt(table.getSelectedRow(), 7).toString());
+					textField_7.setText(table.getValueAt(table.getSelectedRow(), 8).toString());
+				}else {
+					JOptionPane.showMessageDialog(null,"escolha uma linha na tabela");
+					}
+			}
+			
+		});
+		btnNewButton_4.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton_4.setBounds(900, 656, 128, 35);
+		contentPane.add(btnNewButton_4);
 		
 	
 	
