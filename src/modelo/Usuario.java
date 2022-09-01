@@ -9,32 +9,29 @@ package modelo;
 
 public class Usuario {
 
-	private String emailAcesso;
-	private String senha;
-	private String id;
-
-	public String getId() {
+	
+	private String login;
+	private int senha;
+	private int id;
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public int getSenha() {
+		return senha;
+	}
+	public void setSenha(int senha) {
+		this.senha = senha;
+	}
+	public int getId() {
 		return id;
 	}
-
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getEmailAcesso() {
-		return emailAcesso;
-	}
 
-	public void setEmailAcesso(String emailAcesso) {
-		this.emailAcesso = emailAcesso;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
 
 }
