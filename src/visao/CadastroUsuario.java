@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -107,7 +108,27 @@ public class CadastroUsuario extends JFrame {
 			String nome= textField.getText();
 			String login = textField_1.getText();
 			String senha = textField_2.getText();
+			try {
 				
+				  PreparedStatement ps = conexao.prepareStatement("insert into usuario (nome,login,senha) values(?,?,?)");
+				
+				ps.setString(1,nome);
+				ps.setString(2,login);
+				ps.setString(3,senha);
+				
+				ps.executeUpdate();
+			
+				
+				}catch(SQLException e1)
+				{
+					System.out.println("Erro ao conectar � base de dados.");
+				}
+			
+			
+
+			textField.setText("");
+			textField_1.setText("");
+			textField_2.setText("");
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
