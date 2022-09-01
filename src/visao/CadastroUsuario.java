@@ -54,7 +54,7 @@ public class CadastroUsuario extends JFrame {
 		setResizable(false);
 		setTitle("Usuario!");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1500, 1200);
+		setBounds(0, 0, 1500, 1200);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -108,13 +108,14 @@ public class CadastroUsuario extends JFrame {
 			String nome= textField.getText();
 			String login = textField_1.getText();
 			String senha = textField_2.getText();
+			int x = Integer.parseInt(senha);
 			try {
 				
-				  PreparedStatement ps = conexao.prepareStatement("insert into usuario (nome,login,senha) values(?,?,?)");
+				  PreparedStatement ps = conexao.prepareStatement("insert into usuario (login,senha,nome) values(?,?,?)");
 				
-				ps.setString(1,nome);
-				ps.setString(2,login);
-				ps.setString(3,senha);
+				ps.setString(1,login);
+				ps.setInt(2,x);
+				ps.setString(3,nome);
 				
 				ps.executeUpdate();
 			

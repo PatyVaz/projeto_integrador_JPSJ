@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTable;
 
-public class TelaClientesCadastrados extends JFrame {
+public class TelaTabelaUsuario extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -29,7 +29,7 @@ public class TelaClientesCadastrados extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaClientesCadastrados frame = new TelaClientesCadastrados();
+					TelaTabelaUsuario frame = new TelaTabelaUsuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class TelaClientesCadastrados extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaClientesCadastrados() {
+	public TelaTabelaUsuario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
