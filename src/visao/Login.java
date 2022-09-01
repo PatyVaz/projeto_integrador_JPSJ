@@ -4,6 +4,11 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,6 +18,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+
+import controle.UsuarioBD;
+import modelo.Usuario;
+
 import javax.swing.JPasswordField;
 
 public class Login extends JFrame {
@@ -20,6 +29,7 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField textUsuario;
 	private JPasswordField passwordField;
+	
 
 	/**
 	 * Launch the application.
@@ -41,6 +51,7 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -70,25 +81,36 @@ public class Login extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String usuario = textUsuario.getText();
 				String senha = passwordField.getText();
-				MD5 cifragem = new MD5();
-				String senhacifrada = cifragem.getMd5(senha);
-
-				if (usuario.equals("Admin") && senhacifrada.equals("202cb962ac59075b964b07152d234b70")) {
-
-					TelaInicio a = new TelaInicio();
-					a.setVisible(true);
-
-					setVisible(false);
-				} else {
-					JOptionPane.showMessageDialog(null, "senha ou email invalida");
+				int x;
+				try {
+					x = Integer.parseInt(senha);
+				} catch (NumberFormatException e2) {
+					JOptionPane.showMessageDialog(null, "senha invalida");
+					return;
 				}
+				
+				
+				Usuario u = new Usuario();
+				u.setLogin(usuario);
+				u.setSenha(x);
+				
+				UsuarioBD loginbd = new UsuarioBD();
+				
+				if(loginbd.efetuarLogin(u)!= null ) {
+					TelaInicio telaInicio = new TelaInicio();
+					telaInicio.setVisible(true);
+					setVisible(false);
+				}else {
+					JOptionPane.showMessageDialog(null, "senha ou login invalido");
+				}
+				
 
 			}
 
 		});
 		btnEntar.setBounds(177, 208, 89, 23);
 		contentPane.add(btnEntar);
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setBounds(177, 118, 106, 20);
 		contentPane.add(passwordField);

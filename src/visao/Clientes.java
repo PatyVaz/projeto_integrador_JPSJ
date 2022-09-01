@@ -52,13 +52,7 @@ public class Clientes extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		try {
-			 conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/deemodb", "root", "sasalegal123");
-			 
-		}catch(SQLException e)
-		{
-			System.out.println("Erro ao conectar � base de dados.");
-		}
+		
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -77,10 +71,15 @@ public class Clientes extends JFrame {
 	 * Create the frame.
 	 */
 	public Clientes() {
-	
+		 try {
+			conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/deemodb", "root", "sasalegal123");
+		} catch (SQLException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
 		setMinimumSize(new Dimension(10, 10));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1500, 1200);
+		setBounds(0, 0, 1600, 1200);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
