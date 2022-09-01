@@ -144,7 +144,7 @@ public class Clientes extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"id", "nome", "cpf", "email", "rua", "telefone", "bairro", "cep", "cidade"
+				"ID","nome", "cpf", "email", "rua", "bairro", "telefone", "cep", "cidade"
 			}
 		));
 		
@@ -157,7 +157,7 @@ public class Clientes extends JFrame {
 			
 			
 			
-			 PreparedStatement ps = conexao.prepareStatement ("select * from cadastro");
+			 PreparedStatement ps = conexao.prepareStatement ("select * from cadastro order by nome");
 		    ResultSet rs = ps.executeQuery();
 		    DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 		     while( rs.next() ){
@@ -188,7 +188,7 @@ public class Clientes extends JFrame {
 				
 				try {
 					
-					  PreparedStatement ps = conexao.prepareStatement("insert into cadastro(nome,cpf,email,rua,bairro,telefone,cep,cidade) values(?,?,?,?,?,?,?,?)");
+					  PreparedStatement ps = conexao.prepareStatement("insert into cadastro (nome, cpf, email, rua,bairro, telefone, cep, cidade) values(?,?,?,?,?,?,?,?)");
 					
 					ps.setString(1,nome);
 					ps.setString(2,cpf);
@@ -269,12 +269,12 @@ public class Clientes extends JFrame {
 					
 					
 					
-					 PreparedStatement ps = conexao.prepareStatement ("select * from cadastro");
+					 PreparedStatement ps = conexao.prepareStatement ("select * from cadastro order by nome");
 				    ResultSet rs = ps.executeQuery();
 				    DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 				     while( rs.next() ){
 				    	 
-				    	modelo.addRow(new Object[] {rs.getString("id_cadastro"),rs.getString("nome"),rs.getString("cpf"),rs.getString("email"),rs.getString("rua"),rs.getString("telefone"),rs.getString("bairro"),rs.getString("cep"),rs.getString("cidade")});
+				    	modelo.addRow(new Object[] {rs.getString("id_cadastro"), rs.getString("nome"),rs.getString("cpf"),rs.getString("email"),rs.getString("rua"),rs.getString("bairro"),rs.getString("telefone"),rs.getString("cep"),rs.getString("cidade")});
 				    	 
 				            		          
 				        }

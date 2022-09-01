@@ -33,12 +33,7 @@ public class TelaFornecedores extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		try {
-			 conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/deemodb", "root", "sasalegal123");
-		}catch(SQLException e)
-		{
-			System.out.println("Erro ao conectar � base de dados.");
-		}
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -54,8 +49,17 @@ public class TelaFornecedores extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
 	 */
 	public TelaFornecedores() {
+		try {
+			conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/deemodb", "root", "sasalegal123");
+		} catch (SQLException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+		System.out.println(conexao);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1500, 1200);
 		contentPane = new JPanel();
@@ -77,7 +81,7 @@ public class TelaFornecedores extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"NOME", "CNPJ", "TELEFONE", "E-MAIL"
+				"ID","NOME", "CNPJ", "TELEFONE", "E-MAIL"
 			}
 		));
 		scrollPane.setViewportView(table);
@@ -86,12 +90,12 @@ public class TelaFornecedores extends JFrame {
 			
 			
 			
-			 PreparedStatement ps = conexao.prepareStatement ("select * from fornecedor");
+			 PreparedStatement ps = conexao.prepareStatement ("select * from fornecedor order by nome");
 		    ResultSet rs = ps.executeQuery();
 		    DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 		     while( rs.next() ){
 		    
-			    	modelo.addRow(new Object[] {rs.getString("nome"),rs.getString("cnpj"),rs.getString("telefone"),rs.getString("email")});
+			    	modelo.addRow(new Object[] {rs.getString("id_fornecedor"),rs.getString("nome"),rs.getString("cnpj"),rs.getString("telefone"),rs.getString("email")});
 		    	 
 		            		          
 		        }
@@ -155,8 +159,7 @@ public class TelaFornecedores extends JFrame {
 					  PreparedStatement ps = conexao.prepareStatement("insert into fornecedor(nome,cnpj,telefone,email) values(?,?,?,?)");
 					
 					ps.setString(1,nome);
-					
-					 ps.setString(2,cnpj);
+					ps.setString(2,cnpj);
 					ps.setString(3,telefone);
 					ps.setString(4,email);
 				
@@ -202,12 +205,12 @@ public class TelaFornecedores extends JFrame {
 							
 							
 							
-							 PreparedStatement ps = conexao.prepareStatement ("select * from fornecedor");
+							 PreparedStatement ps = conexao.prepareStatement ("select * from fornecedor order by nome");
 						    ResultSet rs = ps.executeQuery();
 						    DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 						     while( rs.next() ){
 						    	 
-						    	modelo.addRow(new Object[] {rs.getString("nome"),rs.getString("cnpj"),rs.getString("telefone"),rs.getString("email")});
+						    	modelo.addRow(new Object[] {rs.getString("id_fornecedor"),rs.getString("nome"),rs.getString("cnpj"),rs.getString("telefone"),rs.getString("email")});
 						    	 
 						            		          
 						        }
@@ -232,11 +235,11 @@ public class TelaFornecedores extends JFrame {
 		btnExcluirFornecedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				 String a = textField_1.getText();
+				 String a = (table.getValueAt(table.getSelectedRow(), 0).toString());
 				 int x = Integer.parseInt(a);
 				try {
 					
-					  PreparedStatement ps = conexao.prepareStatement("delete from fornecedor where cnpj=?");
+					  PreparedStatement ps = conexao.prepareStatement("delete from fornecedor where  id_fornecedor=?");
 				        ps.setInt(1,x);
 				        ps.executeUpdate();
 					
@@ -271,17 +274,22 @@ public class TelaFornecedores extends JFrame {
 							String cnpj = textField_1.getText();
 							String telefone = textField_2.getText();
 							String email = textField_3.getText();
-							 int x = Integer.parseInt(cnpj);
-						 PreparedStatement	ps = conexao.prepareStatement("update fornecedor set nome=? where cnpj = ?");
+							 String a = (table.getValueAt(table.getSelectedRow(), 0).toString());
+							 int x = Integer.parseInt(a);
+						 PreparedStatement	ps = conexao.prepareStatement("update fornecedor set nome=? where id_fornecedor = ?");
 							ps.setString(1,nome);
 							ps.setInt(2, x);
 							ps.executeUpdate();
-							ps = conexao.prepareStatement("update fornecedor set telefone=? where cnpj = ?");
+							ps = conexao.prepareStatement("update fornecedor set telefone=? where id_fornecedor = ?");
 							ps.setString(1,telefone);
 							ps.setInt(2, x);
 							ps.executeUpdate();
-							ps = conexao.prepareStatement("update fornecedor set email=? where cnpj = ?");
+							ps = conexao.prepareStatement("update fornecedor set email=? where id_fornecedor = ?");
 							ps.setString(1,email);
+							ps.setInt(2, x);
+							ps.executeUpdate();
+							ps = conexao.prepareStatement("update fornecedor set cnpj=? where id_fornecedor = ?");
+							ps.setString(1,cnpj);
 							ps.setInt(2, x);
 							ps.executeUpdate();
 						} catch (SQLException e1) {
@@ -298,12 +306,12 @@ public class TelaFornecedores extends JFrame {
 									
 									
 									
-									 PreparedStatement ps = conexao.prepareStatement ("select * from fornecedor");
+									 PreparedStatement ps = conexao.prepareStatement ("select * from fornecedor order by nome");
 								    ResultSet rs = ps.executeQuery();
 								    DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 								     while( rs.next() ){
 								    	 
-								    	modelo.addRow(new Object[] {rs.getString("nome"),rs.getString("cnpj"),rs.getString("telefone"),rs.getString("email")});
+								    	modelo.addRow(new Object[] {rs.getString("id_fornecedor"), rs.getString("nome"),rs.getString("cnpj"),rs.getString("telefone"),rs.getString("email")});
 								    	 
 								            		          
 								        }
@@ -352,10 +360,10 @@ int posicaoPessoa = table.getSelectedRow();
 				if(posicaoPessoa > -1) {
 					btnAlterarDados.setEnabled(true);
 					btnExcluirFornecedor.setEnabled(true);
-					textField.setText(table.getValueAt(table.getSelectedRow(), 0).toString());
-					textField_1.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
-					textField_2.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
-					textField_3.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
+					textField.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
+					textField_1.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
+					textField_2.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
+					textField_3.setText(table.getValueAt(table.getSelectedRow(), 4).toString());
 				}else {
 					JOptionPane.showMessageDialog(null,"escolha uma linha na tabela");
 					}
