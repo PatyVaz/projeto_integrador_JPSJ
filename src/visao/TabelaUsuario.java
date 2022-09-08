@@ -78,7 +78,7 @@ public class TabelaUsuario extends JFrame {
 				
 				 int posicaoPessoa = table.getSelectedRow();
 				 Usuario u=listaUsuarios.get(posicaoPessoa);
-				 int resulr = usuarioBd.removerUsuario(u);
+				 int result = usuarioBd.removerUsuario(u);
 			
 			
 				 ((DefaultTableModel) table.getModel()).removeRow(table.getSelectedRow());

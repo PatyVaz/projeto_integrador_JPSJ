@@ -53,13 +53,7 @@ public class Clientes extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		try {
-			 conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/deemodb", "root", "sasalegal123");
-			 
-		}catch(SQLException e)
-		{
-			System.out.println("Erro ao conectar ï¿½ base de dados.");
-		}
+	
 		
 		
 		EventQueue.invokeLater(new Runnable() {
