@@ -14,12 +14,13 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaTabelaUsuario extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
 	private JTable table;
 
 	/**
@@ -43,56 +44,64 @@ public class TelaTabelaUsuario extends JFrame {
 	 */
 	public TelaTabelaUsuario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 544, 302);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Clientes Cadastrados:");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 15));
-		lblNewLabel.setBounds(10, 11, 154, 26);
+		JLabel lblNewLabel = new JLabel("Usuario Cadastrados:");
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		lblNewLabel.setBounds(10, 11, 182, 26);
 		contentPane.add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.GRAY);
 		panel.setForeground(Color.GRAY);
-		panel.setBounds(0, 0, 434, 49);
+		panel.setBounds(0, 0, 528, 49);
 		contentPane.add(panel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Buscar Clientes: ");
-		lblNewLabel_1.setBounds(10, 52, 114, 26);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel_1.setBounds(10, 52, 140, 26);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Nome:");
-		lblNewLabel_2.setBounds(10, 89, 59, 19);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_2.setBounds(10, 117, 59, 19);
 		contentPane.add(lblNewLabel_2);
 		
 		textField = new JTextField();
-		textField.setBounds(61, 89, 173, 20);
+		textField.setBounds(68, 116, 173, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("CPF:");
-		lblNewLabel_3.setBounds(20, 119, 46, 14);
-		contentPane.add(lblNewLabel_3);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(61, 119, 173, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
 		JButton btnNewButton = new JButton("Buscar");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnNewButton.setBounds(279, 115, 89, 23);
 		contentPane.add(btnNewButton);
 		
-		JLabel lblNewLabel_4 = new JLabel("Resultado da busca:");
-		lblNewLabel_4.setBounds(10, 144, 124, 19);
-		contentPane.add(lblNewLabel_4);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 147, 518, 81);
+		contentPane.add(scrollPane);
 		
 		table = new JTable();
-		table.setBounds(10, 174, 414, 76);
-		contentPane.add(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"ID", "Nome"
+			}
+		));
+		scrollPane.setViewportView(table);
+		
+		JButton btnNewButton_1 = new JButton("Apagar");
+		btnNewButton_1.setBounds(127, 240, 89, 23);
+		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Alterar");
+		btnNewButton_2.setBounds(256, 240, 89, 23);
+		contentPane.add(btnNewButton_2);
 	}
 }
