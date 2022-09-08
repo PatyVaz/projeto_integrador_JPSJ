@@ -70,7 +70,7 @@ public class Login extends JFrame {
 		contentPane.add(lblUsuario);
 
 		textUsuario = new JTextField();
-		textUsuario.setBackground(new Color(245, 245, 220));
+		textUsuario.setBackground(Color.WHITE);
 		textUsuario.setBounds(177, 70, 106, 20);
 		contentPane.add(textUsuario);
 		textUsuario.setColumns(20);
