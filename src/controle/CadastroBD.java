@@ -8,6 +8,4 @@ import java.sql.SQLException;
 
 public class CadastroBD {
 
-	
-	
 }
