@@ -1,11 +1,11 @@
 package modelo;
 
-public class Cadastro {
+public class Cliente {
 
 	private int id;
 	private String nome;
 	private int cpf;
-	private int email;
+	private String email;
 	private String rua;
 	private String bairro;
 	private int telefone;
@@ -29,10 +29,10 @@ public class Cadastro {
 	public void setCpf(int cpf) {
 		this.cpf = cpf;
 	}
-	public int getEmail() {
+	public String getEmail() {
 		return email;
 	}
-	public void setEmail(int email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 	public String getRua() {
