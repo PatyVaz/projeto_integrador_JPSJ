@@ -1,6 +1,8 @@
 package visao;
 
 import java.awt.BorderLayout;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -373,5 +375,15 @@ int posicaoPessoa = table.getSelectedRow();
 		});
 		btnNewButton_2.setBounds(956, 610, 141, 33);
 		contentPane.add(btnNewButton_2);
+		
+		
+		
+		JLabel lblNewLabel_5 = new JLabel("New label");
+		lblNewLabel_5.setBounds(1247, 679, 214, 14);
+		contentPane.add(lblNewLabel_5);
+		
+		 DateTimeFormatter dtf5 = DateTimeFormatter.ofPattern("yyyy/MM/dd hh:mm");
+	        String h =(dtf5.format(LocalDateTime.now()));
+	        lblNewLabel_5.setText(h);
 	}
 }
