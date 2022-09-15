@@ -66,7 +66,7 @@ public class Administrador extends JFrame {
 		
 		JButton btnNewButton_2 = new JButton("â†�");
 		btnNewButton_2.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_2.setBounds(10, 0, 49, 29);
+		btnNewButton_2.setBounds(10, 0, 62, 29);
 		panel_3.add(btnNewButton_2);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
