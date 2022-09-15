@@ -21,22 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import java.sql.*;
 import java.util.ArrayList;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JButton;
-import java.sql.*;
 import javax.swing.JOptionPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.Dimension;
 import java.awt.Color;
 
 public class Clientes extends JFrame {
