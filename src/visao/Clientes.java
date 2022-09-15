@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import java.sql.*;
+<<<<<<< HEAD
 
 import java.awt.EventQueue;
 
@@ -27,12 +28,10 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import java.sql.*;
+=======
+import java.util.ArrayList;
+>>>>>>> main
 import javax.swing.JOptionPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.Dimension;
 import java.awt.Color;
 public class Clientes extends JFrame {
 
@@ -53,9 +52,19 @@ public class Clientes extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+<<<<<<< HEAD
 	
 		
 		
+=======
+<<<<<<< HEAD
+
+=======
+	
+		
+		
+>>>>>>> tabelaUsuario
+>>>>>>> main
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -333,6 +342,35 @@ public class Clientes extends JFrame {
 		textField_7.setBounds(122, 575, 236, 34);
 		contentPane.add(textField_7);
 		textField_7.setColumns(10);
+<<<<<<< HEAD
+=======
+
+		JButton btnNewButton_3 = new JButton("Selecionar");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int posicaoPessoa = table.getSelectedRow();
+				if(posicaoPessoa > -1) {
+					Cliente pesoaSelecionada = listaClientes.get(posicaoPessoa);
+					
+				}
+				
+				if (posicaoPessoa > -1) {
+					
+					btnNewButton_1.setEnabled(false);
+					textField.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
+					textField_1.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
+					textField_2.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
+					textField_3.setText(table.getValueAt(table.getSelectedRow(), 4).toString());
+					textField_4.setText(table.getValueAt(table.getSelectedRow(), 5).toString());
+					textField_5.setText(table.getValueAt(table.getSelectedRow(), 6).toString());
+					textField_6.setText(table.getValueAt(table.getSelectedRow(), 7).toString());
+					textField_7.setText(table.getValueAt(table.getSelectedRow(), 8).toString());
+				} else {
+					JOptionPane.showMessageDialog(null, "escolha uma linha na tabela");
+				}
+			}
+		});
+>>>>>>> main
 		
 		JButton btnNewButton = new JButton("â†�");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -349,6 +387,8 @@ public class Clientes extends JFrame {
 		btnNewButton_2.setEnabled(false);
 		JButton btnNewButton_4 = new JButton("Alterar");
 		btnNewButton_4.addActionListener(new ActionListener() {
+			private int posicaoPessoa;
+
 			public void actionPerformed(ActionEvent e) {
 				btnNewButton_2.setEnabled(false);
 				btnNewButton_4.setEnabled(false);
