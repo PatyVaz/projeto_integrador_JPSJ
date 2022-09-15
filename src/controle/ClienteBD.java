@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Cliente;
-import visao.Clientes;
+import visao.TelaClientes;
 
 public class ClienteBD {
 	static Connection conexao;
@@ -26,7 +26,7 @@ public class ClienteBD {
 	public int removeCliente(Cliente cliente) {
 		try {
 
-			PreparedStatement ps = conexao.prepareStatement("delete from cadastro where cpf=?");
+			PreparedStatement ps = conexao.prepareStatement("delete from cadastro where id_cadastro=?");
 			ps.setInt(1, cliente.getId());
 			return ps.executeUpdate();
 
@@ -42,10 +42,10 @@ public class ClienteBD {
 	
 	
 
-	public ArrayList<Clientes> listarTodosClientes() {
+	public ArrayList<Cliente> listarTodosClientes() {
 		PreparedStatement ps;
 		ResultSet rs;
-		ArrayList<Clientes> listaClientes = new ArrayList<Clientes>();
+		ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
 		try {
 			ps = conexao.prepareStatement ("select * from cadastro order by nome");
 			rs= ps.executeQuery();
@@ -60,6 +60,7 @@ public class ClienteBD {
 				cliente.setBairro(rs.getString("bairro"));
 				cliente.setCep(rs.getString("cep"));
 				cliente.setCidade(rs.getString("cidade"));
+				listaClientes.add(cliente);
 		}
 		} catch (SQLException e) {	
 			e.printStackTrace();

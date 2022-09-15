@@ -1,46 +1,31 @@
 package visao;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controle.ClienteBD;
 import modelo.Cliente;
 
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Dimension;
-import java.sql.*;
-import java.util.ArrayList;
-import java.awt.EventQueue;
+public class TelaClientes extends JFrame {
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JButton;
-import java.sql.*;
-import javax.swing.JOptionPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.Dimension;
-import java.awt.Color;
-
-public class Clientes extends JFrame {
-
+	protected static final int posicaoPessoa = 0;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -53,7 +38,9 @@ public class Clientes extends JFrame {
 	private ArrayList<Cliente> listaClientes;
 	static Connection conexao;
 
-	private JTable table;
+	private JTable tbClientes;
+	private static TelaClientes frame;
+	private DefaultTableModel modelo;
 
 	/**
 	 * Launch the application.
@@ -63,7 +50,7 @@ public class Clientes extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Clientes frame = new Clientes();
+					frame = new TelaClientes();
 					frame.setVisible(true);
 					frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 				} catch (Exception e) {
@@ -76,8 +63,8 @@ public class Clientes extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Clientes() {
-		ClienteBD clientebd = new ClienteBD();
+	public TelaClientes() {
+
 		setMinimumSize(new Dimension(10, 10));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1600, 1200);
@@ -137,29 +124,22 @@ public class Clientes extends JFrame {
 		scrollPane.setBounds(437, 11, 923, 598);
 		contentPane.add(scrollPane);
 
-		table = new JTable();
-		table.setModel(new DefaultTableModel(new Object[][] {},
+		ClienteBD clientebd = new ClienteBD();
+		listaClientes = clientebd.listarTodosClientes();
+		tbClientes = new JTable();
+		tbClientes.setModel(new DefaultTableModel(new Object[][] {},
 				new String[] { "ID", "nome", "cpf", "email", "rua", "bairro", "telefone", "cep", "cidade" }));
+		scrollPane.setViewportView(tbClientes);
 
-		scrollPane.setViewportView(table);
+		modelo = (DefaultTableModel) tbClientes.getModel();
+		for (int i = 0; i < listaClientes.size(); i++) {
+			Cliente c = listaClientes.get(i);
+			modelo.addRow(new Object[] { c.getId(), c.getNome(), c.getCpf(), c.getEmail(), c.getRua(),c.getBairro(), c.getTelefone(),
+					 c.getCep(), c.getCidade() });
 
-		try {
-
-			PreparedStatement ps = conexao.prepareStatement("select * from cadastro order by nome");
-			ResultSet rs = ps.executeQuery();
-			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
-			while (rs.next()) {
-
-				modelo.addRow(new Object[] { rs.getString("id_cadastro"), rs.getString("nome"), rs.getString("cpf"),
-						rs.getString("email"), rs.getString("rua"), rs.getString("telefone"), rs.getString("bairro"),
-						rs.getString("cep"), rs.getString("cidade") });
-
-			}
-
-		} catch (SQLException e2) {
-
-			e2.printStackTrace();
 		}
+		tbClientes.setModel(modelo);
+
 		JButton btnNewButton_1 = new JButton("Salvar");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -173,30 +153,6 @@ public class Clientes extends JFrame {
 				String telefone = textField_4.getText();
 				String cep = textField_6.getText();
 				String cidade = textField_7.getText();
-				
-				// validar se todos os campos de texto foram realmente preenchidos
-
-				Cliente cliente = new Cliente();
-				cliente.setNome(nome);
-				cliente.setCpf(Integer.valueOf(cpf));
-				cliente.setEmail(email);
-				cliente.setRua(rua);
-				cliente.setBairro(bairro);
-				cliente.setTelefone(Integer.valueOf(telefone));
-				cliente.setCep(cep);
-				cliente.setCidade(cidade);
-				
-				ClienteBD bdCliente = new ClienteBD();
-				bdCliente.inserirCliente(cliente);
-
-				textField.setText("");
-				textField_2.setText("");
-				textField_3.setText("");
-				textField_4.setText("");
-				textField_5.setText("");
-				textField_6.setText("");
-				textField_7.setText("");
-				textField_1.setText("");
 
 				try {
 					Integer.parseInt(cpf);
@@ -239,28 +195,52 @@ public class Clientes extends JFrame {
 						textField_1.setText("");
 					}
 				}
+				// validar se todos os campos de texto foram realmente preenchidos
 
-				while (table.getModel().getRowCount() > 0) {
-					((DefaultTableModel) table.getModel()).removeRow(0);
+				Cliente cliente = new Cliente();
+				cliente.setNome(nome);
+				cliente.setCpf(Integer.valueOf(cpf));
+				cliente.setEmail(email);
+				cliente.setRua(rua);
+				cliente.setBairro(bairro);
+				cliente.setTelefone(Integer.valueOf(telefone));
+				cliente.setCep(cep);
+				cliente.setCidade(cidade);
+
+				
+				ClienteBD bdCliente = new ClienteBD();
+				bdCliente.inserirCliente(cliente);
+
+				textField.setText("");
+				textField_2.setText("");
+				textField_3.setText("");
+				textField_4.setText("");
+				textField_5.setText("");
+				textField_6.setText("");
+				textField_7.setText("");
+				textField_1.setText("");
+
+			
+
+				while (tbClientes.getModel().getRowCount() > 0) {
+					((DefaultTableModel) tbClientes.getModel()).removeRow(0);
 				}
+				
+				ClienteBD clientebd = new ClienteBD();
+				listaClientes = clientebd.listarTodosClientes();
+				tbClientes = new JTable();
+				tbClientes.setModel(new DefaultTableModel(new Object[][] {},
+						new String[] { "ID", "nome", "cpf", "email", "rua", "bairro", "telefone", "cep", "cidade" }));
+				scrollPane.setViewportView(tbClientes);
 
-				try {
+				modelo = (DefaultTableModel) tbClientes.getModel();
+				for (int i = 0; i < listaClientes.size(); i++) {
+					Cliente c = listaClientes.get(i);
+					modelo.addRow(new Object[] { c.getId(), c.getNome(), c.getCpf(), c.getEmail(), c.getRua(),c.getBairro(), c.getTelefone(),
+							 c.getCep(), c.getCidade() });
 
-					PreparedStatement ps = conexao.prepareStatement("select * from cadastro order by nome");
-					ResultSet rs = ps.executeQuery();
-					DefaultTableModel modelo = (DefaultTableModel) table.getModel();
-					while (rs.next()) {
-
-						modelo.addRow(new Object[] { rs.getString("id_cadastro"), rs.getString("nome"),
-								rs.getString("cpf"), rs.getString("email"), rs.getString("rua"), rs.getString("bairro"),
-								rs.getString("telefone"), rs.getString("cep"), rs.getString("cidade") });
-
-					}
-
-				} catch (SQLException e2) {
-
-					e2.printStackTrace();
 				}
+				tbClientes.setModel(modelo);
 
 			}
 		});
@@ -310,29 +290,29 @@ public class Clientes extends JFrame {
 		JButton btnNewButton_3 = new JButton("Selecionar");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int posicaoPessoa = table.getSelectedRow();
-				if(posicaoPessoa > -1) {
-					cliente pesoaSelecionada = listaClientes.get(posicaoPessoa);
-					
-				}
-				
+				int posicaoPessoa = tbClientes.getSelectedRow();
 				if (posicaoPessoa > -1) {
+					Cliente pesoaSelecionada = listaClientes.get(posicaoPessoa);
+
+				}
+
+				if (posicaoPessoa > -1) {
+
 					
-					btnNewButton_1.setEnabled(false);
-					textField.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
-					textField_1.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
-					textField_2.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
-					textField_3.setText(table.getValueAt(table.getSelectedRow(), 4).toString());
-					textField_4.setText(table.getValueAt(table.getSelectedRow(), 5).toString());
-					textField_5.setText(table.getValueAt(table.getSelectedRow(), 6).toString());
-					textField_6.setText(table.getValueAt(table.getSelectedRow(), 7).toString());
-					textField_7.setText(table.getValueAt(table.getSelectedRow(), 8).toString());
+					textField.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 1).toString());
+					textField_1.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 2).toString());
+					textField_2.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 3).toString());
+					textField_3.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 4).toString());
+					textField_4.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 6).toString());
+					textField_5.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 5).toString());
+					textField_6.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 7).toString());
+					textField_7.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 8).toString());
 				} else {
 					JOptionPane.showMessageDialog(null, "escolha uma linha na tabela");
 				}
 			}
 		});
-		
+
 		JButton btnNewButton = new JButton("â†�");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -345,39 +325,61 @@ public class Clientes extends JFrame {
 		btnNewButton.setBounds(0, 0, 61, 23);
 		contentPane.add(btnNewButton);
 		JButton btnNewButton_2 = new JButton("Excluir");
-		btnNewButton_2.setEnabled(false);
+
 		JButton btnNewButton_4 = new JButton("Alterar");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnNewButton_2.setEnabled(false);
-				btnNewButton_4.setEnabled(false);
-				btnNewButton_1.setEnabled(true);
 				
-				Cliente c = listaClientes.get(posicaoPessoa);
-				int result = clientebd.alterarClientes(c);
-				while (table.getModel().getRowCount() > 0) {
-					((DefaultTableModel) table.getModel()).removeRow(0);
+				Cliente cl = listaClientes.get(posicaoPessoa);
+
+				String nome = textField.getText();
+				String cpf = textField_1.getText();
+				String email = textField_2.getText();
+				String rua = textField_3.getText();
+				String bairro = textField_5.getText();
+				String telefone = textField_4.getText();
+				String cep = textField_6.getText();
+				String cidade = textField_7.getText();
+				cl.setNome(nome);
+				cl.setCpf(Integer.valueOf(cpf));
+				cl.setEmail(email);
+				cl.setRua(rua);
+				cl.setBairro(bairro);
+				cl.setTelefone(Integer.valueOf(telefone));
+				cl.setCep(cep);
+				cl.setCidade(cidade);
+				
+				
+
+
+				
+				
+				int result = clientebd.alterarClientes(cl);
+			
+				listaClientes.set(result, cl);
+
+
+				while (tbClientes.getModel().getRowCount() > 0) {
+					((DefaultTableModel) tbClientes.getModel()).removeRow(0);
+				
 				}
 
-				try {
+				ClienteBD clientebd = new ClienteBD();
+				listaClientes = clientebd.listarTodosClientes();
+				tbClientes = new JTable();
+				tbClientes.setModel(new DefaultTableModel(new Object[][] {},
+						new String[] { "ID", "nome", "cpf", "email", "rua", "bairro", "telefone", "cep", "cidade" }));
+				scrollPane.setViewportView(tbClientes);
 
-					PreparedStatement ps = conexao.prepareStatement("select * from cadastro");
-					ResultSet rs = ps.executeQuery();
-					DefaultTableModel modelo = (DefaultTableModel) table.getModel();
-					while (rs.next()) {
+				modelo = (DefaultTableModel) tbClientes.getModel();
+				for (int i = 0; i < listaClientes.size(); i++) {
+					Cliente c = listaClientes.get(i);
+					modelo.addRow(new Object[] { c.getId(), c.getNome(), c.getCpf(), c.getEmail(), c.getRua(),c.getBairro(), c.getTelefone(),
+							 c.getCep(), c.getCidade() });
 
-						modelo.addRow(
-								new Object[] { rs.getString("id_cadastro"), rs.getString("nome"), rs.getString("cpf"),
-										rs.getString("email"), rs.getString("rua"), rs.getString("telefone"),
-										rs.getString("bairro"), rs.getString("cep"), rs.getString("cidade") });
-
-					}
-
-				} catch (SQLException e2) {
-
-					e2.printStackTrace();
 				}
-
+				tbClientes.setModel(modelo);
+				
 				textField.setText("");
 				textField_1.setText("");
 				textField_2.setText("");
@@ -386,12 +388,10 @@ public class Clientes extends JFrame {
 				textField_5.setText("");
 				textField_6.setText("");
 				textField_7.setText("");
-				btnNewButton_2.setEnabled(false);
-				btnNewButton_4.setEnabled(false);
+
 			}
 		});
 		btnNewButton_4.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton_4.setEnabled(false);
 		btnNewButton_4.setBounds(259, 652, 109, 35);
 		contentPane.add(btnNewButton_4);
 
@@ -399,9 +399,15 @@ public class Clientes extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				String a = textField_1.getText();
+				String a = (tbClientes.getValueAt(tbClientes.getSelectedRow(), 0).toString());
 				int x = Integer.parseInt(a);
-				
+
+				Cliente cliente = new Cliente();
+				cliente.setId(x);
+
+				ClienteBD bdCliente = new ClienteBD();
+				bdCliente.removeCliente(cliente);
+
 				textField.setText("");
 				textField_1.setText("");
 				textField_2.setText("");
@@ -410,19 +416,17 @@ public class Clientes extends JFrame {
 				textField_5.setText("");
 				textField_6.setText("");
 				textField_7.setText("");
-				((DefaultTableModel) table.getModel()).removeRow(table.getSelectedRow());
-				btnNewButton_2.setEnabled(false);
-				btnNewButton_4.setEnabled(false);
-				btnNewButton_1.setEnabled(true);
+				((DefaultTableModel) tbClientes.getModel()).removeRow(tbClientes.getSelectedRow());
+
 			}
 		});
 		btnNewButton_2.setBounds(14, 652, 109, 35);
 		contentPane.add(btnNewButton_2);
 
-		
 		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton_3.setBounds(811, 652, 148, 35);
 		contentPane.add(btnNewButton_3);
 
 	}
+
 }
