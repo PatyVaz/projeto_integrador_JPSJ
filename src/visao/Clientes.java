@@ -312,7 +312,7 @@ public class Clientes extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int posicaoPessoa = table.getSelectedRow();
 				if(posicaoPessoa > -1) {
-					cliente pesoaSelecionada = listaClientes.get(posicaoPessoa);
+					Cliente pesoaSelecionada = listaClientes.get(posicaoPessoa);
 					
 				}
 				
@@ -348,6 +348,8 @@ public class Clientes extends JFrame {
 		btnNewButton_2.setEnabled(false);
 		JButton btnNewButton_4 = new JButton("Alterar");
 		btnNewButton_4.addActionListener(new ActionListener() {
+			private int posicaoPessoa;
+
 			public void actionPerformed(ActionEvent e) {
 				btnNewButton_2.setEnabled(false);
 				btnNewButton_4.setEnabled(false);
