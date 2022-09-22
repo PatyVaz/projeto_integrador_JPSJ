@@ -110,13 +110,13 @@ public class CadastroUsuario extends JFrame {
 			String nome= textField.getText();
 			String login = textField_1.getText();
 			String senha = textField_2.getText();
-			int x = Integer.parseInt(senha);
+			
 			try {
 				
 				  PreparedStatement ps = conexao.prepareStatement("insert into usuario (login,senha,nome) values(?,?,?)");
 				
 				ps.setString(1,login);
-				ps.setInt(2,x);
+				ps.setString(2,senha);
 				ps.setString(3,nome);
 				
 				ps.executeUpdate();
