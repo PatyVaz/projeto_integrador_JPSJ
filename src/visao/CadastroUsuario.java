@@ -63,7 +63,7 @@ public class CadastroUsuario extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("â†�");
+		JButton btnNewButton = new JButton("<-");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Administrador administrador = new Administrador();

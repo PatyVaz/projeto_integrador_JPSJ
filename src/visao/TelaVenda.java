@@ -171,7 +171,7 @@ public class TelaVenda extends JFrame {
 		contentPane.add(btnNewButton_2);
 
 		JButton btnNewButton_3 = new JButton("Remover Produto");
-		btnNewButton_3.setBounds(471, 400, 126, 23);
+		btnNewButton_3.setBounds(471, 400, 147, 23);
 		contentPane.add(btnNewButton_3);
 
 		JButton btnNewButton_4 = new JButton("Buscar");
