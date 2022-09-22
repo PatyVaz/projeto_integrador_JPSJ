@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controle.UsuarioBD;
+import modelo.Usuario;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -29,12 +33,7 @@ public class CadastroUsuario extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		try {
-			 conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/deemodb", "root", "sasalegal123");
-		}catch(SQLException e)
-		{
-			System.out.println("Erro ao conectar ï¿½ base de dados.");
-		}
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -111,22 +110,13 @@ public class CadastroUsuario extends JFrame {
 			String login = textField_1.getText();
 			String senha = textField_2.getText();
 			
-			try {
-				
-				  PreparedStatement ps = conexao.prepareStatement("insert into usuario (login,senha,nome) values(?,?,?)");
-				
-				ps.setString(1,login);
-				ps.setString(2,senha);
-				ps.setString(3,nome);
-				
-				ps.executeUpdate();
+			Usuario usuario = new Usuario();
+			usuario.setLogin(login);
+			usuario.setNome(nome);
+			usuario.setSenha(senha);
 			
-				
-				}catch(SQLException e1)
-				{
-					System.out.println("Erro ao conectar ï¿½ base de dados.");
-				}
-			
+			UsuarioBD usuariobd = new UsuarioBD();
+			usuariobd.inserirUsuario(usuario);
 			
 
 			textField.setText("");

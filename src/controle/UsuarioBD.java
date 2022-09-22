@@ -16,6 +16,10 @@ public class UsuarioBD {
 	public UsuarioBD() {
 		conexao = ConexaoBD.ConexaoBanco();
 	}
+	
+	
+	
+	
 	public Usuario efetuarLogin(Usuario usuario) {
 		try {
 			PreparedStatement ps = conexao
@@ -46,6 +50,7 @@ public class UsuarioBD {
 		PreparedStatement ps;
 	    ResultSet rs;
 	    ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
+	    
 		try {
 			ps = conexao.prepareStatement ("select * from usuario  order by nome");
 			rs = ps.executeQuery();
@@ -78,7 +83,27 @@ public class UsuarioBD {
 			}
 		return 0;
 	}
-	
+	public int inserirUsuario(Usuario u) {
+		
+		
+
+		try {
+			
+			  PreparedStatement ps = conexao.prepareStatement("insert into usuario (login,senha,nome) values(?,?,?)");
+			
+			ps.setString(1,u.getLogin());
+			ps.setString(2,u.getSenha());
+			ps.setString(3,u.getNome());
+			
+			ps.executeUpdate();
+		
+			
+			}catch(SQLException e1)
+			{
+				System.out.println("Erro ao conectar ï¿½ base de dados.");
+			}
+	return 0;
+}
 	
 	
 
