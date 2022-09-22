@@ -81,9 +81,9 @@ public class Login extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String usuario = textUsuario.getText();
 				String senha = passwordField.getText();
-				int x;
+				
 				try {
-					x = Integer.parseInt(senha);
+					
 				} catch (NumberFormatException e2) {
 					JOptionPane.showMessageDialog(null, "senha invalida");
 					return;
@@ -92,14 +92,17 @@ public class Login extends JFrame {
 				
 				Usuario u = new Usuario();
 				u.setLogin(usuario);
-				u.setSenha(x);
+				u.setSenha(senha);
 				
 				UsuarioBD loginbd = new UsuarioBD();
+				Usuario usuarioLogado = loginbd.efetuarLogin(u);
 				
-				if(loginbd.efetuarLogin(u)!= null ) {
-					TelaInicio telaInicio = new TelaInicio();
-					telaInicio.setVisible(true);
-					setVisible(false);
+				if(usuarioLogado != null ) {
+					if(usuarioLogado.getLogin().equals(u.getLogin()) && usuarioLogado.getSenha().equals(u.getSenha())) {
+						TelaInicio telaInicio = new TelaInicio();
+						telaInicio.setVisible(true);
+						setVisible(false);
+					}
 				}else {
 					JOptionPane.showMessageDialog(null, "senha ou login invalido");
 				}

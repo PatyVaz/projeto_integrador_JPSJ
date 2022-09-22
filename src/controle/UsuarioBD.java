@@ -14,19 +14,14 @@ public class UsuarioBD {
 	static Connection conexao;
 	
 	public UsuarioBD() {
-		try {
-			conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/deemodb", "root", "sasalegal123");
-		} catch (SQLException e3) {
-			// TODO Auto-generated catch block
-			e3.printStackTrace();
-		}
+		conexao = ConexaoBD.ConexaoBanco();
 	}
 	public Usuario efetuarLogin(Usuario usuario) {
 		try {
 			PreparedStatement ps = conexao
 			.prepareStatement("select * from usuario where login = ? and senha = ?");
 			ps.setString(1, usuario.getLogin());
-			ps.setInt(2, usuario.getSenha());
+			ps.setString(2, usuario.getSenha());
 			ResultSet rs = ps.executeQuery();
 			while( rs.next() )
 	        {
@@ -59,7 +54,7 @@ public class UsuarioBD {
 			    usuario.setId(rs.getInt("id_usuario"));
 			    usuario.setNome(rs.getString("nome"));
 			    usuario.setLogin(rs.getString("login"));
-			    usuario.setSenha(rs.getInt("senha"));
+			    usuario.setSenha(rs.getString("senha"));
 			    listaUsuarios.add(usuario);
 		    	
 	     }

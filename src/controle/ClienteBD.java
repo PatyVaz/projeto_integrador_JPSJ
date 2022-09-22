@@ -1,29 +1,25 @@
 package controle;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Cliente;
-import visao.TelaClientes;
 
 public class ClienteBD {
-	static Connection conexao;
-
-	public ClienteBD() {
-		try {
-			conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/deemodb", "root", "sasalegal123");
-
-		} catch (SQLException e) {
-			System.out.println("Erro ao conectar ï¿½ base de dados.");
-		}
-	}
 	
+	private Connection conexao;
+	public ClienteBD() {
+		conexao = ConexaoBD.ConexaoBanco();
+	}
 
 	public int removeCliente(Cliente cliente) {
+		
+		
+		
+		
 		try {
 
 			PreparedStatement ps = conexao.prepareStatement("delete from cadastro where id_cadastro=?");
@@ -74,7 +70,7 @@ public class ClienteBD {
 	
 
 	public boolean inserirCliente(Cliente cliente) {
-
+	
 		try {
 
 			PreparedStatement ps = conexao.prepareStatement(
@@ -98,6 +94,7 @@ public class ClienteBD {
 	}
 	
 	public int alterarClientes(Cliente cliente) {
+	
 		try {
 			
 
