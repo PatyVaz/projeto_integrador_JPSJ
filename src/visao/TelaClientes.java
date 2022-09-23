@@ -76,48 +76,48 @@ public class TelaClientes extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Dados Pessoais:");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblNewLabel.setBounds(10, 42, 274, 53);
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		contentPane.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Nome:\r\n");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_1.setBounds(10, 106, 68, 14);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_3 = new JLabel("CPF:");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_3.setBounds(10, 167, 68, 14);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_4 = new JLabel("Email:");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_4.setBounds(10, 233, 68, 14);
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblNewLabel_4);
 
 		JLabel lblNewLabel_5 = new JLabel("Rua:");
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_5.setBounds(10, 311, 46, 14);
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblNewLabel_5);
 
 		JLabel lblNewLabel_6 = new JLabel("Bairro:");
-		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_6.setBounds(10, 445, 74, 27);
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblNewLabel_6);
 
 		JLabel lblNewLabel_7 = new JLabel("Telefone:");
-		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_7.setBounds(10, 382, 89, 14);
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblNewLabel_7);
 
 		JLabel lblNewLabel_8 = new JLabel("CEP:");
-		lblNewLabel_8.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_8.setBounds(10, 522, 46, 14);
+		lblNewLabel_8.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblNewLabel_8);
 
 		JLabel lblNewLabel_9 = new JLabel("Cidade:");
-		lblNewLabel_9.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_9.setBounds(10, 575, 142, 34);
+		lblNewLabel_9.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblNewLabel_9);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -141,6 +141,7 @@ public class TelaClientes extends JFrame {
 		tbClientes.setModel(modelo);
 
 		JButton btnNewButton_1 = new JButton("Salvar");
+		btnNewButton_1.setBounds(133, 652, 116, 35);
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -244,7 +245,6 @@ public class TelaClientes extends JFrame {
 
 			}
 		});
-		btnNewButton_1.setBounds(133, 652, 116, 35);
 		contentPane.add(btnNewButton_1);
 
 		textField = new JTextField();
@@ -288,11 +288,12 @@ public class TelaClientes extends JFrame {
 		textField_7.setColumns(10);
 
 		JButton btnNewButton_3 = new JButton("Selecionar");
+		btnNewButton_3.setBounds(811, 652, 148, 35);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int posicaoPessoa = tbClientes.getSelectedRow();
 				if (posicaoPessoa > -1) {
-					Cliente pesoaSelecionada = listaClientes.get(posicaoPessoa);
+					Cliente pessoaSelecionada = listaClientes.get(posicaoPessoa);
 
 				}
 
@@ -314,6 +315,7 @@ public class TelaClientes extends JFrame {
 		});
 
 		JButton btnNewButton = new JButton("â†�");
+		btnNewButton.setBounds(0, 0, 61, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -322,11 +324,12 @@ public class TelaClientes extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton.setBounds(0, 0, 61, 23);
 		contentPane.add(btnNewButton);
 		JButton btnNewButton_2 = new JButton("Excluir");
+		btnNewButton_2.setBounds(14, 652, 109, 35);
 
 		JButton btnNewButton_4 = new JButton("Alterar");
+		btnNewButton_4.setBounds(259, 652, 109, 35);
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -392,7 +395,6 @@ public class TelaClientes extends JFrame {
 			}
 		});
 		btnNewButton_4.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton_4.setBounds(259, 652, 109, 35);
 		contentPane.add(btnNewButton_4);
 
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -420,11 +422,9 @@ public class TelaClientes extends JFrame {
 
 			}
 		});
-		btnNewButton_2.setBounds(14, 652, 109, 35);
 		contentPane.add(btnNewButton_2);
 
 		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton_3.setBounds(811, 652, 148, 35);
 		contentPane.add(btnNewButton_3);
 
 	}
