@@ -59,10 +59,8 @@ public class TelaVenda extends JFrame {
 		produto.setNome("Scarpin");
 		produto.setPreco(50);
 		produtos.add(produto);
-
-		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 905, 555);
+		setBounds(100, 100, 905, 529);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -141,7 +139,7 @@ public class TelaVenda extends JFrame {
 		tbProdutosCarrinho = new JTable();
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(477, 273, 368, 120);
+		scrollPane.setBounds(379, 273, 500, 120);
 		contentPane.add(scrollPane);
 
 		scrollPane.setViewportView(tbProdutosCarrinho);
