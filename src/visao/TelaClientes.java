@@ -326,9 +326,11 @@ public class TelaClientes extends JFrame {
 		});
 		contentPane.add(btnNewButton);
 		JButton btnNewButton_2 = new JButton("Excluir");
+		btnNewButton_2.setEnabled(false);
 		btnNewButton_2.setBounds(14, 652, 109, 35);
 
 		JButton btnNewButton_4 = new JButton("Alterar");
+		btnNewButton_4.setEnabled(false);
 		btnNewButton_4.setBounds(259, 652, 109, 35);
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
