@@ -5,26 +5,45 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import modelo.CadastroProdutos;
+import modelo.Fornecedor;
+
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Font;
 import java.awt.Insets;
+import java.sql.Connection;
+import java.util.ArrayList;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import controle.FornecedorBD;
+import controle.ProdutoBD;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaCadastroProduto extends JFrame {
-
+	protected static final int posicaoPessoa = 0;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private DefaultTableModel modelo;
+	private ArrayList<CadastroProdutos> listaProdutos;
+	static Connection conexao;
+	private JTable tbProduto;
 	private JTextField textField_4;
-	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -54,10 +73,37 @@ public class TelaCadastroProduto extends JFrame {
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_contentPane.columnWeights = new double[]{1.0, 1.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		
+		tbProduto = new JTable();
+		tbProduto.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Id", "Modelo", "Cor", "Tamanho", "Marca", "Preco"
+			}
+		));
+		scrollPane.setViewportView(tbProduto);
+		
+		ProdutoBD produtoBD = new ProdutoBD();
+		listaProdutos = produtoBD.listarTodosProdutos();
+		tbProduto = new JTable();
+		tbProduto.setModel(new DefaultTableModel(new Object[][] {},
+				new String[] { "Id", "Modelo", "Cor", "Tamanho", "Marca", "Preco"}));
+		scrollPane.setViewportView(tbProduto);
+
+		modelo = (DefaultTableModel) tbProduto.getModel();
+		for (int i = 0; i < listaProdutos.size(); i++) {
+			CadastroProdutos p = listaProdutos.get(i);
+		modelo.addRow(new Object[] { p.getId(), p.getModelo(), p.getCor(), p.getTamanho(), p.getMarca(), p.getPreco() });
+
+		}
+		tbProduto.setModel(modelo);
 		
 		JLabel lblNewLabel = new JLabel("Cadastro Produtos:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -134,7 +180,7 @@ public class TelaCadastroProduto extends JFrame {
 		contentPane.add(textField_3, gbc_textField_3);
 		textField_3.setColumns(10);
 		
-		JLabel lblNewLabel_5 = new JLabel("Código do produto:");
+		JLabel lblNewLabel_5 = new JLabel("Preço");
 		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
 		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_5.gridx = 0;
@@ -143,27 +189,12 @@ public class TelaCadastroProduto extends JFrame {
 		
 		textField_4 = new JTextField();
 		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-		gbc_textField_4.gridwidth = 5;
 		gbc_textField_4.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_4.gridx = 1;
 		gbc_textField_4.gridy = 4;
 		contentPane.add(textField_4, gbc_textField_4);
 		textField_4.setColumns(10);
-		
-		JButton btnNewButton = new JButton("Adicionar produto");
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton.gridx = 1;
-		gbc_btnNewButton.gridy = 6;
-		contentPane.add(btnNewButton, gbc_btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("Excluir produto");
-		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
-		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton_1.gridx = 2;
-		gbc_btnNewButton_1.gridy = 6;
-		contentPane.add(btnNewButton_1, gbc_btnNewButton_1);
 		
 		JLabel lblNewLabel_6 = new JLabel("Produtos cadastrados:");
 		GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
@@ -173,17 +204,211 @@ public class TelaCadastroProduto extends JFrame {
 		gbc_lblNewLabel_6.gridy = 8;
 		contentPane.add(lblNewLabel_6, gbc_lblNewLabel_6);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.gridheight = 2;
 		gbc_scrollPane.gridwidth = 6;
-		gbc_scrollPane.gridheight = 3;
+		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
-		gbc_scrollPane.gridy = 9;
+		gbc_scrollPane.gridy = 10;
 		contentPane.add(scrollPane, gbc_scrollPane);
 		
-		table = new JTable();
-		scrollPane.setColumnHeaderView(table);
+		
+		
+		scrollPane.setViewportView(tbProduto);
+		
+		JButton btnNewButton_4 = new JButton("<-");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaInicio ti = new TelaInicio();
+				ti.setVisible(true);
+				setVisible(false);
+			}
+		});
+		GridBagConstraints gbc_btnNewButton_4 = new GridBagConstraints();
+		gbc_btnNewButton_4.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNewButton_4.gridx = 0;
+		gbc_btnNewButton_4.gridy = 12;
+		contentPane.add(btnNewButton_4, gbc_btnNewButton_4);
+		
+		JButton btnAdicionar = new JButton("Adicionar produto");
+		btnAdicionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String modelo1 = textField.getText();
+				String cor = textField_2.getText();
+				String tamanho = textField_1.getText();
+				String marca = textField_3.getText();
+				String preco = textField_4.getText();
+				
+				
+				CadastroProdutos cadastroProdutos = new CadastroProdutos();
+				cadastroProdutos.setModelo(modelo1);
+				cadastroProdutos.setCor(cor);
+				cadastroProdutos.setTamanho(Integer.valueOf(tamanho));
+				cadastroProdutos.setMarca(marca);
+				cadastroProdutos.setPreco(Double.valueOf(preco));
+				
+				ProdutoBD bdProduto = new ProdutoBD();
+				bdProduto.inserirProduto(cadastroProdutos);
+				
+				textField.setText("");
+				textField_2.setText("");
+				textField_3.setText("");
+				textField_1.setText("");
+				textField_4.setText("");
+				
+				while(tbProduto.getModel().getRowCount()>0){
+					 ((DefaultTableModel) tbProduto.getModel()).removeRow(0);
+				}
+						 
+					
+				ProdutoBD produtoBD = new ProdutoBD();
+				listaProdutos = produtoBD.listarTodosProdutos();
+				tbProduto = new JTable();
+				tbProduto.setModel(new DefaultTableModel(new Object[][] {},
+						new String[] { "Id", "Modelo", "Cor", "Tamanho", "Marca", "Preco"}));
+				scrollPane.setViewportView(tbProduto);
+
+				modelo = (DefaultTableModel) tbProduto.getModel();
+				for (int i = 0; i < listaProdutos.size(); i++) {
+					CadastroProdutos p = listaProdutos.get(i);
+				modelo.addRow(new Object[] { p.getId(), p.getModelo(), p.getCor(), p.getTamanho(), p.getMarca(), p.getPreco() });
+
+				}
+				tbProduto.setModel(modelo);
+				
+				}
+		});
+		GridBagConstraints gbc_btnAdicionar = new GridBagConstraints();
+		gbc_btnAdicionar.insets = new Insets(0, 0, 0, 5);
+		gbc_btnAdicionar.gridx = 1;
+		gbc_btnAdicionar.gridy = 12;
+		contentPane.add(btnAdicionar, gbc_btnAdicionar);
+		JButton btnAlterar = new JButton("Alterar");
+		JButton btnExcluir = new JButton("Excluir produto");
+		btnExcluir.setEnabled(false);
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String a = (tbProduto.getValueAt(tbProduto.getSelectedRow(), 0).toString());
+				int x = Integer.parseInt(a);
+
+				CadastroProdutos produtos = new CadastroProdutos();
+				produtos.setId(x);
+
+				ProdutoBD produtobd = new ProdutoBD();
+				produtobd.removeProduto(produtos);
+				textField.setText("");
+				textField_1.setText("");
+				textField_2.setText("");
+				textField_3.setText("");
+				textField_4.setText("");
+				
+				 ((DefaultTableModel) tbProduto.getModel()).removeRow(tbProduto.getSelectedRow());
+				 btnExcluir.setEnabled(false);
+				 btnAlterar.setEnabled(false);
+				 btnAdicionar.setEnabled(true);
+			}
+		});
+		GridBagConstraints gbc_btnExcluir = new GridBagConstraints();
+		gbc_btnExcluir.insets = new Insets(0, 0, 0, 5);
+		gbc_btnExcluir.gridx = 2;
+		gbc_btnExcluir.gridy = 12;
+		contentPane.add(btnExcluir, gbc_btnExcluir);
+		
+		
+		btnAlterar.setEnabled(false);
+		btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+CadastroProdutos cp = listaProdutos.get(posicaoPessoa);
+				
+				String modelo1 = textField.getText();
+				String cor = textField_2.getText();
+				String tamanho = textField_1.getText();
+				String marca = textField_3.getText();
+				String preco = textField_4.getText();
+				
+	
+				cp.setModelo(modelo1);
+				cp.setCor(cor);
+				cp.setTamanho(Integer.valueOf(tamanho));
+				cp.setMarca(marca);
+				cp.setPreco(Double.valueOf(preco));
+				
+			
+				
+				
+
+
+				
+				
+				int result = produtoBD.alterarProduto(cp);
+			
+				listaProdutos.set(result, cp);
+
+
+				while (tbProduto.getModel().getRowCount() > 0) {
+					((DefaultTableModel) tbProduto.getModel()).removeRow(0);
+				
+				}
+
+				ProdutoBD produtoBD = new ProdutoBD();
+				listaProdutos = produtoBD.listarTodosProdutos();
+				tbProduto = new JTable();
+				tbProduto.setModel(new DefaultTableModel(new Object[][] {},
+						new String[] { "Id", "Modelo", "Cor", "Tamanho", "Marca", "Preco"}));
+				scrollPane.setViewportView(tbProduto);
+
+				modelo = (DefaultTableModel) tbProduto.getModel();
+				for (int i = 0; i < listaProdutos.size(); i++) {
+					CadastroProdutos p = listaProdutos.get(i);
+				modelo.addRow(new Object[] { p.getId(), p.getModelo(), p.getCor(), p.getTamanho(), p.getMarca(), p.getPreco() });
+
+				}
+				tbProduto.setModel(modelo);
+				
+								textField.setText("");
+								textField_1.setText("");
+								textField_2.setText("");
+								textField_3.setText("");
+								textField_4.setText("");
+								
+								 btnExcluir.setEnabled(false);
+								 btnAlterar.setEnabled(false);
+								 btnAdicionar.setEnabled(true);
+			}
+		});
+		GridBagConstraints gbc_btnAlterar = new GridBagConstraints();
+		gbc_btnAlterar.insets = new Insets(0, 0, 0, 5);
+		gbc_btnAlterar.gridx = 3;
+		gbc_btnAlterar.gridy = 12;
+		contentPane.add(btnAlterar, gbc_btnAlterar);
+		
+		JButton btnSelecionar = new JButton("selecionar");
+		btnSelecionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+	int posicaoPessoa = tbProduto.getSelectedRow();
+				
+				if(posicaoPessoa > -1) {
+					btnAlterar.setEnabled(true);
+					btnExcluir.setEnabled(true);
+					btnAdicionar.setEnabled(false);
+					CadastroProdutos pessoaSelecionada = listaProdutos.get(posicaoPessoa);
+					textField.setText(tbProduto.getValueAt(tbProduto.getSelectedRow(), 1).toString());
+					textField_2.setText(tbProduto.getValueAt(tbProduto.getSelectedRow(), 2).toString());
+					textField_1.setText(tbProduto.getValueAt(tbProduto.getSelectedRow(), 3).toString());
+					textField_3.setText(tbProduto.getValueAt(tbProduto.getSelectedRow(), 4).toString());
+					textField_4.setText(tbProduto.getValueAt(tbProduto.getSelectedRow(), 5).toString());
+				}else {
+					JOptionPane.showMessageDialog(null,"escolha uma linha na tabela");
+					}
+			}
+		});
+		GridBagConstraints gbc_btnSelecionar = new GridBagConstraints();
+		gbc_btnSelecionar.insets = new Insets(0, 0, 0, 5);
+		gbc_btnSelecionar.gridx = 4;
+		gbc_btnSelecionar.gridy = 12;
+		contentPane.add(btnSelecionar, gbc_btnSelecionar);
 	}
 
 }
