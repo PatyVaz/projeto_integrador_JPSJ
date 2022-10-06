@@ -22,11 +22,11 @@ import java.awt.Color;
 public class TelaVenda extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtNomeProd;
-	private JTextField textField_1;
-	private JTextField txtPrecoProd;
-	private JTextField txtQuantidadeProd;
-	private JTextField textField_4;
+	public JTextField txtNomeProd;
+	public JTextField textField_1;
+	public JTextField txtPrecoProd;
+	public JTextField txtQuantidadeProd;
+	public JTextField textField_4;
 	private JTable tbProdutosCarrinho;
 	private DefaultTableModel model;
 
