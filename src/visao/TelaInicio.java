@@ -141,8 +141,8 @@ public class TelaInicio extends JFrame {
 		btnNewButton_3.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// CadastroProdutos cadastroProdutos = new CadastroProdutos();
-				// cadastroprodutos.setVisible(true);
+				TelaCadastroProduto cadastroProdutos = new TelaCadastroProduto();
+				cadastroProdutos.setVisible(true);
 				setVisible(false);
 			}
 		});
