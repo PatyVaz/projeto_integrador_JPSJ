@@ -82,6 +82,7 @@ public class TelaFornecedores extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(563, 0, 807, 599);
 		contentPane.add(scrollPane);
+		
 		FornecedorBD fornecedorbd = new FornecedorBD();
 		listaFornecedor = fornecedorbd.listarTodosFornecedor();
 		tbfornecedor = new JTable();
