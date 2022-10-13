@@ -73,7 +73,28 @@ public class TelaVenda extends JFrame {
 		txtNomeProd.setBounds(462, 146, 417, 20);
 		contentPane.add(txtNomeProd);
 		txtNomeProd.setColumns(10);
-		
+		JButton btnNewButton_2 = new JButton("Adicionar");
+		btnNewButton_2.setEnabled(false);
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (!txtQuantidadeProd.getText().isEmpty()) {
+					model = (DefaultTableModel) tbProdutosCarrinho.getModel();
+					
+					Integer qtdProdutos = Integer.valueOf(txtQuantidadeProd.getText());
+					textField_1.setText("");
+					txtNomeProd.setText("");
+					txtPrecoProd.setText("");
+					 
+					for (int i = 0; i < qtdProdutos; i++) {
+
+						model.addRow(new Object[] { Cp.getId(), Cp.getModelo(), Cp.getPreco() });
+					}
+					btnNewButton_2.setEnabled(true);
+				}
+
+			}
+		});
 		JButton btnNewButton_5 = new JButton("OK(f5)");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -89,6 +110,7 @@ public class TelaVenda extends JFrame {
 					txtNomeProd.setText(modelo);
 					txtPrecoProd.setText(String.valueOf(preco));
 					
+				btnNewButton_2.setEnabled(true);
 				
 			}
 		});
@@ -166,26 +188,8 @@ public class TelaVenda extends JFrame {
 		model.addColumn("Nome");
 		model.addColumn("Preco");
 
-		JButton btnNewButton_2 = new JButton("Adicionar");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if (!txtQuantidadeProd.getText().isEmpty()) {
-					model = (DefaultTableModel) tbProdutosCarrinho.getModel();
-					
-					Integer qtdProdutos = Integer.valueOf(txtQuantidadeProd.getText());
-					textField_1.setText("");
-					txtNomeProd.setText("");
-					txtPrecoProd.setText("");
-					 
-					for (int i = 0; i < qtdProdutos; i++) {
-
-						model.addRow(new Object[] { Cp.getId(), Cp.getModelo(), Cp.getPreco() });
-					}
-				}
-
-			}
-		});
+	
+		
 		btnNewButton_2.setBounds(774, 219, 105, 23);
 		contentPane.add(btnNewButton_2);
 
