@@ -44,6 +44,7 @@ public class TelaCadastroProduto extends JFrame {
 	static Connection conexao;
 	private JTable tbProduto;
 	private JTextField textField_4;
+	private JTextField textField_5;
 
 	/**
 	 * Launch the application.
@@ -85,7 +86,7 @@ public class TelaCadastroProduto extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Id", "Modelo", "Cor", "Tamanho", "Marca", "Preco"
+				"Id", "Modelo", "Cor", "Tamanho", "Marca", "Preco", "Quantidade"
 			}
 		));
 		scrollPane.setViewportView(tbProduto);
@@ -94,13 +95,13 @@ public class TelaCadastroProduto extends JFrame {
 		listaProdutos = produtoBD.listarTodosProdutos();
 		tbProduto = new JTable();
 		tbProduto.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Id", "Modelo", "Cor", "Tamanho", "Marca", "Preco"}));
+				new String[] { "Id", "Modelo", "Cor", "Tamanho", "Marca", "Preco", "Quantidade"}));
 		scrollPane.setViewportView(tbProduto);
 
 		modelo = (DefaultTableModel) tbProduto.getModel();
 		for (int i = 0; i < listaProdutos.size(); i++) {
 			CadastroProdutos p = listaProdutos.get(i);
-		modelo.addRow(new Object[] { p.getId(), p.getModelo(), p.getCor(), p.getTamanho(), p.getMarca(), p.getPreco() });
+		modelo.addRow(new Object[] { p.getId(), p.getModelo(), p.getCor(), p.getTamanho(), p.getMarca(), p.getPreco(), p.getQuantidade() });
 
 		}
 		tbProduto.setModel(modelo);
@@ -196,6 +197,23 @@ public class TelaCadastroProduto extends JFrame {
 		contentPane.add(textField_4, gbc_textField_4);
 		textField_4.setColumns(10);
 		
+		JLabel lblNewLabel_7 = new JLabel("Quantidade:");
+		GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
+		gbc_lblNewLabel_7.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_7.gridx = 2;
+		gbc_lblNewLabel_7.gridy = 4;
+		contentPane.add(lblNewLabel_7, gbc_lblNewLabel_7);
+		
+		textField_5 = new JTextField();
+		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
+		gbc_textField_5.gridwidth = 3;
+		gbc_textField_5.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_5.gridx = 3;
+		gbc_textField_5.gridy = 4;
+		contentPane.add(textField_5, gbc_textField_5);
+		textField_5.setColumns(10);
+		
 		JLabel lblNewLabel_6 = new JLabel("Produtos cadastrados:");
 		GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
 		gbc_lblNewLabel_6.anchor = GridBagConstraints.WEST;
@@ -240,7 +258,7 @@ public class TelaCadastroProduto extends JFrame {
 				String tamanho = textField_1.getText();
 				String marca = textField_3.getText();
 				String preco = textField_4.getText();
-				
+				String quantidade1= textField_5.getText();
 				
 				CadastroProdutos cadastroProdutos = new CadastroProdutos();
 				cadastroProdutos.setModelo(modelo1);
@@ -248,7 +266,7 @@ public class TelaCadastroProduto extends JFrame {
 				cadastroProdutos.setTamanho(Integer.valueOf(tamanho));
 				cadastroProdutos.setMarca(marca);
 				cadastroProdutos.setPreco(Double.valueOf(preco));
-				
+				cadastroProdutos.setQuantidade(Integer.valueOf(quantidade1));
 				ProdutoBD bdProduto = new ProdutoBD();
 				bdProduto.inserirProduto(cadastroProdutos);
 				
@@ -267,13 +285,13 @@ public class TelaCadastroProduto extends JFrame {
 				listaProdutos = produtoBD.listarTodosProdutos();
 				tbProduto = new JTable();
 				tbProduto.setModel(new DefaultTableModel(new Object[][] {},
-						new String[] { "Id", "Modelo", "Cor", "Tamanho", "Marca", "Preco"}));
+						new String[] { "Id", "Modelo", "Cor", "Tamanho", "Marca", "Preco", "Quantidade"}));
 				scrollPane.setViewportView(tbProduto);
 
 				modelo = (DefaultTableModel) tbProduto.getModel();
 				for (int i = 0; i < listaProdutos.size(); i++) {
 					CadastroProdutos p = listaProdutos.get(i);
-				modelo.addRow(new Object[] { p.getId(), p.getModelo(), p.getCor(), p.getTamanho(), p.getMarca(), p.getPreco() });
+				modelo.addRow(new Object[] { p.getId(), p.getModelo(), p.getCor(), p.getTamanho(), p.getMarca(), p.getPreco(), p.getQuantidade() });
 
 				}
 				tbProduto.setModel(modelo);
@@ -303,7 +321,7 @@ public class TelaCadastroProduto extends JFrame {
 				textField_2.setText("");
 				textField_3.setText("");
 				textField_4.setText("");
-				
+				textField_5.setText("");
 				 ((DefaultTableModel) tbProduto.getModel()).removeRow(tbProduto.getSelectedRow());
 				 btnExcluir.setEnabled(false);
 				 btnAlterar.setEnabled(false);
@@ -327,13 +345,14 @@ CadastroProdutos cp = listaProdutos.get(posicaoPessoa);
 				String tamanho = textField_1.getText();
 				String marca = textField_3.getText();
 				String preco = textField_4.getText();
-				
+				String quantidade1 = textField_5.getText();
 	
 				cp.setModelo(modelo1);
 				cp.setCor(cor);
 				cp.setTamanho(Integer.valueOf(tamanho));
 				cp.setMarca(marca);
 				cp.setPreco(Double.valueOf(preco));
+				cp.setQuantidade(Integer.valueOf(quantidade1));
 				
 			
 				
@@ -356,13 +375,13 @@ CadastroProdutos cp = listaProdutos.get(posicaoPessoa);
 				listaProdutos = produtoBD.listarTodosProdutos();
 				tbProduto = new JTable();
 				tbProduto.setModel(new DefaultTableModel(new Object[][] {},
-						new String[] { "Id", "Modelo", "Cor", "Tamanho", "Marca", "Preco"}));
+						new String[] { "Id", "Modelo", "Cor", "Tamanho", "Marca", "Preco", "Quantidade"}));
 				scrollPane.setViewportView(tbProduto);
 
 				modelo = (DefaultTableModel) tbProduto.getModel();
 				for (int i = 0; i < listaProdutos.size(); i++) {
 					CadastroProdutos p = listaProdutos.get(i);
-				modelo.addRow(new Object[] { p.getId(), p.getModelo(), p.getCor(), p.getTamanho(), p.getMarca(), p.getPreco() });
+				modelo.addRow(new Object[] { p.getId(), p.getModelo(), p.getCor(), p.getTamanho(), p.getMarca(), p.getPreco(), p.getQuantidade() });
 
 				}
 				tbProduto.setModel(modelo);
@@ -372,7 +391,7 @@ CadastroProdutos cp = listaProdutos.get(posicaoPessoa);
 								textField_2.setText("");
 								textField_3.setText("");
 								textField_4.setText("");
-								
+								textField_5.setText("");
 								 btnExcluir.setEnabled(false);
 								 btnAlterar.setEnabled(false);
 								 btnAdicionar.setEnabled(true);
@@ -399,6 +418,7 @@ CadastroProdutos cp = listaProdutos.get(posicaoPessoa);
 					textField_1.setText(tbProduto.getValueAt(tbProduto.getSelectedRow(), 3).toString());
 					textField_3.setText(tbProduto.getValueAt(tbProduto.getSelectedRow(), 4).toString());
 					textField_4.setText(tbProduto.getValueAt(tbProduto.getSelectedRow(), 5).toString());
+					textField_5.setText(tbProduto.getValueAt(tbProduto.getSelectedRow(), 6).toString());
 				}else {
 					JOptionPane.showMessageDialog(null,"escolha uma linha na tabela");
 					}

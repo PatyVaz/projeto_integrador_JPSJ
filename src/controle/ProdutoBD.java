@@ -44,7 +44,7 @@ public class ProdutoBD {
 				cadastroprodutos.setMarca(rs.getString("marca"));
 				cadastroprodutos.setModelo(rs.getString("modelo"));
 				cadastroprodutos.setPreco(rs.getDouble("preco"));
-
+				cadastroprodutos.setQuantidade(rs.getInt("quantidade"));
 				listaProdutos.add(cadastroprodutos);
 			}
 		} catch (SQLException e) {
@@ -58,13 +58,14 @@ public class ProdutoBD {
 		try {
 
 			PreparedStatement ps = conexao.prepareStatement(
-					"insert into cadastroprodutos(cor, tamanho, marca, modelo, preco) values(?,?,?,?,?)");
+					"insert into cadastroprodutos(cor, tamanho, marca, modelo, preco, quantidade) values(?,?,?,?,?,?)");
 
 			ps.setString(1, cadastroProdutos.getCor());
 			ps.setInt(2, cadastroProdutos.getTamanho());
 			ps.setString(3, cadastroProdutos.getMarca());
 			ps.setString(4, cadastroProdutos.getModelo());
 			ps.setDouble(5, cadastroProdutos.getPreco());
+			ps.setInt(6, cadastroProdutos.getQuantidade());
 
 			ps.executeUpdate();
 
@@ -105,6 +106,9 @@ public class ProdutoBD {
 			ps.setInt(2, cadastroProdutos.getId());
 			ps.executeUpdate();
 
+			ps = conexao.prepareStatement("update cadastroprodutos set quantidade=? where id_produto = ?");
+			ps.setInt(1, cadastroProdutos.getQuantidade());
+			ps.setInt(2, cadastroProdutos.getId());
 			ps.executeUpdate();
 
 		} catch (SQLException e1) {
@@ -130,7 +134,7 @@ public class ProdutoBD {
 				cadProd.setMarca(rs.getString("marca"));
 				cadProd.setModelo(rs.getString("modelo"));
 				cadProd.setPreco(rs.getDouble("preco"));
-
+				cadProd.setQuantidade(rs.getInt("quantidade"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
