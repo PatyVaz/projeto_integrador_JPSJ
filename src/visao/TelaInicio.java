@@ -128,8 +128,8 @@ public class TelaInicio extends JFrame {
 		btnNewButton_2.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Vendas vendas = new Vendas();
-				// vendas.setVisible(true);
+				TelaVenda vendas = new TelaVenda();
+				 vendas.setVisible(true);
 				setVisible(false);
 			}
 		});
