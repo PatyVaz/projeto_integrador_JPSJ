@@ -10,41 +10,33 @@ import modelo.CadastroProdutos;
 
 public class ProdutoBD {
 	private Connection conexao;
+
 	public ProdutoBD() {
 		conexao = ConexaoBD.ConexaoBanco();
 	}
 
 	public int removeProduto(CadastroProdutos cadastroProdutos) {
-		
-		
-		
-		
+
 		try {
 
-			PreparedStatement ps = conexao.prepareStatement("delete from cadastroprodutos where id_cadastro=?");
+			PreparedStatement ps = conexao.prepareStatement("delete from cadastroprodutos where id_produto=?");
 			ps.setInt(1, cadastroProdutos.getId());
 			return ps.executeUpdate();
 
 		} catch (SQLException e1) {
-			System.out.println("Erro ao conectar ï¿½ base de dados.");
+			System.out.println(e1);
 		}
 		return 0;
 	}
-	
-	
-	
-	
-	
-	
 
 	public ArrayList<CadastroProdutos> listarTodosProdutos() {
 		PreparedStatement ps;
 		ResultSet rs;
 		ArrayList<CadastroProdutos> listaProdutos = new ArrayList<CadastroProdutos>();
 		try {
-			ps = conexao.prepareStatement ("select * from cadastroprodutos order by modelo");
-			rs= ps.executeQuery();
-			while(rs.next( ) ) {
+			ps = conexao.prepareStatement("select * from cadastroprodutos order by modelo");
+			rs = ps.executeQuery();
+			while (rs.next()) {
 				CadastroProdutos cadastroprodutos = new CadastroProdutos();
 				cadastroprodutos.setId(rs.getInt("id_produto"));
 				cadastroprodutos.setCor(rs.getString("cor"));
@@ -52,33 +44,28 @@ public class ProdutoBD {
 				cadastroprodutos.setMarca(rs.getString("marca"));
 				cadastroprodutos.setModelo(rs.getString("modelo"));
 				cadastroprodutos.setPreco(rs.getDouble("preco"));
-				
+
 				listaProdutos.add(cadastroprodutos);
-		}
-		} catch (SQLException e) {	
+			}
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return listaProdutos;
 	}
-	
-	
-	
-	
-	
 
 	public boolean inserirProduto(CadastroProdutos cadastroProdutos) {
-	
+
 		try {
 
 			PreparedStatement ps = conexao.prepareStatement(
 					"insert into cadastroprodutos(cor, tamanho, marca, modelo, preco) values(?,?,?,?,?)");
-			
+
 			ps.setString(1, cadastroProdutos.getCor());
 			ps.setInt(2, cadastroProdutos.getTamanho());
 			ps.setString(3, cadastroProdutos.getMarca());
 			ps.setString(4, cadastroProdutos.getModelo());
 			ps.setDouble(5, cadastroProdutos.getPreco());
-			
+
 			ps.executeUpdate();
 
 		} catch (SQLException e1) {
@@ -87,11 +74,10 @@ public class ProdutoBD {
 
 		return false;
 	}
-	
+
 	public int alterarProduto(CadastroProdutos cadastroProdutos) {
-	
+
 		try {
-			
 
 			PreparedStatement ps = conexao.prepareStatement("update cadastroprodutos set cor=? where id_produto = ?");
 			ps.setString(1, cadastroProdutos.getCor());
@@ -113,13 +99,12 @@ public class ProdutoBD {
 			ps.setString(1, cadastroProdutos.getModelo());
 			ps.setInt(2, cadastroProdutos.getId());
 			ps.executeUpdate();
-			
+
 			ps = conexao.prepareStatement("update cadastroprodutos set preco=? where id_produto = ?");
 			ps.setDouble(1, cadastroProdutos.getPreco());
 			ps.setInt(2, cadastroProdutos.getId());
 			ps.executeUpdate();
-			
-		
+
 			ps.executeUpdate();
 
 		} catch (SQLException e1) {
@@ -129,4 +114,28 @@ public class ProdutoBD {
 		return 0;
 	}
 
+	public CadastroProdutos listarProdutosID(CadastroProdutos cadastroProdutos) {
+		PreparedStatement ps;
+		ResultSet rs;
+		CadastroProdutos cadProd = null;
+		try {
+			ps = conexao.prepareStatement("select * from cadastroprodutos where  id_produto = ? ");
+			ps.setInt(1, cadastroProdutos.getId());
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				cadProd = new CadastroProdutos();
+				cadProd.setId(rs.getInt("id_produto"));
+				cadProd.setCor(rs.getString("cor"));
+				cadProd.setTamanho(rs.getInt("tamanho"));
+				cadProd.setMarca(rs.getString("marca"));
+				cadProd.setModelo(rs.getString("modelo"));
+				cadProd.setPreco(rs.getDouble("preco"));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return cadProd;
+	}
 }

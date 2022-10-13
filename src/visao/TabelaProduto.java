@@ -35,24 +35,12 @@ public class TabelaProduto extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TabelaProduto frame = new TabelaProduto();
-					frame.setVisible(true);
-					frame.setExtendedState( frame.getExtendedState()|JFrame.MAXIMIZED_BOTH );
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public TabelaProduto(){
+	public TabelaProduto(TelaVenda TV ){
 		 UsuarioBD usuarioBd = new UsuarioBD();
 		
 			System.out.println(conexao);
@@ -103,7 +91,6 @@ public class TabelaProduto extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 int posicaoPessoa = tbProduto.getSelectedRow();
-	TelaVenda TV = new TelaVenda();
 				
 				if(posicaoPessoa > -1) {
 					

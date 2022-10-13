@@ -44,5 +44,6 @@ public class CadastroProdutos {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
+
 	
 }
