@@ -275,7 +275,7 @@ public class TelaCadastroProduto extends JFrame {
 				textField_3.setText("");
 				textField_1.setText("");
 				textField_4.setText("");
-				
+				textField_5.setText("");
 				while(tbProduto.getModel().getRowCount()>0){
 					 ((DefaultTableModel) tbProduto.getModel()).removeRow(0);
 				}
