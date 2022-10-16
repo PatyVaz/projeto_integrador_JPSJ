@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -33,7 +34,6 @@ public class TelaVenda extends JFrame {
 	public JTextField textField_1;
 	public JTextField txtPrecoProd;
 	public JTextField txtQuantidadeProd;
-	public JTextField textField_4;
 	private JTable tbProdutosCarrinho;
 	private DefaultTableModel model;
 	private ArrayList<CadastroProdutos> listarProdutos;
@@ -60,10 +60,6 @@ public class TelaVenda extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblNewLabel);
 
-		JButton btnNewButton = new JButton("Limpar Campos");
-		btnNewButton.setBounds(425, 446, 125, 23);
-		contentPane.add(btnNewButton);
-
 		JLabel lblNewLabel_2 = new JLabel("modelo:");
 		lblNewLabel_2.setBounds(379, 149, 99, 14);
 		contentPane.add(lblNewLabel_2);
@@ -73,6 +69,16 @@ public class TelaVenda extends JFrame {
 		txtNomeProd.setBounds(462, 146, 417, 20);
 		contentPane.add(txtNomeProd);
 		txtNomeProd.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(698, 404, 138, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		txtQuantidadeProd = new JTextField();
+		txtQuantidadeProd.setBounds(698, 220, 54, 20);
+		contentPane.add(txtQuantidadeProd);
+		txtQuantidadeProd.setColumns(10);
+		
 		JButton btnNewButton_2 = new JButton("Adicionar");
 		btnNewButton_2.setEnabled(false);
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -92,7 +98,14 @@ public class TelaVenda extends JFrame {
 					}
 					btnNewButton_2.setEnabled(true);
 				}
-
+				
+				double somaTotal=0;
+			
+			    for(int i=0; i<model.getRowCount();i++)
+			        somaTotal += Double.parseDouble(model.getValueAt(i, 2).toString());
+			    lblNewLabel_1.setText(String.valueOf(somaTotal));
+			    
+			    txtQuantidadeProd.setText("");
 			}
 		});
 		JButton btnNewButton_5 = new JButton("OK(f5)");
@@ -156,10 +169,7 @@ public class TelaVenda extends JFrame {
 		lblNewLabel_5.setBounds(591, 223, 97, 14);
 		contentPane.add(lblNewLabel_5);
 
-		txtQuantidadeProd = new JTextField();
-		txtQuantidadeProd.setBounds(698, 220, 54, 20);
-		contentPane.add(txtQuantidadeProd);
-		txtQuantidadeProd.setColumns(10);
+		
 
 		JLabel lblNewLabel_6 = new JLabel(" Produtos da compra:");
 		lblNewLabel_6.setBounds(425, 248, 161, 14);
@@ -168,12 +178,6 @@ public class TelaVenda extends JFrame {
 		JLabel lblNewLabel_7 = new JLabel("Valor Total:");
 		lblNewLabel_7.setBounds(628, 404, 86, 14);
 		contentPane.add(lblNewLabel_7);
-
-		textField_4 = new JTextField();
-		textField_4.setEditable(false);
-		textField_4.setBounds(740, 401, 105, 20);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
 
 		tbProdutosCarrinho = new JTable();
 
@@ -194,9 +198,16 @@ public class TelaVenda extends JFrame {
 		contentPane.add(btnNewButton_2);
 
 		JButton btnNewButton_3 = new JButton("Remover Produto");
+		btnNewButton_3.setEnabled(false);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				((DefaultTableModel) tbProdutosCarrinho.getModel()).removeRow(tbProdutosCarrinho.getSelectedRow());
+				double somaTotal=0;
 				
+			    for(int i=0; i<model.getRowCount();i++)
+			        somaTotal += Double.parseDouble(model.getValueAt(i, 2).toString());
+			    lblNewLabel_1.setText(String.valueOf(somaTotal));
+			    btnNewButton_3.setEnabled(false);
 			}
 		});
 		btnNewButton_3.setBounds(471, 400, 147, 23);
@@ -217,5 +228,22 @@ public class TelaVenda extends JFrame {
 	
 		btnNewButton_5.setBounds(677, 77, 89, 23);
 		contentPane.add(btnNewButton_5);
+		
+		JButton btnNewButton_6 = new JButton("selecionar");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+int posicaoPessoa = tbProdutosCarrinho.getSelectedRow();
+			
+			 if(posicaoPessoa > -1) {
+				btnNewButton_3.setEnabled(true);
+			}else {
+				JOptionPane.showMessageDialog(null,"escolha uma linha na tabela");
+				}
+			}
+		});
+		btnNewButton_6.setBounds(348, 400, 105, 22);
+		contentPane.add(btnNewButton_6);
+		
+		
 	}
 }
