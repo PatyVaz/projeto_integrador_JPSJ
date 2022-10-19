@@ -17,9 +17,6 @@ public class UsuarioBD {
 		conexao = ConexaoBD.ConexaoBanco();
 	}
 	
-	
-	
-	
 	public Usuario efetuarLogin(Usuario usuario) {
 		try {
 			PreparedStatement ps = conexao
@@ -85,8 +82,6 @@ public class UsuarioBD {
 	}
 	public int inserirUsuario(Usuario u) {
 		
-		
-
 		try {
 			
 			  PreparedStatement ps = conexao.prepareStatement("insert into usuario (login,senha,nome) values(?,?,?)");
