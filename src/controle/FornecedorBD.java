@@ -30,12 +30,6 @@ public class FornecedorBD {
 		return 0;
 	}
 	
-	
-	
-	
-	
-	
-
 	public ArrayList<Fornecedor> listarTodosFornecedor() {
 		PreparedStatement ps;
 		ResultSet rs;
@@ -60,11 +54,6 @@ public class FornecedorBD {
 		return listaFornecedor;
 	}
 	
-	
-	
-	
-	
-
 	public boolean inserirFornecedor(Fornecedor fornecedor ) {
 	
 		try {
@@ -110,8 +99,6 @@ public class FornecedorBD {
 			ps.setString(1, fornecedor.getTelefone());
 			ps.setInt(2, fornecedor.getId());
 			ps.executeUpdate();
-			
-			
 
 		} catch (SQLException e1) {
 
