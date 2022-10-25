@@ -218,6 +218,9 @@ public class TelaFornecedores extends JFrame {
 				btnAlterarDados.setEnabled(false);
 				 ((DefaultTableModel) tbfornecedor.getModel()).removeRow(tbfornecedor.getSelectedRow());
 				 
+				 btnExcluirFornecedor.setEnabled(false);
+				 btnAlterarDados.setEnabled(false);
+				 btnNewButton.setEnabled(true);
 			
 			}
 			
@@ -281,7 +284,7 @@ public class TelaFornecedores extends JFrame {
 								textField_3.setText("");
 								btnExcluirFornecedor.setEnabled(false);
 								btnAlterarDados.setEnabled(false);
-						
+								btnNewButton.setEnabled(true);
 		      
 					
 					
@@ -315,6 +318,7 @@ public class TelaFornecedores extends JFrame {
 				if(posicaoPessoa > -1) {
 					btnAlterarDados.setEnabled(true);
 					btnExcluirFornecedor.setEnabled(true);
+					btnNewButton.setEnabled(false);
 					Fornecedor pessoaSelecionada = listaFornecedor.get(posicaoPessoa);
 					textField.setText(tbfornecedor.getValueAt(tbfornecedor.getSelectedRow(), 1).toString());
 					textField_1.setText(tbfornecedor.getValueAt(tbfornecedor.getSelectedRow(), 2).toString());
