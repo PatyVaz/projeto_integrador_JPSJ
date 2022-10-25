@@ -286,6 +286,12 @@ public class TelaClientes extends JFrame {
 		textField_7.setBounds(122, 575, 236, 34);
 		contentPane.add(textField_7);
 		textField_7.setColumns(10);
+		
+		JButton btnNewButton_2 = new JButton("Excluir");
+		btnNewButton_2.setEnabled(false);
+		btnNewButton_2.setBounds(14, 652, 109, 35);
+
+		JButton btnNewButton_4 = new JButton("Alterar");
 
 		JButton btnNewButton_3 = new JButton("Selecionar");
 		btnNewButton_3.setBounds(811, 652, 148, 35);
@@ -311,6 +317,9 @@ public class TelaClientes extends JFrame {
 				} else {
 					JOptionPane.showMessageDialog(null, "escolha uma linha na tabela");
 				}
+				btnNewButton_1.setEnabled(false);
+				btnNewButton_2.setEnabled(true);
+				btnNewButton_4.setEnabled(true);
 			}
 		});
 
@@ -325,11 +334,7 @@ public class TelaClientes extends JFrame {
 			}
 		});
 		contentPane.add(btnNewButton);
-		JButton btnNewButton_2 = new JButton("Excluir");
-		btnNewButton_2.setEnabled(false);
-		btnNewButton_2.setBounds(14, 652, 109, 35);
-
-		JButton btnNewButton_4 = new JButton("Alterar");
+		
 		btnNewButton_4.setEnabled(false);
 		btnNewButton_4.setBounds(259, 652, 109, 35);
 		btnNewButton_4.addActionListener(new ActionListener() {
@@ -393,7 +398,11 @@ public class TelaClientes extends JFrame {
 				textField_5.setText("");
 				textField_6.setText("");
 				textField_7.setText("");
-
+				
+				btnNewButton_1.setEnabled(true);
+				btnNewButton_2.setEnabled(false);
+				btnNewButton_4.setEnabled(false);
+				
 			}
 		});
 		btnNewButton_4.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -421,7 +430,9 @@ public class TelaClientes extends JFrame {
 				textField_6.setText("");
 				textField_7.setText("");
 				((DefaultTableModel) tbClientes.getModel()).removeRow(tbClientes.getSelectedRow());
-
+				btnNewButton_1.setEnabled(true);
+				btnNewButton_2.setEnabled(false);
+				btnNewButton_4.setEnabled(false);
 			}
 		});
 		contentPane.add(btnNewButton_2);
