@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import modelo.CadastroProdutos;
 import modelo.Usuario;
 
 public class UsuarioBD {
@@ -104,7 +105,27 @@ public class UsuarioBD {
 			}
 	return 0;
 }
-	
+	public Usuario listarUsuariosID(Usuario usuario) {
+		PreparedStatement ps;
+		ResultSet rs;
+		Usuario us = null;
+		try {
+			ps = conexao.prepareStatement("select * from usuario where  id_usuario = ? ");
+			ps.setInt(1, usuario.getId());
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				us = new Usuario();
+				us.setId(rs.getInt("id_usuario"));
+				us.setNome(rs.getString("nome"));
+				us.setLogin(rs.getString("login"));
+				us.setSenha(rs.getString("senha"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return us;
+	}
 	
 
 }

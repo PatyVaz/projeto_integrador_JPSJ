@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import modelo.CadastroProdutos;
 import modelo.Cliente;
 
 public class ClienteBD {
@@ -144,6 +145,32 @@ public class ClienteBD {
 			e1.printStackTrace();
 		}
 		return 0;
+	}
+	public Cliente listarClientesID(Cliente cliente) {
+		PreparedStatement ps;
+		ResultSet rs;
+		Cliente cl = null;
+		try {
+			ps = conexao.prepareStatement("select * from cadastro where  id_cadastro = ? ");
+			ps.setInt(1, cliente.getId());
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				cl = new Cliente();
+				cl.setId(rs.getInt("id_cadastro"));
+				cl.setNome(rs.getString("nome"));
+				cl.setCpf(rs.getInt("cpf"));
+				cl.setEmail(rs.getString("email"));
+				cl.setRua(rs.getString("rua"));
+				cl.setTelefone(rs.getInt("telefone"));
+				cl.setBairro(rs.getString("bairro"));
+				cl.setCep(rs.getString("cep"));
+				cl.setCidade(rs.getString("cidade"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return cl;
 	}
 
 }

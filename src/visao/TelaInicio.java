@@ -133,7 +133,7 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_2.setBounds(262, 122, 89, 23);
+		btnNewButton_2.setBounds(269, 73, 89, 23);
 		contentPane.add(btnNewButton_2);
 
 		JButton btnNewButton_3 = new JButton("Cadastro de Produtos");
@@ -146,7 +146,7 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_3.setBounds(86, 122, 163, 23);
+		btnNewButton_3.setBounds(133, 119, 163, 23);
 		contentPane.add(btnNewButton_3);
 
 		JButton btnNewButton_4 = new JButton("Fornecedor");
@@ -161,19 +161,6 @@ public class TelaInicio extends JFrame {
 		});
 		btnNewButton_4.setBounds(141, 73, 108, 23);
 		contentPane.add(btnNewButton_4);
-
-		JButton btnNewButton_5 = new JButton("Estoque");
-		btnNewButton_5.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnNewButton_5.setBackground(Color.LIGHT_GRAY);
-		btnNewButton_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Estoque estoque = new Estoque();
-				// estoque.setVisible(true);
-				setVisible(false);
-			}
-		});
-		btnNewButton_5.setBounds(262, 73, 113, 23);
-		contentPane.add(btnNewButton_5);
 
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(Color.GRAY);
@@ -193,14 +180,14 @@ public class TelaInicio extends JFrame {
 					btnNewButton_1.setVisible(true);
 					btnNewButton_2.setVisible(true);
 					btnNewButton_3.setVisible(true);
-					btnNewButton_5.setVisible(true);
+					
 				} else {
 					panel1.setVisible(true);
 					btnNewButton_4.setVisible(false);
 					btnNewButton_1.setVisible(false);
 					btnNewButton_2.setVisible(false);
 					btnNewButton_3.setVisible(false);
-					btnNewButton_5.setVisible(false);
+					
 				}
 			}
 		});
