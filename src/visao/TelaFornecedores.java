@@ -329,13 +329,5 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(btnNewButton_2);
 		
 		
-		
-		JLabel lblNewLabel_5 = new JLabel("New label");
-		lblNewLabel_5.setBounds(1247, 679, 214, 14);
-		contentPane.add(lblNewLabel_5);
-		
-		 DateTimeFormatter dtf5 = DateTimeFormatter.ofPattern("yyyy/MM/dd hh:mm");
-	        String h =(dtf5.format(LocalDateTime.now()));
-	        lblNewLabel_5.setText(h);
 	}
 }

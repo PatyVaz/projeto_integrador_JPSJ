@@ -96,9 +96,8 @@ int posicaoPessoa = tbCliente.getSelectedRow();
 				if(posicaoPessoa > -1) {
 					
 					
-					TV.textField_1.setText(tbCliente.getValueAt(tbCliente.getSelectedRow(), 0).toString());
-					TV.txtNomeProd.setText(tbCliente.getValueAt(tbCliente.getSelectedRow(), 1).toString());
-					TV.txtPrecoProd.setText(tbCliente.getValueAt(tbCliente.getSelectedRow(), 2).toString());
+					TV.textField_4.setText(tbCliente.getValueAt(tbCliente.getSelectedRow(), 0).toString());
+					TV.textField_3.setText(tbCliente.getValueAt(tbCliente.getSelectedRow(), 1).toString());
 					TV.setVisible(true);
 					setVisible(false);				
 					}else {

@@ -63,7 +63,7 @@ public class TabelaVendaUsuario extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"ID vendedor", "Login"
+				"ID vendedor", "Login", "nome"
 			}
 			
 		));
@@ -72,13 +72,13 @@ public class TabelaVendaUsuario extends JFrame {
 		listaUsuarios = usuarioBD.buscarUsuarios();
 		
 		tbUsuario.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "ID vendedor", "Login"}));
+				new String[] { "ID vendedor", "Login", "nome"}));
 		scrollPane.setViewportView(tbUsuario);
 
 		modelo = (DefaultTableModel) tbUsuario.getModel();
 		for (int i = 0; i < listaUsuarios.size(); i++) {
 			Usuario p = listaUsuarios.get(i);
-		modelo.addRow(new Object[] { p.getId(), p.getLogin() });
+		modelo.addRow(new Object[] { p.getId(), p.getLogin(), p.getNome() });
 
 		}
 		tbUsuario.setModel(modelo);
@@ -94,9 +94,9 @@ int posicaoPessoa = tbUsuario.getSelectedRow();
 				if(posicaoPessoa > -1) {
 					
 					
-					TV.textField_1.setText(tbUsuario.getValueAt(tbUsuario.getSelectedRow(), 0).toString());
-					TV.txtNomeProd.setText(tbUsuario.getValueAt(tbUsuario.getSelectedRow(), 1).toString());
-					TV.txtPrecoProd.setText(tbUsuario.getValueAt(tbUsuario.getSelectedRow(), 2).toString());
+					TV.textField.setText(tbUsuario.getValueAt(tbUsuario.getSelectedRow(), 0).toString());
+					TV.textField_2.setText(tbUsuario.getValueAt(tbUsuario.getSelectedRow(), 2).toString());
+					
 					TV.setVisible(true);
 					setVisible(false);				
 					}else {
