@@ -142,4 +142,41 @@ public class ProdutoBD {
 
 		return cadProd;
 	}
+	
+	public CadastroProdutos listarquantidadeID(CadastroProdutos cadastroProdutos) {
+		PreparedStatement ps;
+		ResultSet rs;
+		CadastroProdutos quantidadeID = null;
+		try {
+			ps = conexao.prepareStatement("select quantidade from cadastroprodutos where  id_produto = ? ");
+			ps.setInt(1, cadastroProdutos.getId());
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				quantidadeID = new CadastroProdutos();
+				
+				quantidadeID.setQuantidade(rs.getInt("quantidade"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return quantidadeID;
+	}
+	
+	public CadastroProdutos baixaNoEstoque(CadastroProdutos cadastroProdutos) {
+
+		try {
+
+
+			PreparedStatement ps = conexao.prepareStatement("update cadastroprodutos set quantidade=? where id_produto = ?");
+			ps.setInt(1, cadastroProdutos.getQuantidade());
+			ps.setInt(2, cadastroProdutos.getId());
+			ps.executeUpdate();
+
+		} catch (SQLException e1) {
+
+			e1.printStackTrace();
+		}
+		return null;
+	}
 }
