@@ -51,6 +51,7 @@ public class TelaVenda extends JFrame {
 	public JTextField txtQuantidadeProd;
 	private JTable tbProdutosCarrinho;
 	private DefaultTableModel model;
+	String teste;
 	private ArrayList<CadastroProdutos> listarProdutos;
 	static Connection conexao;
 	private ArrayList<Produto> produtos = new ArrayList<>();
@@ -106,6 +107,19 @@ public class TelaVenda extends JFrame {
 		btnNewButton_2.setEnabled(false);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
+				produtoBD = new ProdutoBD();
+				CadastroProdutos Cp1 = new CadastroProdutos();
+				String id= textField_1.getText();
+				
+				Cp1.setId(Integer.valueOf(id));
+				Cp1 = produtoBD.listarquantidadeID(Cp1);
+				
+				int quantidade1 = Cp1.getQuantidade();
+				String quantidadeVendido = txtQuantidadeProd.getText();
+				int quantidadeVendida = Integer.valueOf(quantidadeVendido);
+				int total =quantidade1 - quantidadeVendida;
+				if(quantidade1 > quantidadeVendida) {	
 				
 				if (!txtQuantidadeProd.getText().isEmpty()) {
 					model = (DefaultTableModel) tbProdutosCarrinho.getModel();
@@ -120,10 +134,20 @@ public class TelaVenda extends JFrame {
 						model.addRow(new Object[] { Cp.getId(), Cp.getModelo(), Cp.getPreco() });
 					}
 					btnNewButton_2.setEnabled(false);
+					
+					
+					
+					Cp1.setQuantidade(total);
+					Cp1.setId(Integer.valueOf(id));
+					Cp1 = produtoBD.baixaNoEstoque(Cp1);
+					
 				}
-				
+			}else
+				if(quantidadeVendida > quantidade1) {
+					JOptionPane.showMessageDialog(null, "estoque insuficiente");
+				}
 				double somaTotal=0;
-			
+				
 			    for(int i=0; i<model.getRowCount();i++)
 			        somaTotal += Double.parseDouble(model.getValueAt(i, 2).toString());
 			    lblNewLabel_1.setText(String.valueOf(somaTotal));
@@ -140,7 +164,7 @@ public class TelaVenda extends JFrame {
 				
 				Cp.setId(Integer.valueOf(id));
 				Cp = produtoBD.listarProdutosID(Cp);
-				
+				 
 					String modelo = Cp.getModelo();
 					Double preco = Cp.getPreco();
 					txtNomeProd.setText(modelo);
@@ -257,11 +281,39 @@ public class TelaVenda extends JFrame {
 
 		JButton btnNewButton_3 = new JButton("Remover Produto");
 		btnNewButton_3.setEnabled(false);
+		JButton btnNewButton_6 = new JButton("selecionar");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int posicaoPessoa = tbProdutosCarrinho.getSelectedRow();
+				
+			 if(posicaoPessoa > -1) {
+				btnNewButton_3.setEnabled(true);
+				 teste = tbProdutosCarrinho.getValueAt(tbProdutosCarrinho.getSelectedRow(), 0).toString();
+					
+			}else {
+				JOptionPane.showMessageDialog(null,"escolha uma linha na tabela");
+				}
+			}
+		});
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				 
+			
 				((DefaultTableModel) tbProdutosCarrinho.getModel()).removeRow(tbProdutosCarrinho.getSelectedRow());
-				double somaTotal=0;
+			
 				
+				CadastroProdutos Cp1 = new CadastroProdutos();
+				String id= (teste);
+				
+				Cp1.setId(Integer.valueOf(id));
+				Cp1 = produtoBD.listarquantidadeID(Cp1);
+				int total = Cp1.getQuantidade() + 1;
+				
+				 Cp1.setQuantidade(total);
+				 Cp1.setId(Integer.valueOf(id));
+				 Cp1 = produtoBD.baixaNoEstoque(Cp1);
+				
+				double somaTotal=0;
 			    for(int i=0; i<model.getRowCount();i++)
 			        somaTotal += Double.parseDouble(model.getValueAt(i, 2).toString());
 			    lblNewLabel_1.setText(String.valueOf(somaTotal));
@@ -287,18 +339,7 @@ public class TelaVenda extends JFrame {
 		btnNewButton_5.setBounds(677, 77, 89, 23);
 		contentPane.add(btnNewButton_5);
 		
-		JButton btnNewButton_6 = new JButton("selecionar");
-		btnNewButton_6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-int posicaoPessoa = tbProdutosCarrinho.getSelectedRow();
-			
-			 if(posicaoPessoa > -1) {
-				btnNewButton_3.setEnabled(true);
-			}else {
-				JOptionPane.showMessageDialog(null,"escolha uma linha na tabela");
-				}
-			}
-		});
+
 		btnNewButton_6.setBounds(348, 400, 105, 22);
 		contentPane.add(btnNewButton_6);
 		
