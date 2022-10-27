@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controle.UsuarioBD;
 import modelo.Usuario;
+import java.awt.Color;
 
 public class TabelaVendaUsuario extends JFrame {
 	
@@ -43,6 +44,7 @@ public class TabelaVendaUsuario extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(2, 0, 0, 0));
@@ -59,7 +61,7 @@ public class TabelaVendaUsuario extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"ID vendedor", "Login", "nome"
+				"ID vendedor", "Login", "Nome"
 			}
 			
 		));

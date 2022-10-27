@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 
 import controle.UsuarioBD;
 import modelo.Usuario;
+import java.awt.Font;
 
 public class Login extends JFrame {
 
@@ -46,18 +47,20 @@ public class Login extends JFrame {
 	 */
 	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 437, 329);
 		contentPane = new JPanel();
-		contentPane.setBackground(UIManager.getColor("scrollbar"));
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JLabel lblSenha = new JLabel("SENHA:");
+		lblSenha.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblSenha.setBounds(83, 118, 67, 14);
 		contentPane.add(lblSenha);
 
 		JLabel lblUsuario = new JLabel("USUARIO:");
+		lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblUsuario.setBounds(85, 73, 82, 14);
 		contentPane.add(lblUsuario);
 
@@ -67,7 +70,7 @@ public class Login extends JFrame {
 		contentPane.add(textUsuario);
 		textUsuario.setColumns(20);
 
-		JButton btnEntar = new JButton("ENTRAR");
+		JButton btnEntar = new JButton("Entrar");
 		btnEntar.setBackground(UIManager.getColor("Tree.selectionBackground"));
 		btnEntar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

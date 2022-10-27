@@ -128,7 +128,7 @@ public class TelaClientes extends JFrame {
 		listaClientes = clientebd.listarTodosClientes();
 		tbClientes = new JTable();
 		tbClientes.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "ID", "nome", "cpf", "email", "rua", "bairro", "telefone", "cep", "cidade" }));
+				new String[] { "ID", "Nome", "Cpf", "Email", "Rua", "Bairro", "Telefone", "Cep", "Cidade" }));
 		scrollPane.setViewportView(tbClientes);
 
 		modelo = (DefaultTableModel) tbClientes.getModel();
@@ -159,7 +159,7 @@ public class TelaClientes extends JFrame {
 					Integer.parseInt(cpf);
 
 				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(null, "Digite um numero valido no campo 'cpf'.");
+					JOptionPane.showMessageDialog(null, "Digite um numero valido no campo 'Cpf'.");
 					textField.setText(nome);
 					textField_1.setText("");
 					textField_2.setText(email);
@@ -180,7 +180,7 @@ public class TelaClientes extends JFrame {
 					Integer.parseInt(telefone);
 
 				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(null, "Digite um numero valido no campo 'telefone'.");
+					JOptionPane.showMessageDialog(null, "Digite um numero valido no campo 'Telefone'.");
 					textField.setText(nome);
 					textField_1.setText(cpf);
 					textField_2.setText(email);
