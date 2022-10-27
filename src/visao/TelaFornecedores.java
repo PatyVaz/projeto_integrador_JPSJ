@@ -68,7 +68,7 @@ public class TelaFornecedores extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Fornecedores:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 25));
 		lblNewLabel.setBounds(10, 37, 180, 59);
 		contentPane.add(lblNewLabel);
 		
@@ -83,7 +83,7 @@ public class TelaFornecedores extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"ID","NOME", "CNPJ", "TELEFONE", "E-MAIL"
+				"ID","Nome", "CNPJ", "Telefone", "E-mail"
 			}
 		));
 		scrollPane.setViewportView(tbfornecedor);
