@@ -60,6 +60,7 @@ public class TelaVenda extends JFrame {
 	
 	
 	public TelaVenda() {
+		setTitle("Venda");
 		
 	
 	TelaVenda TV = this;

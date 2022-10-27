@@ -64,6 +64,7 @@ public class TelaClientes extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaClientes() {
+		setTitle("Clientes");
 
 		setMinimumSize(new Dimension(10, 10));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

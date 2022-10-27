@@ -49,10 +49,10 @@ public class TelaInicio extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaInicio() {
+		setTitle("Tela Inicial");
 		setMinimumSize(new Dimension(450, 300));
 		setMaximumSize(new Dimension(460, 300));
 		setSize(new Dimension(450, 300));
-		setTitle("Bem Vindo!");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

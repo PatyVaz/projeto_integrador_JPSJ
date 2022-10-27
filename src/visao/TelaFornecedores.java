@@ -57,6 +57,7 @@ public class TelaFornecedores extends JFrame {
 	 * @throws SQLException 
 	 */
 	public TelaFornecedores() {
+		setTitle("Fornecedores");
 		
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
