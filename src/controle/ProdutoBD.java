@@ -81,36 +81,17 @@ public class ProdutoBD {
 
 		try {
 
-			PreparedStatement ps = conexao.prepareStatement("update cadastroprodutos set cor=? where id_produto = ?");
+			PreparedStatement ps = conexao.prepareStatement("update cadastroprodutos set cor=?,tamanho=?,marca=?, modelo=?, preco=?,quantidade=?   where id_produto = ?");
 			ps.setString(1, cadastroProdutos.getCor());
-			ps.setInt(2, cadastroProdutos.getId());
+			ps.setInt(2, cadastroProdutos.getTamanho());
+			ps.setString(3, cadastroProdutos.getMarca());
+			ps.setString(4, cadastroProdutos.getModelo());
+			ps.setDouble(5, cadastroProdutos.getPreco());
+			ps.setInt(6, cadastroProdutos.getQuantidade());
+			ps.setInt(7, cadastroProdutos.getId());
 			ps.executeUpdate();
 
-			ps.executeUpdate();
-			ps = conexao.prepareStatement("update cadastroprodutos set tamanho=? where id_produto = ?");
-			ps.setInt(1, cadastroProdutos.getTamanho());
-			ps.setInt(2, cadastroProdutos.getId());
-			ps.executeUpdate();
-
-			ps = conexao.prepareStatement("update cadastroprodutos set marca=? where id_produto = ?");
-			ps.setString(1, cadastroProdutos.getMarca());
-			ps.setInt(2, cadastroProdutos.getId());
-			ps.executeUpdate();
-
-			ps = conexao.prepareStatement("update cadastroprodutos set modelo=? where id_produto = ?");
-			ps.setString(1, cadastroProdutos.getModelo());
-			ps.setInt(2, cadastroProdutos.getId());
-			ps.executeUpdate();
-
-			ps = conexao.prepareStatement("update cadastroprodutos set preco=? where id_produto = ?");
-			ps.setDouble(1, cadastroProdutos.getPreco());
-			ps.setInt(2, cadastroProdutos.getId());
-			ps.executeUpdate();
-
-			ps = conexao.prepareStatement("update cadastroprodutos set quantidade=? where id_produto = ?");
-			ps.setInt(1, cadastroProdutos.getQuantidade());
-			ps.setInt(2, cadastroProdutos.getId());
-			ps.executeUpdate();
+			
 
 		} catch (SQLException e1) {
 
