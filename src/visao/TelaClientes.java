@@ -142,7 +142,7 @@ public class TelaClientes extends JFrame {
 		tbClientes.setModel(modelo);
 
 		JButton btnNewButton_1 = new JButton("Salvar");
-		btnNewButton_1.setBounds(133, 652, 116, 35);
+		btnNewButton_1.setBounds(24, 652, 116, 35);
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -290,7 +290,7 @@ public class TelaClientes extends JFrame {
 		
 		JButton btnNewButton_2 = new JButton("Excluir");
 		btnNewButton_2.setEnabled(false);
-		btnNewButton_2.setBounds(14, 652, 109, 35);
+		btnNewButton_2.setBounds(269, 652, 109, 35);
 
 		JButton btnNewButton_4 = new JButton("Alterar");
 
@@ -337,7 +337,7 @@ public class TelaClientes extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		btnNewButton_4.setEnabled(false);
-		btnNewButton_4.setBounds(259, 652, 109, 35);
+		btnNewButton_4.setBounds(150, 652, 109, 35);
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

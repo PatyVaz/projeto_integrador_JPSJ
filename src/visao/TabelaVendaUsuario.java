@@ -83,6 +83,7 @@ public class TabelaVendaUsuario extends JFrame {
 		tbUsuario.setModel(modelo);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.LIGHT_GRAY);
 		contentPane.add(panel_1);
 		
 		JButton btnNewButton = new JButton("Selecionar");

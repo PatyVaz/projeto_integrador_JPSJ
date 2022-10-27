@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controle.ClienteBD;
 import modelo.Cliente;
+import java.awt.Color;
 
 public class TabelaRelatorioCliente extends JFrame {
 	
@@ -44,6 +45,7 @@ public class TabelaRelatorioCliente extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(2, 0, 0, 0));
@@ -81,6 +83,7 @@ public class TabelaRelatorioCliente extends JFrame {
 		tbCliente.setModel(modelo);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.LIGHT_GRAY);
 		contentPane.add(panel_1);
 		
 		JButton btnNewButton = new JButton("Selecionar");

@@ -383,7 +383,7 @@ public class TelaVenda extends JFrame {
 		btnNewButton_7.setBounds(278, 114, 99, 23);
 		contentPane.add(btnNewButton_7);
 		
-		JLabel lblNewLabel_11 = new JLabel("Usuario:");
+		JLabel lblNewLabel_11 = new JLabel("Usuário:");
 		lblNewLabel_11.setBounds(30, 160, 57, 14);
 		contentPane.add(lblNewLabel_11);
 		

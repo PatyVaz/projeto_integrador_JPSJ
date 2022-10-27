@@ -98,7 +98,7 @@ public class CadastroUsuario extends JFrame {
 		textField_2.setBounds(567, 272, 274, 31);
 		contentPane.add(textField_2);
 		
-		JButton btnNewButton_1 = new JButton("ADICIONAR");
+		JButton btnNewButton_1 = new JButton("Adicionar");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String nome= textField.getText();

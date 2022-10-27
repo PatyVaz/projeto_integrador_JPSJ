@@ -89,7 +89,7 @@ public class Administrador extends JFrame {
 		getContentPane().add(panel_2);
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JButton btnNewButton = new JButton("Cadastrar Usu\u00E1rio");
+		JButton btnNewButton = new JButton("Cadastrar Usuários");
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -106,7 +106,7 @@ public class Administrador extends JFrame {
 		getContentPane().add(panel);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JButton btnNewButton_1 = new JButton("Tabela de usuarios");
+		JButton btnNewButton_1 = new JButton("Tabela de Usuários");
 		btnNewButton_1.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
