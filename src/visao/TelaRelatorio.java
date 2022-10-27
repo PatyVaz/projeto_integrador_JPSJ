@@ -1,37 +1,29 @@
 package visao;
 
-import java.awt.Container;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.GridBagLayout;
-import javax.swing.JComboBox;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JRadioButton;
-import javax.swing.JSpinner;
-import javax.swing.ButtonGroup;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JButton;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.awt.event.ActionEvent;
-import javax.swing.JScrollBar;
+
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import java.awt.Button;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import controle.ClienteBD;
-import controle.ProdutoBD;
 import controle.RelatorioBD;
-import modelo.CadastroProdutos;
-import modelo.Cliente;
 import modelo.Venda;
 
 public class TelaRelatorio extends JFrame {
