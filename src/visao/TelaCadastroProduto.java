@@ -386,7 +386,7 @@ public class TelaCadastroProduto extends JFrame {
 		gbc_btnAlterar.gridy = 12;
 		contentPane.add(btnAlterar, gbc_btnAlterar);
 		
-		JButton btnSelecionar = new JButton("selecionar");
+		JButton btnSelecionar = new JButton("Selecionar");
 		btnSelecionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 	int posicaoPessoa = tbProduto.getSelectedRow();

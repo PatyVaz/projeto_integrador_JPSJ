@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controle.ClienteBD;
 import modelo.Cliente;
+import java.awt.Color;
 
 public class TelaVendaCliente extends JFrame {
 	
@@ -36,6 +37,7 @@ public class TelaVendaCliente extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaVendaCliente(TelaVenda TV ){
+		setBackground(Color.LIGHT_GRAY);
 		
 		
 			System.out.println(conexao);
@@ -80,6 +82,7 @@ public class TelaVendaCliente extends JFrame {
 		tbCliente.setModel(modelo);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.LIGHT_GRAY);
 		contentPane.add(panel_1);
 		
 		JButton btnNewButton = new JButton("Selecionar");

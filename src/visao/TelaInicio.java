@@ -68,7 +68,7 @@ public class TelaInicio extends JFrame {
 		panel1.setLayout(new GridLayout(4, 0, 0, 0));
 
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.GRAY);
+		panel.setBackground(Color.LIGHT_GRAY);
 		panel1.add(panel);
 		panel1.setVisible(false);
 		JButton btnNewButton_6 = new JButton("Administrador");
@@ -83,7 +83,7 @@ public class TelaInicio extends JFrame {
 		panel.add(btnNewButton_6);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.GRAY);
+		panel_1.setBackground(Color.LIGHT_GRAY);
 		panel1.add(panel_1);
 		
 				JButton btnNewButton_8 = new JButton("Sair da conta");
@@ -98,7 +98,7 @@ public class TelaInicio extends JFrame {
 				});
 
 		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(Color.GRAY);
+		panel_2.setBackground(Color.LIGHT_GRAY);
 		panel1.add(panel_2);
 		
 				JButton btnNewButton_9 = new JButton("Fechar Sistema");
@@ -106,7 +106,7 @@ public class TelaInicio extends JFrame {
 				panel_2.add(btnNewButton_9);
 				
 				JPanel panel_3 = new JPanel();
-				panel_3.setBackground(new Color(128, 128, 128));
+				panel_3.setBackground(Color.LIGHT_GRAY);
 				FlowLayout flowLayout_1 = (FlowLayout) panel_3.getLayout();
 				panel1.add(panel_3);
 				
@@ -179,7 +179,7 @@ public class TelaInicio extends JFrame {
 		contentPane.add(btnNewButton_4);
 
 		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(Color.GRAY);
+		panel_4.setBackground(Color.LIGHT_GRAY);
 		FlowLayout flowLayout = (FlowLayout) panel_4.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		panel_4.setBounds(0, 0, 434, 32);

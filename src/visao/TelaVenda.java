@@ -78,7 +78,7 @@ public class TelaVenda extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblNewLabel);
 
-		JLabel lblNewLabel_2 = new JLabel("modelo:");
+		JLabel lblNewLabel_2 = new JLabel("Modelo:");
 		lblNewLabel_2.setBounds(379, 149, 99, 14);
 		contentPane.add(lblNewLabel_2);
 
@@ -276,7 +276,7 @@ public class TelaVenda extends JFrame {
 
 		JButton btnNewButton_3 = new JButton("Remover Produto");
 		btnNewButton_3.setEnabled(false);
-		JButton btnNewButton_6 = new JButton("selecionar");
+		JButton btnNewButton_6 = new JButton("Selecionar");
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int posicaoPessoa = tbProdutosCarrinho.getSelectedRow();
