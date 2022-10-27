@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import controle.ProdutoBD;
 import controle.UsuarioBD;
 import modelo.CadastroProdutos;
+import java.awt.Color;
 
 public class TabelaProduto extends JFrame {
 	
@@ -44,6 +45,7 @@ public class TabelaProduto extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(2, 0, 0, 0));
@@ -60,7 +62,7 @@ public class TabelaProduto extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"ID", "Produto", "Modelo", "Valor", "tamanho", "Marca"
+				"ID", "Produto", "Modelo", "Valor", "Tamanho", "Marca"
 			}
 			
 		));
@@ -69,7 +71,7 @@ public class TabelaProduto extends JFrame {
 		listaProdutos = produtoBD.listarTodosProdutos();
 		
 		tbProduto.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "ID",  "Modelo", "Valor", "tamanho", "Marca"}));
+				new String[] { "ID",  "Modelo", "Valor", "Tamanho", "Marca"}));
 		scrollPane.setViewportView(tbProduto);
 
 		modelo = (DefaultTableModel) tbProduto.getModel();
@@ -81,6 +83,7 @@ public class TabelaProduto extends JFrame {
 		tbProduto.setModel(modelo);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.LIGHT_GRAY);
 		contentPane.add(panel_1);
 		
 		JButton btnNewButton = new JButton("Selecionar");

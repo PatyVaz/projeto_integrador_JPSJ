@@ -41,7 +41,7 @@ public class Administrador extends JFrame {
 	 * Create the frame.
 	 */
 	public Administrador() {
-		setBackground(Color.GRAY);
+		setBackground(Color.LIGHT_GRAY);
 		setMaximumSize(new Dimension(450, 300));
 		setMinimumSize(new Dimension(450, 300));
 		setSize(new Dimension(450, 300));
