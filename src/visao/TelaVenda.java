@@ -174,6 +174,9 @@ public class TelaVenda extends JFrame {
 				
 			}
 		});
+		JLabel lblNewLabel_7 = new JLabel("Valor Total:");
+		lblNewLabel_7.setBounds(628, 404, 86, 14);
+		contentPane.add(lblNewLabel_7);
 		
 		JButton btnNewButton_1 = new JButton("Finalizar Venda");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -208,7 +211,7 @@ public class TelaVenda extends JFrame {
 						textField_2.setText("");
 						textField_3.setText("");
 						textField_4.setText("");
-				 
+						lblNewLabel_7.setText("");
 				
 				
 				 
@@ -257,9 +260,7 @@ public class TelaVenda extends JFrame {
 		lblNewLabel_6.setBounds(425, 248, 161, 14);
 		contentPane.add(lblNewLabel_6);
 
-		JLabel lblNewLabel_7 = new JLabel("Valor Total:");
-		lblNewLabel_7.setBounds(628, 404, 86, 14);
-		contentPane.add(lblNewLabel_7);
+		
 
 		tbProdutosCarrinho = new JTable();
 
