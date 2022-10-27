@@ -62,6 +62,7 @@ public class TelaRelatorio extends JFrame {
 ;	 */
 	Venda v = new Venda();
 	public TelaRelatorio() {
+		setTitle("Relatório");
 		
 		TelaRelatorio TR = this;
 		

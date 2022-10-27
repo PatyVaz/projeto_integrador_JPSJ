@@ -44,6 +44,7 @@ public class TabelaUsuario extends JFrame {
 	 * Create the frame.
 	 */
 	public TabelaUsuario() {
+		setTitle("Tabela de Usuários");
 		 UsuarioBD usuarioBd = new UsuarioBD();
 		
 		System.out.println(conexao);

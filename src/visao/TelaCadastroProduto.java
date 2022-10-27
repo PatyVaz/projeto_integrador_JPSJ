@@ -58,6 +58,7 @@ public class TelaCadastroProduto extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaCadastroProduto() {
+		setTitle("Cadastro de Produtos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 702, 471);
 		contentPane = new JPanel();

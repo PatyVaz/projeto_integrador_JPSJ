@@ -40,6 +40,7 @@ public class RelatoriodeVendas extends JFrame {
 	 * Create the frame.
 	 */
 	public RelatoriodeVendas() {
+		setTitle("Relatório de Vendas");
 		setBackground(Color.GRAY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

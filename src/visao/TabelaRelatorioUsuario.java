@@ -36,6 +36,7 @@ public class TabelaRelatorioUsuario extends JFrame {
 	 * Create the frame.
 	 */
 	public TabelaRelatorioUsuario(TelaRelatorio TR ){
+		setTitle("Tabela de Relatório de Usuários");
 		
 		
 			System.out.println(conexao);
