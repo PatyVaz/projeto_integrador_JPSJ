@@ -45,7 +45,7 @@ public class TelaCadastroProduto extends JFrame {
 	private JTable tbProduto;
 	private JTextField textField_4;
 	private JTextField textField_5;
-
+	String id;
 	/**
 	 * Launch the application.
 	 */
@@ -338,32 +338,23 @@ public class TelaCadastroProduto extends JFrame {
 		btnAlterar.setEnabled(false);
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-CadastroProdutos cp = listaProdutos.get(posicaoPessoa);
-				
 				String modelo1 = textField.getText();
 				String cor = textField_2.getText();
 				String tamanho = textField_1.getText();
 				String marca = textField_3.getText();
 				String preco = textField_4.getText();
-				String quantidade1 = textField_5.getText();
-	
-				cp.setModelo(modelo1);
-				cp.setCor(cor);
-				cp.setTamanho(Integer.valueOf(tamanho));
-				cp.setMarca(marca);
-				cp.setPreco(Double.valueOf(preco));
-				cp.setQuantidade(Integer.valueOf(quantidade1));
+				String quantidade1= textField_5.getText();
 				
-			
-				
-				
-
-
-				
-				
-				int result = produtoBD.alterarProduto(cp);
-			
-				listaProdutos.set(result, cp);
+				CadastroProdutos cadastroProdutos = new CadastroProdutos();
+				cadastroProdutos.setId(Integer.valueOf(id));
+				cadastroProdutos.setModelo(modelo1);
+				cadastroProdutos.setCor(cor);
+				cadastroProdutos.setTamanho(Integer.valueOf(tamanho));
+				cadastroProdutos.setMarca(marca);
+				cadastroProdutos.setPreco(Double.valueOf(preco));
+				cadastroProdutos.setQuantidade(Integer.valueOf(quantidade1));
+				ProdutoBD bdProduto = new ProdutoBD();
+				bdProduto.alterarProduto(cadastroProdutos);
 
 
 				while (tbProduto.getModel().getRowCount() > 0) {
@@ -413,6 +404,7 @@ CadastroProdutos cp = listaProdutos.get(posicaoPessoa);
 					btnExcluir.setEnabled(true);
 					btnAdicionar.setEnabled(false);
 					CadastroProdutos pessoaSelecionada = listaProdutos.get(posicaoPessoa);
+					id=(tbProduto.getValueAt(tbProduto.getSelectedRow(), 0).toString());
 					textField.setText(tbProduto.getValueAt(tbProduto.getSelectedRow(), 1).toString());
 					textField_2.setText(tbProduto.getValueAt(tbProduto.getSelectedRow(), 2).toString());
 					textField_1.setText(tbProduto.getValueAt(tbProduto.getSelectedRow(), 3).toString());
