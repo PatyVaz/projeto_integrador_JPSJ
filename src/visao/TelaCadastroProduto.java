@@ -243,7 +243,7 @@ public class TelaCadastroProduto extends JFrame {
 		gbc_btnNewButton_4.gridy = 12;
 		contentPane.add(btnNewButton_4, gbc_btnNewButton_4);
 		
-		JButton btnAdicionar = new JButton("Adicionar produto");
+		JButton btnAdicionar = new JButton("Adicionar Produto");
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String modelo1 = textField.getText();
@@ -297,7 +297,7 @@ public class TelaCadastroProduto extends JFrame {
 		gbc_btnAdicionar.gridy = 12;
 		contentPane.add(btnAdicionar, gbc_btnAdicionar);
 		JButton btnAlterar = new JButton("Alterar");
-		JButton btnExcluir = new JButton("Excluir produto");
+		JButton btnExcluir = new JButton("Excluir Produto");
 		btnExcluir.setEnabled(false);
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

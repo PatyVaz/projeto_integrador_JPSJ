@@ -298,7 +298,7 @@ public class TelaFornecedores extends JFrame {
 		btnNewButton_1.setBounds(0, 3, 61, 23);
 		contentPane.add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("selecionar");
+		JButton btnNewButton_2 = new JButton("Selecionar");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int posicaoPessoa = tbfornecedor.getSelectedRow();

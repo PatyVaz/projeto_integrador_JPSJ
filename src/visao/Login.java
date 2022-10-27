@@ -60,7 +60,7 @@ public class Login extends JFrame {
 		lblSenha.setBounds(83, 118, 67, 14);
 		contentPane.add(lblSenha);
 
-		JLabel lblUsuario = new JLabel("USUARIO:");
+		JLabel lblUsuario = new JLabel("USUÁRIO:");
 		lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblUsuario.setBounds(85, 73, 82, 14);
 		contentPane.add(lblUsuario);
