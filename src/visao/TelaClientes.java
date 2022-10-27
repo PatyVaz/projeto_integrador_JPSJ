@@ -41,7 +41,7 @@ public class TelaClientes extends JFrame {
 	private JTable tbClientes;
 	private static TelaClientes frame;
 	private DefaultTableModel modelo;
-
+	String id;
 	/**
 	 * Launch the application.
 	 */
@@ -305,7 +305,7 @@ public class TelaClientes extends JFrame {
 
 				if (posicaoPessoa > -1) {
 
-					
+					id=(tbClientes.getValueAt(tbClientes.getSelectedRow(), 0).toString());
 					textField.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 1).toString());
 					textField_1.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 2).toString());
 					textField_2.setText(tbClientes.getValueAt(tbClientes.getSelectedRow(), 3).toString());
@@ -340,7 +340,7 @@ public class TelaClientes extends JFrame {
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Cliente cl = listaClientes.get(posicaoPessoa);
+				
 
 				String nome = textField.getText();
 				String cpf = textField_1.getText();
@@ -350,23 +350,21 @@ public class TelaClientes extends JFrame {
 				String telefone = textField_4.getText();
 				String cep = textField_6.getText();
 				String cidade = textField_7.getText();
-				cl.setNome(nome);
-				cl.setCpf(Integer.valueOf(cpf));
-				cl.setEmail(email);
-				cl.setRua(rua);
-				cl.setBairro(bairro);
-				cl.setTelefone(Integer.valueOf(telefone));
-				cl.setCep(cep);
-				cl.setCidade(cidade);
 				
 				
-
-
+				Cliente cliente = new Cliente();
+				cliente.setNome(nome);
+				cliente.setCpf(Integer.valueOf(cpf));
+				cliente.setEmail(email);
+				cliente.setRua(rua);
+				cliente.setBairro(bairro);
+				cliente.setTelefone(Integer.valueOf(telefone));
+				cliente.setCep(cep);
+				cliente.setCidade(cidade);
+				cliente.setId(Integer.valueOf(id));
 				
-				
-				int result = clientebd.alterarClientes(cl);
-			
-				listaClientes.set(result, cl);
+				ClienteBD bdCliente = new ClienteBD();
+				bdCliente.alterarClientes(cliente);
 
 
 				while (tbClientes.getModel().getRowCount() > 0) {

@@ -41,6 +41,7 @@ public class TelaFornecedores extends JFrame {
 	private DefaultTableModel modelo;
 	private ArrayList<Fornecedor> listaFornecedor;
 	static Connection conexao;
+	String id;
 	/**
 	 * Launch the application.
 	 */
@@ -235,27 +236,21 @@ public class TelaFornecedores extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				Fornecedor fr = listaFornecedor.get(posicaoPessoa);
-				
 				String nome = textField.getText();
 				String cnpj = textField_1.getText();
 				String telefone = textField_2.getText();
 				String email = textField_3.getText();
 				
-				fr.setNome(nome);
-				fr.setCnpj(cnpj);
-				fr.setEmail(email);
-				fr.setTelefone(telefone);
-				
-				
-				
-
+				Fornecedor fornecedor = new Fornecedor();
+				fornecedor.setNome(nome);
+				fornecedor.setCnpj(cnpj);
+				fornecedor.setEmail(email);
+				fornecedor.setTelefone(telefone);
+				fornecedor.setId(Integer.valueOf(id));
 
 				
-				
-				int result = fornecedorbd.alterarFornecedor(fr);
-			
-				listaFornecedor.set(result, fr);
+				FornecedorBD bdFornecedor = new FornecedorBD();
+				bdFornecedor.alterarFornecedor(fornecedor);
 
 
 				while (tbfornecedor.getModel().getRowCount() > 0) {
@@ -320,6 +315,7 @@ public class TelaFornecedores extends JFrame {
 					btnExcluirFornecedor.setEnabled(true);
 					btnNewButton.setEnabled(false);
 					Fornecedor pessoaSelecionada = listaFornecedor.get(posicaoPessoa);
+					id=(tbfornecedor.getValueAt(tbfornecedor.getSelectedRow(), 0).toString());
 					textField.setText(tbfornecedor.getValueAt(tbfornecedor.getSelectedRow(), 1).toString());
 					textField_1.setText(tbfornecedor.getValueAt(tbfornecedor.getSelectedRow(), 2).toString());
 					textField_2.setText(tbfornecedor.getValueAt(tbfornecedor.getSelectedRow(), 3).toString());

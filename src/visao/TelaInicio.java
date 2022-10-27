@@ -65,7 +65,7 @@ public class TelaInicio extends JFrame {
 		JPanel panel1 = new JPanel();
 		panel1.setBounds(0, 30, 123, 231);
 		contentPane.add(panel1);
-		panel1.setLayout(new GridLayout(3, 0, 0, 0));
+		panel1.setLayout(new GridLayout(4, 0, 0, 0));
 
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.GRAY);
@@ -104,6 +104,22 @@ public class TelaInicio extends JFrame {
 				JButton btnNewButton_9 = new JButton("Fechar Sistema");
 				btnNewButton_9.setFont(new Font("Tahoma", Font.BOLD, 11));
 				panel_2.add(btnNewButton_9);
+				
+				JPanel panel_3 = new JPanel();
+				panel_3.setBackground(new Color(128, 128, 128));
+				FlowLayout flowLayout_1 = (FlowLayout) panel_3.getLayout();
+				panel1.add(panel_3);
+				
+				JButton btnNewButton_5 = new JButton("Histórico");
+				btnNewButton_5.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						TelaRelatorio tr = new TelaRelatorio();
+						tr.setVisible(true);
+						setVisible(false);
+					}
+				});
+				btnNewButton_5.setFont(new Font("Tahoma", Font.BOLD, 11));
+				panel_3.add(btnNewButton_5);
 				btnNewButton_9.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						setVisible(false);

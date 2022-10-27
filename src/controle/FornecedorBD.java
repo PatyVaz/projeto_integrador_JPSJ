@@ -79,26 +79,19 @@ public class FornecedorBD {
 		try {
 			
 
-			PreparedStatement ps = conexao.prepareStatement("update fornecedor set nome=? where id_fornecedor = ?");
+			PreparedStatement ps = conexao.prepareStatement("update fornecedor set nome=?,email=?,cnpj=?,telefone=? where id_fornecedor = ?");
 			ps.setString(1, fornecedor.getNome());
-			ps.setInt(2, fornecedor.getId());
+			ps.setString(2, fornecedor.getEmail());
+			ps.setString(3, fornecedor.getCnpj());
+			ps.setString(4, fornecedor.getTelefone());
+			ps.setInt(5, fornecedor.getId());
 			ps.executeUpdate();
 
-			ps.executeUpdate();
-			ps = conexao.prepareStatement("update fornecedor set email=? where id_fornecedor = ?");
-			ps.setString(1, fornecedor.getEmail());
-			ps.setInt(2, fornecedor.getId());
-			ps.executeUpdate();
+			
 
-			ps = conexao.prepareStatement("update fornecedor set cnpj=? where id_fornecedor = ?");
-			ps.setString(1, fornecedor.getCnpj());
-			ps.setInt(2, fornecedor.getId());
-			ps.executeUpdate();
+			
 
-			ps = conexao.prepareStatement("update fornecedor set telefone=? where id_fornecedor = ?");
-			ps.setString(1, fornecedor.getTelefone());
-			ps.setInt(2, fornecedor.getId());
-			ps.executeUpdate();
+			
 
 		} catch (SQLException e1) {
 

@@ -450,6 +450,17 @@ public class TelaVenda extends JFrame {
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
 		
+		JButton btnNewButton_10 = new JButton("<-");
+		btnNewButton_10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaInicio telainicio = new TelaInicio();
+				telainicio.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnNewButton_10.setBounds(10, 456, 54, 23);
+		contentPane.add(btnNewButton_10);
+		
 		
 	}
 }

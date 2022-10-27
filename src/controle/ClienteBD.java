@@ -99,46 +99,20 @@ public class ClienteBD {
 		try {
 			
 
-			PreparedStatement ps = conexao.prepareStatement("update cadastro set nome=? where id_cadastro = ?");
+			PreparedStatement ps = conexao.prepareStatement("update cadastro set nome=?,email=?,cpf=?,rua=?,bairro=?,telefone=?,cep=?,cidade=? where id_cadastro = ?");
 			ps.setString(1, cliente.getNome());
-			ps.setInt(2, cliente.getId());
+			ps.setString(2, cliente.getEmail());
+			ps.setInt(3, cliente.getCpf());
+			ps.setString(4, cliente.getRua());
+			ps.setString(5, cliente.getBairro());
+			ps.setInt(6, cliente.getTelefone());
+			ps.setString(7, cliente.getCep());
+			ps.setString(8, cliente.getCidade());
+			ps.setInt(9, cliente.getId());
 			ps.executeUpdate();
 
-			ps.executeUpdate();
-			ps = conexao.prepareStatement("update cadastro set email=? where id_cadastro = ?");
-			ps.setString(1, cliente.getEmail());
-			ps.setInt(2, cliente.getId());
-			ps.executeUpdate();
-
-			ps = conexao.prepareStatement("update cadastro set cpf=? where id_cadastro = ?");
-			ps.setInt(1, cliente.getCpf());
-			ps.setInt(2, cliente.getId());
-			ps.executeUpdate();
-
-			ps = conexao.prepareStatement("update cadastro set rua=? where id_cadastro = ?");
-			ps.setString(1, cliente.getRua());
-			ps.setInt(2, cliente.getId());
-			ps.executeUpdate();
 			
-			ps = conexao.prepareStatement("update cadastro set bairro=? where id_cadastro = ?");
-			ps.setString(1, cliente.getBairro());
-			ps.setInt(2, cliente.getId());
-			ps.executeUpdate();
-			
-			ps = conexao.prepareStatement("update cadastro set telefone=? where id_cadastro = ?");
-			ps.setInt(1, cliente.getTelefone());
-			ps.setInt(2, cliente.getId());
-			ps.executeUpdate();
-			
-			ps = conexao.prepareStatement("update cadastro set cep=? where id_cadastro = ?");
-			ps.setString(1, cliente.getCep());
-			ps.setInt(2, cliente.getId());
-			ps.executeUpdate();
-			
-			ps = conexao.prepareStatement("update cadastro set cidade=? where id_cadastro = ?");
-			ps.setString(1, cliente.getCidade());
-			ps.setInt(2, cliente.getId());
-			ps.executeUpdate();
+		
 
 		} catch (SQLException e1) {
 
