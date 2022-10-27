@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import modelo.CadastroProdutos;
 import modelo.Cliente;
 
 public class ClienteBD {

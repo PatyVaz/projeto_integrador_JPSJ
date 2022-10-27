@@ -1,9 +1,14 @@
 package visao;
 
-import java.awt.EventQueue;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -17,26 +22,15 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import com.mysql.cj.x.protobuf.MysqlxExpect.Open.Condition.Key;
-
 import controle.ClienteBD;
-import controle.FornecedorBD;
 import controle.ProdutoBD;
 import controle.UsuarioBD;
 import controle.VendaBD;
 import modelo.CadastroProdutos;
 import modelo.Cliente;
-import modelo.Fornecedor;
 import modelo.Produto;
 import modelo.Usuario;
 import modelo.Venda;
-
-import java.awt.Color;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.sql.Connection;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class TelaVenda extends JFrame {
 

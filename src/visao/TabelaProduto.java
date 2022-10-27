@@ -1,27 +1,23 @@
 package visao;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
-
-import modelo.CadastroProdutos;
-import modelo.Usuario;
-import java.awt.GridLayout;
-import javax.swing.JScrollPane;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.table.DefaultTableModel;
 
 import controle.ProdutoBD;
 import controle.UsuarioBD;
+import modelo.CadastroProdutos;
 
 public class TabelaProduto extends JFrame {
 	

@@ -1,35 +1,27 @@
 package visao;
 
-import java.awt.BorderLayout;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JInternalFrame;
-import java.awt.Font;
-import java.awt.FlowLayout;
-import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import controle.ClienteBD;
 import controle.FornecedorBD;
-import modelo.Cliente;
 import modelo.Fornecedor;
-
-import javax.swing.JTextField;
-import java.sql.*;
-import java.awt.Color;
 public class TelaFornecedores extends JFrame {
 	protected static final int posicaoPessoa = 0;
 	private JPanel contentPane;
