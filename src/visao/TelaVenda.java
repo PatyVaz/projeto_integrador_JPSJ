@@ -98,11 +98,27 @@ public class TelaVenda extends JFrame {
 		contentPane.add(txtQuantidadeProd);
 		txtQuantidadeProd.setColumns(10);
 		
+		tbProdutosCarrinho = new JTable();
+		tbProdutosCarrinho.setEnabled(false);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(379, 273, 500, 120);
+		contentPane.add(scrollPane);
+
+		scrollPane.setViewportView(tbProdutosCarrinho);
+
+		model = (DefaultTableModel) tbProdutosCarrinho.getModel();
+		model.addColumn("ID");
+		model.addColumn("Nome");
+		model.addColumn("Preco");
+		model.addRow(new Object[] {"0", "0", "0" });
+		model.addRow(new Object[] {"0", "0", "0" });
+		
 		JButton btnNewButton_2 = new JButton("Adicionar");
 		btnNewButton_2.setEnabled(false);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+				
 				produtoBD = new ProdutoBD();
 				CadastroProdutos Cp1 = new CadastroProdutos();
 				String id= textField_1.getText();
@@ -178,7 +194,8 @@ public class TelaVenda extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				  for(int i=0; i<model.getRowCount();i++) { 
+				  for(int i=0; i<tbProdutosCarrinho.getRowCount()-2;i++) { 
+					  System.out.println(i);
 					 String id_cadastro = textField_3.getText();
 						String id_usuario = textField.getText();
 						String id_produto = (tbProdutosCarrinho.getValueAt(tbProdutosCarrinho.getAutoResizeMode(), 0).toString());
@@ -209,7 +226,8 @@ public class TelaVenda extends JFrame {
 						lblNewLabel_7.setText("");
 				
 				
-				 
+						model.addRow(new Object[] {"0", "0", "0" });
+						model.addRow(new Object[] {"0", "0", "0" });
 			        
 			}
 		});
@@ -257,18 +275,8 @@ public class TelaVenda extends JFrame {
 
 		
 
-		tbProdutosCarrinho = new JTable();
-
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(379, 273, 500, 120);
-		contentPane.add(scrollPane);
-
-		scrollPane.setViewportView(tbProdutosCarrinho);
-
-		model = (DefaultTableModel) tbProdutosCarrinho.getModel();
-		model.addColumn("ID");
-		model.addColumn("Nome");
-		model.addColumn("Preco");
+		
+		
 
 	
 		
