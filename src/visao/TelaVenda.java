@@ -111,9 +111,7 @@ public class TelaVenda extends JFrame {
 		model.addColumn("ID");
 		model.addColumn("Nome");
 		model.addColumn("Preco");
-		model.addRow(new Object[] {"0", "0", "0" });
-		model.addRow(new Object[] {"0", "0", "0" });
-		
+	
 		JButton btnNewButton_2 = new JButton("Adicionar");
 		btnNewButton_2.setEnabled(false);
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -194,12 +192,12 @@ public class TelaVenda extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				  for(int i=0; i<tbProdutosCarrinho.getRowCount()-2;i++) { 
+				  for(int i=0; i<tbProdutosCarrinho.getRowCount();i++) { 
 					  System.out.println(i);
 					 String id_cadastro = textField_3.getText();
 						String id_usuario = textField.getText();
-						String id_produto = (tbProdutosCarrinho.getValueAt(tbProdutosCarrinho.getAutoResizeMode(), 0).toString());
-						String preco = (tbProdutosCarrinho.getValueAt(tbProdutosCarrinho.getAutoResizeMode(), 2).toString());
+						String id_produto = (tbProdutosCarrinho.getValueAt(i, 0).toString());
+						String preco = (tbProdutosCarrinho.getValueAt(i, 2).toString());
 						DateTimeFormatter dtf5 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 				        String h =(dtf5.format(LocalDateTime.now()));
 				  
@@ -226,9 +224,7 @@ public class TelaVenda extends JFrame {
 						lblNewLabel_7.setText("");
 				
 				
-						model.addRow(new Object[] {"0", "0", "0" });
-						model.addRow(new Object[] {"0", "0", "0" });
-			        
+						
 			}
 		});
 		btnNewButton_1.setBounds(278, 456, 125, 23);
