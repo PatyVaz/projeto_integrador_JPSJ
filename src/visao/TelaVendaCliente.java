@@ -37,7 +37,7 @@ public class TelaVendaCliente extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaVendaCliente(TelaVenda TV ){
-		setTitle("Tela de Venda");
+		setTitle("Vendas de Clientes");
 		setBackground(Color.LIGHT_GRAY);
 		
 		
