@@ -186,6 +186,7 @@ public class TelaInicio extends JFrame {
 		contentPane.add(panel_4);
 
 		JButton btnNewButton = new JButton("...");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		panel_4.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {

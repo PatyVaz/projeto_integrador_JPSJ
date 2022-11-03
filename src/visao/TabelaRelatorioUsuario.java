@@ -62,7 +62,7 @@ public class TabelaRelatorioUsuario extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"ID vendedor", "Login", "nome"
+				"ID Vendedor", "Login", "Nome"
 			}
 			
 		));

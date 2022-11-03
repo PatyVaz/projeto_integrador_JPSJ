@@ -324,8 +324,9 @@ public class TelaClientes extends JFrame {
 			}
 		});
 
-		JButton btnNewButton = new JButton("â†�");
-		btnNewButton.setBounds(0, 0, 61, 23);
+		JButton btnNewButton = new JButton("<-");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnNewButton.setBounds(0, 0, 68, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 

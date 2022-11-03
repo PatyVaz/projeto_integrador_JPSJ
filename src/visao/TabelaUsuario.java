@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import controle.UsuarioBD;
 import modelo.Usuario;
 import java.awt.Color;
+import java.awt.Font;
 
 public class TabelaUsuario extends JFrame {
 
@@ -60,7 +61,7 @@ public class TabelaUsuario extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 424, 205);
+		scrollPane.setBounds(12, 34, 412, 193);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -86,10 +87,11 @@ public class TabelaUsuario extends JFrame {
 				 ((DefaultTableModel) table.getModel()).removeRow(table.getSelectedRow());
 			}
 		});
-		btnNewButton.setBounds(179, 227, 89, 23);
+		btnNewButton.setBounds(179, 238, 89, 23);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("â†�");
+		JButton btnNewButton_1 = new JButton("<-");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Administrador administrador = new Administrador();
@@ -97,7 +99,7 @@ public class TabelaUsuario extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_1.setBounds(0, 238, 43, 23);
+		btnNewButton_1.setBounds(0, 0, 47, 23);
 		contentPane.add(btnNewButton_1);
 		
 			
