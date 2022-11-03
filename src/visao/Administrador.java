@@ -60,7 +60,8 @@ public class Administrador extends JFrame {
 		panel_1.add(panel_3);
 		panel_3.setLayout(null);
 		
-		JButton btnNewButton_2 = new JButton("â†�");
+		JButton btnNewButton_2 = new JButton("<-");
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton_2.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_2.setBounds(10, 0, 62, 29);
 		panel_3.add(btnNewButton_2);
