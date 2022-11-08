@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import modelo.Perfil;
+
 public class Administrador extends JFrame {
 
 	/**
@@ -22,25 +24,9 @@ public class Administrador extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Administrador frame = new Administrador();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
-	public Administrador() {
+	public Administrador(Perfil VA) {
 		setTitle("Administrador");
 		setBackground(Color.LIGHT_GRAY);
 		setMaximumSize(new Dimension(450, 300));
@@ -67,7 +53,8 @@ public class Administrador extends JFrame {
 		panel_3.add(btnNewButton_2);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaInicio telainicio = new TelaInicio();
+				
+				TelaInicio telainicio = new TelaInicio(VA);
 				telainicio.setVisible(true);
 				setVisible(false);
 			}
@@ -94,7 +81,7 @@ public class Administrador extends JFrame {
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CadastroUsuario cadastroUsuario= new CadastroUsuario();
+				CadastroUsuario cadastroUsuario= new CadastroUsuario(VA);
 				cadastroUsuario.setVisible(true);
 				setVisible(false);
 			}
@@ -111,7 +98,7 @@ public class Administrador extends JFrame {
 		btnNewButton_1.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TabelaUsuario tabelaUsuario= new TabelaUsuario();
+				TabelaUsuario tabelaUsuario= new TabelaUsuario(VA);
 				tabelaUsuario.setVisible(true);
 				setVisible(false);
 			}

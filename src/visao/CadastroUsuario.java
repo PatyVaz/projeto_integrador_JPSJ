@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controle.UsuarioBD;
+import modelo.Perfil;
 import modelo.Usuario;
 
 public class CadastroUsuario extends JFrame {
@@ -25,28 +26,11 @@ public class CadastroUsuario extends JFrame {
 	private JTextField textField_2;
 	static Connection conexao;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CadastroUsuario frame = new CadastroUsuario();
-					frame.setVisible(true);
-					frame.setExtendedState( frame.getExtendedState()|JFrame.MAXIMIZED_BOTH );
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 */
-	public CadastroUsuario() {
+	public CadastroUsuario(Perfil VA) {
 		setTitle("Cadastro de Usuários");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1329, 753);
@@ -61,7 +45,7 @@ public class CadastroUsuario extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Administrador administrador = new Administrador();
+				Administrador administrador = new Administrador(VA);
 				administrador.setVisible(true);;
 				setVisible(false);
 			}

@@ -22,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controle.FornecedorBD;
 import modelo.Fornecedor;
+import modelo.Perfil;
 public class TelaFornecedores extends JFrame {
 	protected static final int posicaoPessoa = 0;
 	private JPanel contentPane;
@@ -34,29 +35,12 @@ public class TelaFornecedores extends JFrame {
 	private ArrayList<Fornecedor> listaFornecedor;
 	static Connection conexao;
 	String id;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaFornecedores frame = new TelaFornecedores();
-					frame.setVisible(true);
-					frame.setExtendedState( frame.getExtendedState()|JFrame.MAXIMIZED_BOTH );
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the frame.
 	 * @throws SQLException 
 	 */
-	public TelaFornecedores() {
+	public TelaFornecedores(Perfil VA) {
 		setTitle("Fornecedores");
 		
 
@@ -290,7 +274,7 @@ public class TelaFornecedores extends JFrame {
 		JButton btnNewButton_1 = new JButton("â†�");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaInicio telainicio = new TelaInicio();
+				TelaInicio telainicio = new TelaInicio(VA);
 				telainicio.setVisible(true);
 				setVisible(false);
 			}

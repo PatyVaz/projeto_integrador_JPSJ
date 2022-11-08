@@ -22,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controle.ClienteBD;
 import modelo.Cliente;
+import modelo.Perfil;
 
 public class TelaClientes extends JFrame {
 
@@ -42,28 +43,12 @@ public class TelaClientes extends JFrame {
 	private static TelaClientes frame;
 	private DefaultTableModel modelo;
 	String id;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					frame = new TelaClientes();
-					frame.setVisible(true);
-					frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaClientes() {
+	public TelaClientes(Perfil VA) {
 		setTitle("Clientes");
 
 		setMinimumSize(new Dimension(10, 10));
@@ -330,7 +315,7 @@ public class TelaClientes extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				TelaInicio telainicio = new TelaInicio();
+				TelaInicio telainicio = new TelaInicio(VA);
 				telainicio.setVisible(true);
 				setVisible(false);
 			}
