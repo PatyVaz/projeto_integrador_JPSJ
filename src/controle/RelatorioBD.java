@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Venda;
+import modelo.VendaCompleto;
 
 public class RelatorioBD {
 	private Connection conexao;
@@ -16,24 +17,27 @@ public class RelatorioBD {
 		conexao = ConexaoBD.ConexaoBanco();
 	}
 	 
-		public ArrayList<Venda> listarTodasVendas() {
+		public ArrayList<VendaCompleto> listarTodasVendas() {
 			PreparedStatement ps;
 			ResultSet rs;
-			ArrayList<Venda> listaVenda = new ArrayList<Venda>();
+			ArrayList<VendaCompleto> listaVenda = new ArrayList<VendaCompleto>();
 			try {
-				ps = conexao.prepareStatement("select * from venda");
+				ps = conexao.prepareStatement(" select venda.id_venda,cadastro.nome,usuario.nome,cadastroprodutos.modelo,venda.preco,venda.data  from venda inner join cadastro on venda.id_doCliente = cadastro.id_cadastro inner join usuario on usuario.id_usuario = venda.id_doUsuario inner join cadastroprodutos on cadastroprodutos.id_produto = venda.id_doProduto;\r\n"
+						+ "\r\n"
+						+ "\r\n"
+						+ "");
 				rs = ps.executeQuery();
 				while (rs.next()) {
-					Venda venda = new Venda();
+					VendaCompleto VC = new VendaCompleto();
 
-					venda.setCadastro(rs.getInt("id_venda"));
-					venda.setCadastro(rs.getInt("id_doCliente"));
-					venda.setUsuario(rs.getInt("id_doUsuario"));
-					venda.setProduto(rs.getInt("id_doProduto"));
-					venda.setValor(rs.getDouble("preco"));
-					venda.setData(rs.getString("data"));
+					VC.setId(rs.getInt("id_venda"));
+					VC.setCadastro(rs.getString("cadastro.nome"));
+					VC.setUsuario(rs.getString("usuario.nome"));
+					VC.setProduto(rs.getString("cadastroprodutos.modelo"));
+					VC.setValor(rs.getDouble("preco"));
+					VC.setData(rs.getString("data"));
 					
-					listaVenda.add(venda);
+					listaVenda.add(VC);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -42,26 +46,29 @@ public class RelatorioBD {
 		}
 		
 		
-		public ArrayList<Venda> listarVendaID(Venda v) {
+		public ArrayList<VendaCompleto> listarVendaID(VendaCompleto vc) {
 			PreparedStatement ps;
 			ResultSet rs;
-			ArrayList<Venda> listarVenda = new ArrayList<Venda>();
+			ArrayList<VendaCompleto> listarVenda = new ArrayList<VendaCompleto>();
 			try {
-				ps = conexao.prepareStatement("select * from venda where  id_doUsuario = ? ");
+				ps = conexao.prepareStatement(" select venda.id_venda,cadastro.nome,usuario.nome,cadastroprodutos.modelo,venda.preco,venda.data  from venda inner join cadastro on venda.id_doCliente = cadastro.id_cadastro inner join usuario on usuario.id_usuario = venda.id_doUsuario inner join cadastroprodutos on cadastroprodutos.id_produto = venda.id_doProduto  where  venda.id_doUsuario = ? ;\r\n"
+						+ "\r\n"
+						+ "\r\n"
+						+ " ");
 				
-				ps.setInt(1, v.getUsuario());
+				ps.setInt(1, vc.getId_usuario());
 				rs = ps.executeQuery();
 				while (rs.next()) {
-					 v = new Venda();
+					vc = new VendaCompleto();
 
-					v.setCadastro(rs.getInt("id_venda"));
-					v.setCadastro(rs.getInt("id_doCliente"));
-					v.setUsuario(rs.getInt("id_doUsuario"));
-					v.setProduto(rs.getInt("id_doProduto"));
-					v.setValor(rs.getDouble("preco"));
-					v.setData(rs.getString("data"));
+					vc.setId(rs.getInt("id_venda"));
+					vc.setCadastro(rs.getString("cadastro.nome"));
+					vc.setUsuario(rs.getString("usuario.nome"));
+					vc.setProduto(rs.getString("cadastroprodutos.modelo"));
+					vc.setValor(rs.getDouble("preco"));
+					vc.setData(rs.getString("data"));
 					
-					listarVenda.add(v);
+					listarVenda.add(vc);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -69,26 +76,29 @@ public class RelatorioBD {
 			return listarVenda;
 		}
 		
-		public ArrayList<Venda> listarVendaCliente(Venda v) {
+		public ArrayList<VendaCompleto> listarVendaCliente(VendaCompleto vc) {
 			PreparedStatement ps;
 			ResultSet rs;
-			ArrayList<Venda> listarVendaCliente = new ArrayList<Venda>();
+			ArrayList<VendaCompleto> listarVendaCliente = new ArrayList<VendaCompleto>();
 			try {
-				ps = conexao.prepareStatement("select * from venda where  id_doCliente = ? ");
+				ps = conexao.prepareStatement(" select venda.id_venda,cadastro.nome,usuario.nome,cadastroprodutos.modelo,venda.preco,venda.data  from venda inner join cadastro on venda.id_doCliente = cadastro.id_cadastro inner join usuario on usuario.id_usuario = venda.id_doUsuario inner join cadastroprodutos on cadastroprodutos.id_produto = venda.id_doProduto  where  venda.id_doCliente = ? ;\r\n"
+						+ "\r\n"
+						+ "\r\n"
+						+ " ");
 				
-				ps.setInt(1, v.getCadastro());
+				ps.setInt(1, vc.getId_cliente());
 				rs = ps.executeQuery();
 				while (rs.next()) {
-					 v = new Venda();
+					vc = new VendaCompleto();
 
-					v.setCadastro(rs.getInt("id_venda"));
-					v.setCadastro(rs.getInt("id_doCliente"));
-					v.setUsuario(rs.getInt("id_doUsuario"));
-					v.setProduto(rs.getInt("id_doProduto"));
-					v.setValor(rs.getDouble("preco"));
-					v.setData(rs.getString("data"));
+					vc.setId(rs.getInt("id_venda"));
+					vc.setCadastro(rs.getString("cadastro.nome"));
+					vc.setUsuario(rs.getString("usuario.nome"));
+					vc.setProduto(rs.getString("cadastroprodutos.modelo"));
+					vc.setValor(rs.getDouble("preco"));
+					vc.setData(rs.getString("data"));
 					
-					listarVendaCliente.add(v);
+					listarVendaCliente.add(vc);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -96,26 +106,29 @@ public class RelatorioBD {
 			return listarVendaCliente;
 		}
 		
-		public ArrayList<Venda> listarVendaClienteVendedor(Venda v) {
+		public ArrayList<VendaCompleto> listarVendaClienteVendedor(VendaCompleto vc) {
 			PreparedStatement ps;
 			ResultSet rs;
-			ArrayList<Venda> listarVendaClienteVendedor = new ArrayList<Venda>();
+			ArrayList<VendaCompleto> listarVendaClienteVendedor = new ArrayList<VendaCompleto>();
 			try {
-				ps = conexao.prepareStatement("select * from venda where  id_doCliente = ? and id_doUsuario = ? ");
-				ps.setInt(1, v.getCadastro());
-				ps.setInt(2, v.getUsuario());
+				ps = conexao.prepareStatement(" select venda.id_venda,cadastro.nome,usuario.nome,cadastroprodutos.modelo,venda.preco,venda.data  from venda inner join cadastro on venda.id_doCliente = cadastro.id_cadastro inner join usuario on usuario.id_usuario = venda.id_doUsuario inner join cadastroprodutos on cadastroprodutos.id_produto = venda.id_doProduto  where  venda.id_doCliente = ? and venda.id_doUsuario = ? ;\r\n"
+						+ "\r\n"
+						+ "\r\n"
+						+ " ");
+				ps.setInt(1, vc.getId_cliente());
+				ps.setInt(2, vc.getId_usuario());
 				rs = ps.executeQuery();
 				while (rs.next()) {
-					 v = new Venda();
+					vc = new VendaCompleto();
 
-					v.setCadastro(rs.getInt("id_venda"));
-					v.setCadastro(rs.getInt("id_doCliente"));
-					v.setUsuario(rs.getInt("id_doUsuario"));
-					v.setProduto(rs.getInt("id_doProduto"));
-					v.setValor(rs.getDouble("preco"));
-					v.setData(rs.getString("data"));
+					vc.setId(rs.getInt("id_venda"));
+					vc.setCadastro(rs.getString("cadastro.nome"));
+					vc.setUsuario(rs.getString("usuario.nome"));
+					vc.setProduto(rs.getString("cadastroprodutos.modelo"));
+					vc.setValor(rs.getDouble("preco"));
+					vc.setData(rs.getString("data"));
 					
-					listarVendaClienteVendedor.add(v);
+					listarVendaClienteVendedor.add(vc);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -124,26 +137,29 @@ public class RelatorioBD {
 		}
 		
 		
-		public ArrayList<Venda> listarVendasData(Venda v) {
+		public ArrayList<VendaCompleto> listarVendasData(VendaCompleto vc) {
 			PreparedStatement ps;
 			ResultSet rs;
-			ArrayList<Venda> listarVendasData = new ArrayList<Venda>();
+			ArrayList<VendaCompleto> listarVendasData = new ArrayList<VendaCompleto>();
 			try {
-				ps = conexao.prepareStatement("select * from venda where  data = ? ");
-				ps.setString(1, v.getData());
+				ps = conexao.prepareStatement("select venda.id_venda,cadastro.nome,usuario.nome,cadastroprodutos.modelo,venda.preco,venda.data  from venda inner join cadastro on venda.id_doCliente = cadastro.id_cadastro inner join usuario on usuario.id_usuario = venda.id_doUsuario inner join cadastroprodutos on cadastroprodutos.id_produto = venda.id_doProduto  where  venda.data = ? ;\r\n"
+						+ "\r\n"
+						+ "\r\n"
+						+ " ");
+				ps.setString(1, vc.getData());
 				
 				rs = ps.executeQuery();
 				while (rs.next()) {
-					 v = new Venda();
+					vc = new VendaCompleto();
 
-					v.setCadastro(rs.getInt("id_venda"));
-					v.setCadastro(rs.getInt("id_doCliente"));
-					v.setUsuario(rs.getInt("id_doUsuario"));
-					v.setProduto(rs.getInt("id_doProduto"));
-					v.setValor(rs.getDouble("preco"));
-					v.setData(rs.getString("data"));
+					vc.setId(rs.getInt("id_venda"));
+					vc.setCadastro(rs.getString("cadastro.nome"));
+					vc.setUsuario(rs.getString("usuario.nome"));
+					vc.setProduto(rs.getString("cadastroprodutos.modelo"));
+					vc.setValor(rs.getDouble("preco"));
+					vc.setData(rs.getString("data"));
 					
-					listarVendasData.add(v);
+					listarVendasData.add(vc);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

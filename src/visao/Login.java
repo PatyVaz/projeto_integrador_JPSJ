@@ -17,10 +17,13 @@ import javax.swing.border.EmptyBorder;
 
 import controle.UsuarioBD;
 import modelo.Usuario;
+import modelo.Perfil;
+
 import java.awt.Font;
 
 public class Login extends JFrame {
 
+	
 	private JPanel contentPane;
 	private JTextField textUsuario;
 	private JPasswordField passwordField;
@@ -46,6 +49,9 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+		
+		
+		Perfil VA = new Perfil() ;
 		setBackground(new Color(128, 128, 128));
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,7 +102,11 @@ public class Login extends JFrame {
 				
 				if(usuarioLogado != null ) {
 					if(usuarioLogado.getLogin().equals(u.getLogin()) && usuarioLogado.getSenha().equals(u.getSenha())) {
-						TelaInicio telaInicio = new TelaInicio();
+						
+						
+						VA.setNome(usuario);
+						
+						TelaInicio telaInicio = new TelaInicio(VA);
 						telaInicio.setVisible(true);
 						setVisible(false);
 					}

@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controle.UsuarioBD;
+import modelo.Perfil;
 import modelo.Usuario;
 import java.awt.Color;
 import java.awt.Font;
@@ -25,27 +26,12 @@ public class TabelaUsuario extends JFrame {
 	private JTable table;
 	private ArrayList<Usuario> listaUsuarios;
 	static Connection conexao;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TabelaUsuario frame = new TabelaUsuario();
-				
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public TabelaUsuario() {
+	public TabelaUsuario(Perfil VA) {
 		setTitle("Usuários");
 		 UsuarioBD usuarioBd = new UsuarioBD();
 		
@@ -94,7 +80,7 @@ public class TabelaUsuario extends JFrame {
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Administrador administrador = new Administrador();
+				Administrador administrador = new Administrador(VA);
 				administrador.setVisible(true);
 				setVisible(false);
 			}

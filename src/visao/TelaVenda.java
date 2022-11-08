@@ -28,6 +28,7 @@ import controle.UsuarioBD;
 import controle.VendaBD;
 import modelo.CadastroProdutos;
 import modelo.Cliente;
+import modelo.Perfil;
 import modelo.Produto;
 import modelo.Usuario;
 import modelo.Venda;
@@ -46,7 +47,7 @@ public class TelaVenda extends JFrame {
 	private JTable tbProdutosCarrinho;
 	private DefaultTableModel model;
 	String teste;
-	private ArrayList<CadastroProdutos> listarProdutos;
+	private ArrayList<CadastroProdutos> listarProdutos = new ArrayList<CadastroProdutos>();
 	static Connection conexao;
 	private ArrayList<Produto> produtos = new ArrayList<>();
 
@@ -59,7 +60,7 @@ public class TelaVenda extends JFrame {
 	Cliente c = new Cliente();
 	
 	
-	public TelaVenda() {
+	public TelaVenda(Perfil VA) {
 		setTitle("Venda");
 		
 	
@@ -111,7 +112,7 @@ public class TelaVenda extends JFrame {
 		model.addColumn("ID");
 		model.addColumn("Nome");
 		model.addColumn("Preco");
-	
+
 		JButton btnNewButton_2 = new JButton("Adicionar");
 		btnNewButton_2.setEnabled(false);
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -128,7 +129,7 @@ public class TelaVenda extends JFrame {
 				String quantidadeVendido = txtQuantidadeProd.getText();
 				int quantidadeVendida = Integer.valueOf(quantidadeVendido);
 				int total =quantidade1 - quantidadeVendida;
-				if(quantidade1 > quantidadeVendida) {	
+				if(quantidade1 >= quantidadeVendida) {	
 				
 				if (!txtQuantidadeProd.getText().isEmpty()) {
 					model = (DefaultTableModel) tbProdutosCarrinho.getModel();
@@ -163,6 +164,8 @@ public class TelaVenda extends JFrame {
 			    
 			    txtQuantidadeProd.setText("");
 			}
+			
+			
 		});
 		JButton btnNewButton_5 = new JButton("OK");
 		btnNewButton_5.addActionListener(new ActionListener() {
@@ -191,11 +194,13 @@ public class TelaVenda extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				System.out.println(tbProdutosCarrinho.getRowCount());
 				
 				  for(int i=0; i<tbProdutosCarrinho.getRowCount();i++) { 
 					  System.out.println(i);
 					 String id_cadastro = textField_3.getText();
 						String id_usuario = textField.getText();
+
 						String id_produto = (tbProdutosCarrinho.getValueAt(i, 0).toString());
 						String preco = (tbProdutosCarrinho.getValueAt(i, 2).toString());
 						DateTimeFormatter dtf5 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -224,7 +229,6 @@ public class TelaVenda extends JFrame {
 						lblNewLabel_7.setText("");
 				
 				
-						
 			}
 		});
 		btnNewButton_1.setBounds(278, 456, 125, 23);
@@ -453,7 +457,7 @@ public class TelaVenda extends JFrame {
 		JButton btnNewButton_10 = new JButton("<-");
 		btnNewButton_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaInicio telainicio = new TelaInicio();
+				TelaInicio telainicio = new TelaInicio(VA);
 				telainicio.setVisible(true);
 				setVisible(false);
 			}

@@ -23,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controle.ProdutoBD;
 import modelo.CadastroProdutos;
+import modelo.Perfil;
 
 public class TelaCadastroProduto extends JFrame {
 	protected static final int posicaoPessoa = 0;
@@ -39,26 +40,11 @@ public class TelaCadastroProduto extends JFrame {
 	private JTextField textField_5;
 	String id;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaCadastroProduto frame = new TelaCadastroProduto();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaCadastroProduto() {
+	public TelaCadastroProduto(Perfil VA) {
 		setTitle("Cadastro de Produtos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 702, 471);
@@ -100,7 +86,7 @@ public class TelaCadastroProduto extends JFrame {
 		JButton btnVoltarTela = new JButton("<-");
 		btnVoltarTela.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaInicio ti = new TelaInicio();
+				TelaInicio ti = new TelaInicio(VA);
 				ti.setVisible(true);
 				setVisible(false);
 			}

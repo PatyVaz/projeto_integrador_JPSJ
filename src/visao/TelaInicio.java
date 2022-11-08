@@ -17,38 +17,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import modelo.Perfil;
+
 public class TelaInicio extends JFrame {
 
 	private JPanel contentPane;
 	static Connection conexao;
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			 conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/deemodb", "root", "sasalegal123");
-		}catch(SQLException e)
-		{
-			System.out.println("Erro ao conectar � base de dados.");
-		}
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaInicio frame = new TelaInicio();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public TelaInicio() {
+	public TelaInicio(Perfil VA) {
+		
 		setTitle("Tela Inicial");
 		setMinimumSize(new Dimension(450, 300));
 		setMaximumSize(new Dimension(460, 300));
@@ -71,11 +49,17 @@ public class TelaInicio extends JFrame {
 		panel.setBackground(Color.LIGHT_GRAY);
 		panel1.add(panel);
 		panel1.setVisible(false);
+		
 		JButton btnNewButton_6 = new JButton("Administrador");
+		btnNewButton_6.setEnabled(false);
+		String teste123 = VA.getNome();
+		if(teste123.equals("Admin")) {
+			btnNewButton_6.setEnabled(true);
+		}
 		btnNewButton_6.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 Administrador administrador = new Administrador();
+				 Administrador administrador = new Administrador(VA);
 				 administrador.setVisible(true);
 				setVisible(false);
 			}
@@ -113,7 +97,7 @@ public class TelaInicio extends JFrame {
 				JButton btnNewButton_5 = new JButton("Histórico");
 				btnNewButton_5.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						TelaRelatorio tr = new TelaRelatorio();
+						TelaRelatorio tr = new TelaRelatorio(VA);
 						tr.setVisible(true);
 						setVisible(false);
 					}
@@ -131,7 +115,7 @@ public class TelaInicio extends JFrame {
 		btnNewButton_1.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 TelaClientes clientes = new TelaClientes();
+				 TelaClientes clientes = new TelaClientes(VA);
 				 clientes.setVisible(true);
 				setVisible(false);
 			}
@@ -144,7 +128,7 @@ public class TelaInicio extends JFrame {
 		btnNewButton_2.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaVenda vendas = new TelaVenda();
+				TelaVenda vendas = new TelaVenda(VA);
 				 vendas.setVisible(true);
 				setVisible(false);
 			}
@@ -157,7 +141,7 @@ public class TelaInicio extends JFrame {
 		btnNewButton_3.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCadastroProduto cadastroProdutos = new TelaCadastroProduto();
+				TelaCadastroProduto cadastroProdutos = new TelaCadastroProduto(VA);
 				cadastroProdutos.setVisible(true);
 				setVisible(false);
 			}
@@ -170,7 +154,7 @@ public class TelaInicio extends JFrame {
 		btnNewButton_4.setBackground(Color.LIGHT_GRAY);
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 TelaFornecedores fornecedor = new TelaFornecedores();
+				 TelaFornecedores fornecedor = new TelaFornecedores(VA);
 				 fornecedor.setVisible(true);
 				setVisible(false);
 			}

@@ -24,7 +24,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controle.RelatorioBD;
+import modelo.Perfil;
 import modelo.Venda;
+import modelo.VendaCompleto;
 
 public class TelaRelatorio extends JFrame {
 
@@ -35,33 +37,21 @@ public class TelaRelatorio extends JFrame {
 	public  JTextField txtVendedor;
 	private JTable table;
 	public JTextField txtCliente;
-	private ArrayList<Venda> listaVenda;
-	private ArrayList<Venda> listarVenda;
-	private ArrayList<Venda> listarVendaCliente;
-	private ArrayList<Venda> listarVendaClienteVendedor;
-	private ArrayList<Venda> listarVendasData;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaRelatorio frame = new TelaRelatorio();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private ArrayList<VendaCompleto> listaVenda;
+	private ArrayList<VendaCompleto> listarVenda;
+	private ArrayList<VendaCompleto> listarVendaCliente;
+	private ArrayList<VendaCompleto> listarVendaClienteVendedor;
+	private ArrayList<VendaCompleto> listarVendasData;
+	
+	
 
 	/**
 	 * Create the frame.
 	 * 
 ;	 */
 	Venda v = new Venda();
-	public TelaRelatorio() {
+	VendaCompleto vc = new VendaCompleto();
+ TelaRelatorio(Perfil VA) {
 		setTitle("Relatório");
 		
 		TelaRelatorio TR = this;
@@ -299,7 +289,7 @@ public class TelaRelatorio extends JFrame {
 		JButton btnNewButton_4 = new JButton("<-");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaInicio telainicio = new TelaInicio();
+				TelaInicio telainicio = new TelaInicio(VA);
 				telainicio.setVisible(true);
 				setVisible(false);
 			}
@@ -358,8 +348,8 @@ public class TelaRelatorio extends JFrame {
 				
 						RelatorioBD relatorioBD = new RelatorioBD();
 						
-						v.setData(data);
-						listarVendasData = relatorioBD.listarVendasData(v);
+						vc.setData(data);
+						listarVendasData = relatorioBD.listarVendasData(vc);
 						
 						table = new JTable();
 						table.setModel(new DefaultTableModel(new Object[][] {},
@@ -368,8 +358,8 @@ public class TelaRelatorio extends JFrame {
 
 						modelo = (DefaultTableModel) table.getModel();
 						for (int i = 0; i < listarVendasData.size(); i++) {
-							Venda v = listarVendasData.get(i);
-						modelo.addRow(new Object[] {v.getCadastro(), v.getUsuario(), v.getProduto(), v.getValor(), v.getData() });
+							VendaCompleto vc = listarVendasData.get(i);
+						modelo.addRow(new Object[] {vc.getCadastro(), vc.getUsuario(), vc.getProduto(), vc.getValor(), vc.getData() });
 						
 						}
 						
@@ -385,8 +375,8 @@ public class TelaRelatorio extends JFrame {
 					String id = txtVendedor.getText();
 					RelatorioBD relatorioBD = new RelatorioBD();
 				
-					v.setUsuario(Integer.valueOf(id));
-					listarVenda = relatorioBD.listarVendaID(v);
+					vc.setId_usuario(Integer.valueOf(id));
+					listarVenda = relatorioBD.listarVendaID(vc);
 					
 					table = new JTable();
 					table.setModel(new DefaultTableModel(new Object[][] {},
@@ -395,8 +385,8 @@ public class TelaRelatorio extends JFrame {
 
 					modelo = (DefaultTableModel) table.getModel();
 					for (int i = 0; i < listarVenda.size(); i++) {
-						Venda v = listarVenda.get(i);
-					modelo.addRow(new Object[] {v.getCadastro(), v.getUsuario(), v.getProduto(), v.getValor(), v.getData() });
+						VendaCompleto vc = listarVenda.get(i);
+					modelo.addRow(new Object[] {vc.getCadastro(), vc.getUsuario(), vc.getProduto(), vc.getValor(), vc.getData() });
 					
 					}
 					
@@ -406,8 +396,8 @@ public class TelaRelatorio extends JFrame {
 					String id = txtCliente.getText();
 					RelatorioBD relatorioBD = new RelatorioBD();
 				
-					v.setCadastro(Integer.valueOf(id));
-					listarVendaCliente = relatorioBD.listarVendaCliente(v);
+					vc.setId_cliente(Integer.valueOf(id));
+					listarVendaCliente = relatorioBD.listarVendaCliente(vc);
 					
 					table = new JTable();
 					table.setModel(new DefaultTableModel(new Object[][] {},
@@ -416,8 +406,8 @@ public class TelaRelatorio extends JFrame {
 
 					modelo = (DefaultTableModel) table.getModel();
 					for (int i = 0; i < listarVendaCliente.size(); i++) {
-						Venda v = listarVendaCliente.get(i);
-					modelo.addRow(new Object[] {v.getCadastro(), v.getUsuario(), v.getProduto(), v.getValor(), v.getData() });
+						VendaCompleto vc = listarVendaCliente.get(i);
+					modelo.addRow(new Object[] {vc.getCadastro(), vc.getUsuario(), vc.getProduto(), vc.getValor(), vc.getData() });
 					
 					}
 					mensagem += "cliente ";
@@ -428,9 +418,9 @@ public class TelaRelatorio extends JFrame {
 					String id1 = txtVendedor.getText();
 					RelatorioBD relatorioBD = new RelatorioBD();
 				
-					v.setCadastro(Integer.valueOf(id));
-					v.setUsuario(Integer.valueOf(id1));
-					listarVendaClienteVendedor = relatorioBD.listarVendaClienteVendedor(v);
+					vc.setId_cliente(Integer.valueOf(id));
+					vc.setId_usuario(Integer.valueOf(id1));
+					listarVendaClienteVendedor = relatorioBD.listarVendaClienteVendedor(vc);
 					
 					table = new JTable();
 					table.setModel(new DefaultTableModel(new Object[][] {},
@@ -439,8 +429,8 @@ public class TelaRelatorio extends JFrame {
 
 					modelo = (DefaultTableModel) table.getModel();
 					for (int i = 0; i < listarVendaClienteVendedor.size(); i++) {
-						Venda v = listarVendaClienteVendedor.get(i);
-					modelo.addRow(new Object[] {v.getCadastro(), v.getUsuario(), v.getProduto(), v.getValor(), v.getData() });
+						VendaCompleto vc = listarVendaClienteVendedor.get(i);
+					modelo.addRow(new Object[] {vc.getCadastro(), vc.getUsuario(), vc.getProduto(), vc.getValor(), vc.getData() });
 					
 					}
 					
@@ -457,8 +447,8 @@ public class TelaRelatorio extends JFrame {
 
 					modelo = (DefaultTableModel) table.getModel();
 					for (int i = 0; i < listaVenda.size(); i++) {
-						Venda v = listaVenda.get(i);
-					modelo.addRow(new Object[] {v.getCadastro(), v.getUsuario(), v.getProduto(), v.getValor(), v.getData() });
+						VendaCompleto vc = listaVenda.get(i);
+					modelo.addRow(new Object[] {vc.getCadastro(), vc.getUsuario(), vc.getProduto(), vc.getValor(), vc.getData() });
 
 					}
 				}
