@@ -190,15 +190,6 @@ public class TelaCadastroProduto extends JFrame {
 		gbc_textField_4.gridy = 4;
 		contentPane.add(textField_4, gbc_textField_4);
 		textField_4.setColumns(10);
-		
-		MaskFormatter maskDataPreco;
-		try {
-			maskDataPreco = new MaskFormatter("###.###.###-##");
-			maskDataPreco.install(textField_4);
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 
 		JLabel lblNewLabel_7 = new JLabel("Quantidade:");
 		GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
