@@ -246,7 +246,12 @@ public class TelaClientes extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
+<<<<<<< HEAD
+
+MaskFormatter maskData;
+=======
 		MaskFormatter maskData;
+>>>>>>> main
 		try {
 			maskData = new MaskFormatter("###.###.###-##");
 			maskData.install(textField_1);
@@ -255,6 +260,7 @@ public class TelaClientes extends JFrame {
 			e1.printStackTrace();
 		}
 
+		
 		textField_2 = new JTextField();
 		textField_2.setBounds(122, 226, 236, 34);
 		contentPane.add(textField_2);
