@@ -246,8 +246,12 @@ public class TelaClientes extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
+<<<<<<< HEAD
 
 MaskFormatter maskData;
+=======
+		MaskFormatter maskData;
+>>>>>>> main
 		try {
 			maskData = new MaskFormatter("###.###.###-##");
 			maskData.install(textField_1);

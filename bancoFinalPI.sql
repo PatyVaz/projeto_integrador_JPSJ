@@ -23,11 +23,11 @@ USE `deemodb` ;
 CREATE TABLE IF NOT EXISTS `deemodb`.`clientes` (
   `id_cadastro` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(255) NOT NULL,
-  `cpf` INT NOT NULL,
+  `cpf` VARCHAR(14) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   `rua` VARCHAR(255) NOT NULL,
   `bairro` VARCHAR(255) NOT NULL,
-  `telefone` INT NOT NULL,
+  `telefone` VARCHAR(255) NOT NULL,
   `cep` VARCHAR(255) NOT NULL,
   `cidade` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id_cadastro`))
@@ -43,8 +43,8 @@ COLLATE = utf8mb4_0900_ai_ci;
 CREATE TABLE IF NOT EXISTS `deemodb`.`fornecedores` (
   `id_fornecedor` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(255) NOT NULL,
-  `cnpj` INT NOT NULL,
-  `telefone` INT NOT NULL,
+  `cnpj` VARCHAR(255) NOT NULL,
+  `telefone` VARCHAR (255) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id_fornecedor`, `cnpj`))
 ENGINE = InnoDB
@@ -148,3 +148,4 @@ COLLATE = utf8mb4_0900_ai_ci;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
