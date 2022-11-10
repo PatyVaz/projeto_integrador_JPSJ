@@ -7,9 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -19,6 +21,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 import controle.FornecedorBD;
 import modelo.Fornecedor;
@@ -28,8 +31,8 @@ public class TelaFornecedores extends JFrame {
 	private JPanel contentPane;
 	private JTable tbfornecedor;
 	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JFormattedTextField textField_1;
+	private JFormattedTextField textField_2;
 	private JTextField textField_3;
 	private DefaultTableModel modelo;
 	private ArrayList<Fornecedor> listaFornecedor;
@@ -106,15 +109,33 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
+		textField_1 = new JFormattedTextField();
 		textField_1.setColumns(10);
 		textField_1.setBounds(132, 160, 232, 25);
 		contentPane.add(textField_1);
 		
-		textField_2 = new JTextField();
+		MaskFormatter maskDataCNPJ;
+		try {
+			maskDataCNPJ = new MaskFormatter("##.###.###/####-##");
+			maskDataCNPJ.install(textField_1);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		textField_2 = new JFormattedTextField();
 		textField_2.setColumns(10);
 		textField_2.setBounds(132, 210, 232, 25);
 		contentPane.add(textField_2);
+		
+		MaskFormatter maskDataFone;
+		try {
+			maskDataFone = new MaskFormatter("(##) #####-####");
+			maskDataFone.install(textField_2);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
