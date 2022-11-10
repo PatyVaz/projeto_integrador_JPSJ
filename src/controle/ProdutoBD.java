@@ -20,7 +20,7 @@ public class ProdutoBD {
 
 		try {
 
-			PreparedStatement ps = conexao.prepareStatement("delete from cadastroprodutos where id_produto=?");
+			PreparedStatement ps = conexao.prepareStatement("delete from produtos where id_produto=?");
 			ps.setInt(1, cadastroProdutos.getId());
 			return ps.executeUpdate();
 
@@ -35,7 +35,7 @@ public class ProdutoBD {
 		ResultSet rs;
 		ArrayList<CadastroProdutos> listaProdutos = new ArrayList<CadastroProdutos>();
 		try {
-			ps = conexao.prepareStatement("select * from cadastroprodutos order by modelo");
+			ps = conexao.prepareStatement("select * from produtos order by modelo");
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				CadastroProdutos cadastroprodutos = new CadastroProdutos();
@@ -46,6 +46,7 @@ public class ProdutoBD {
 				cadastroprodutos.setModelo(rs.getString("modelo"));
 				cadastroprodutos.setPreco(rs.getDouble("preco"));
 				cadastroprodutos.setQuantidade(rs.getInt("quantidade"));
+				cadastroprodutos.setIdfornecedor(rs.getInt("fornecedores_id_fornecedor"));
 				listaProdutos.add(cadastroprodutos);
 			}
 		} catch (SQLException e) {
@@ -59,7 +60,7 @@ public class ProdutoBD {
 		try {
 
 			PreparedStatement ps = conexao.prepareStatement(
-					"insert into cadastroprodutos(cor, tamanho, marca, modelo, preco, quantidade) values(?,?,?,?,?,?)");
+					"insert into produtos(cor, tamanho, marca, modelo, preco, quantidade,fornecedores_id_fornecedor) values(?,?,?,?,?,?,?)");
 
 			ps.setString(1, cadastroProdutos.getCor());
 			ps.setInt(2, cadastroProdutos.getTamanho());
@@ -67,6 +68,7 @@ public class ProdutoBD {
 			ps.setString(4, cadastroProdutos.getModelo());
 			ps.setDouble(5, cadastroProdutos.getPreco());
 			ps.setInt(6, cadastroProdutos.getQuantidade());
+			ps.setInt(7, cadastroProdutos.getIdfornecedor());
 
 			ps.executeUpdate();
 
@@ -81,7 +83,7 @@ public class ProdutoBD {
 
 		try {
 
-			PreparedStatement ps = conexao.prepareStatement("update cadastroprodutos set cor=?,tamanho=?,marca=?, modelo=?, preco=?,quantidade=?   where id_produto = ?");
+			PreparedStatement ps = conexao.prepareStatement("update produtos set cor=?,tamanho=?,marca=?, modelo=?, preco=?,quantidade=?   where id_produto = ?");
 			ps.setString(1, cadastroProdutos.getCor());
 			ps.setInt(2, cadastroProdutos.getTamanho());
 			ps.setString(3, cadastroProdutos.getMarca());
@@ -105,7 +107,7 @@ public class ProdutoBD {
 		ResultSet rs;
 		CadastroProdutos cadProd = null;
 		try {
-			ps = conexao.prepareStatement("select * from cadastroprodutos where  id_produto = ? ");
+			ps = conexao.prepareStatement("select * from produtos where  id_produto = ? ");
 			ps.setInt(1, cadastroProdutos.getId());
 			rs = ps.executeQuery();
 			while (rs.next()) {
@@ -117,6 +119,7 @@ public class ProdutoBD {
 				cadProd.setModelo(rs.getString("modelo"));
 				cadProd.setPreco(rs.getDouble("preco"));
 				cadProd.setQuantidade(rs.getInt("quantidade"));
+				cadProd.setIdfornecedor(rs.getInt("fornecedores_id_fornecedor"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -130,7 +133,7 @@ public class ProdutoBD {
 		ResultSet rs;
 		CadastroProdutos quantidadeID = null;
 		try {
-			ps = conexao.prepareStatement("select quantidade from cadastroprodutos where  id_produto = ? ");
+			ps = conexao.prepareStatement("select quantidade from produtos where  id_produto = ? ");
 			ps.setInt(1, cadastroProdutos.getId());
 			rs = ps.executeQuery();
 			while (rs.next()) {
@@ -150,7 +153,7 @@ public class ProdutoBD {
 		try {
 
 
-			PreparedStatement ps = conexao.prepareStatement("update cadastroprodutos set quantidade=? where id_produto = ?");
+			PreparedStatement ps = conexao.prepareStatement("update produtos set quantidade=? where id_produto = ?");
 			ps.setInt(1, cadastroProdutos.getQuantidade());
 			ps.setInt(2, cadastroProdutos.getId());
 			ps.executeUpdate();

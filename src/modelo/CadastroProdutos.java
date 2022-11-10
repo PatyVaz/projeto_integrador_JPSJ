@@ -9,6 +9,7 @@ public class CadastroProdutos {
 	private String marca;
 	private double preco;
 	private int quantidade;
+	private int idfornecedor;
 	public int getId() {
 		return id;
 	}
@@ -50,6 +51,12 @@ public class CadastroProdutos {
 	}
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}
+	public int getIdfornecedor() {
+		return idfornecedor;
+	}
+	public void setIdfornecedor(int idfornecedor) {
+		this.idfornecedor = idfornecedor;
 	}
 
 	
