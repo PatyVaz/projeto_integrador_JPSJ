@@ -293,8 +293,8 @@ public class TelaClientes extends JFrame {
 		
 		MaskFormatter maskDataCEP;
 		try {
-			maskDataFone = new MaskFormatter("#####-###");
-			maskDataFone.install(textField_1);
+			maskDataCEP = new MaskFormatter("#####-###");
+			maskDataCEP.install(textField_1);
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
