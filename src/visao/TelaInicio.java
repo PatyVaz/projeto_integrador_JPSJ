@@ -173,6 +173,17 @@ public class TelaInicio extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		panel_4.add(btnNewButton);
+		
+		JButton btnNewButton_7 = new JButton("Estoque");
+		btnNewButton_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ProdutosFornecedores pf = new ProdutosFornecedores(VA);
+				 pf.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnNewButton_7.setBounds(308, 120, 89, 23);
+		contentPane.add(btnNewButton_7);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (panel1.isVisible()) {
