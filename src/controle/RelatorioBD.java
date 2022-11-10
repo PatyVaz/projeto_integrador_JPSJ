@@ -22,7 +22,7 @@ public class RelatorioBD {
 			ResultSet rs;
 			ArrayList<VendaCompleto> listaVenda = new ArrayList<VendaCompleto>();
 			try {
-				ps = conexao.prepareStatement(" select venda.id_venda,cadastro.nome,usuario.nome,cadastroprodutos.modelo,venda.preco,venda.data  from venda inner join cadastro on venda.id_doCliente = cadastro.id_cadastro inner join usuario on usuario.id_usuario = venda.id_doUsuario inner join cadastroprodutos on cadastroprodutos.id_produto = venda.id_doProduto;\r\n"
+				ps = conexao.prepareStatement(" select venda.id_venda,clientes.nome,usuario.nome,cadastroprodutos.modelo,venda.preco,venda.data  from venda inner join clientes on venda.id_doCliente = clientes.id_cadastro inner join usuario on usuario.id_usuario = venda.id_doUsuario inner join cadastroprodutos on cadastroprodutos.id_produto = venda.id_doProduto;\r\n"
 						+ "\r\n"
 						+ "\r\n"
 						+ "");
@@ -51,7 +51,7 @@ public class RelatorioBD {
 			ResultSet rs;
 			ArrayList<VendaCompleto> listarVenda = new ArrayList<VendaCompleto>();
 			try {
-				ps = conexao.prepareStatement(" select venda.id_venda,cadastro.nome,usuario.nome,cadastroprodutos.modelo,venda.preco,venda.data  from venda inner join cadastro on venda.id_doCliente = cadastro.id_cadastro inner join usuario on usuario.id_usuario = venda.id_doUsuario inner join cadastroprodutos on cadastroprodutos.id_produto = venda.id_doProduto  where  venda.id_doUsuario = ? ;\r\n"
+				ps = conexao.prepareStatement(" select venda.id_venda,clientes.nome,usuario.nome,produtos.modelo,venda.preco,venda.data  from venda inner join clientes on venda.id_doCliente = clientes.id_cadastro inner join usuario on usuario.id_usuario = venda.id_doUsuario inner join produtos on produtos.id_produto = venda.id_doProduto  where  venda.id_doUsuario = ? ;\r\n"
 						+ "\r\n"
 						+ "\r\n"
 						+ " ");
@@ -62,9 +62,9 @@ public class RelatorioBD {
 					vc = new VendaCompleto();
 
 					vc.setId(rs.getInt("id_venda"));
-					vc.setCadastro(rs.getString("cadastro.nome"));
+					vc.setCadastro(rs.getString("clientes.nome"));
 					vc.setUsuario(rs.getString("usuario.nome"));
-					vc.setProduto(rs.getString("cadastroprodutos.modelo"));
+					vc.setProduto(rs.getString("produtos.modelo"));
 					vc.setValor(rs.getDouble("preco"));
 					vc.setData(rs.getString("data"));
 					
@@ -81,7 +81,7 @@ public class RelatorioBD {
 			ResultSet rs;
 			ArrayList<VendaCompleto> listarVendaCliente = new ArrayList<VendaCompleto>();
 			try {
-				ps = conexao.prepareStatement(" select venda.id_venda,cadastro.nome,usuario.nome,cadastroprodutos.modelo,venda.preco,venda.data  from venda inner join cadastro on venda.id_doCliente = cadastro.id_cadastro inner join usuario on usuario.id_usuario = venda.id_doUsuario inner join cadastroprodutos on cadastroprodutos.id_produto = venda.id_doProduto  where  venda.id_doCliente = ? ;\r\n"
+				ps = conexao.prepareStatement(" select venda.id_venda,clientes.nome,usuario.nome,produtos.modelo,venda.preco,venda.data  from venda inner join clientes on venda.id_doCliente = clientes.id_cadastro inner join usuario on usuario.id_usuario = venda.id_doUsuario inner join produtos on produtos.id_produto = venda.id_doProduto  where  venda.id_doCliente = ? ;\r\n"
 						+ "\r\n"
 						+ "\r\n"
 						+ " ");
@@ -92,9 +92,9 @@ public class RelatorioBD {
 					vc = new VendaCompleto();
 
 					vc.setId(rs.getInt("id_venda"));
-					vc.setCadastro(rs.getString("cadastro.nome"));
+					vc.setCadastro(rs.getString("clientes.nome"));
 					vc.setUsuario(rs.getString("usuario.nome"));
-					vc.setProduto(rs.getString("cadastroprodutos.modelo"));
+					vc.setProduto(rs.getString("produtos.modelo"));
 					vc.setValor(rs.getDouble("preco"));
 					vc.setData(rs.getString("data"));
 					
@@ -111,7 +111,7 @@ public class RelatorioBD {
 			ResultSet rs;
 			ArrayList<VendaCompleto> listarVendaClienteVendedor = new ArrayList<VendaCompleto>();
 			try {
-				ps = conexao.prepareStatement(" select venda.id_venda,cadastro.nome,usuario.nome,cadastroprodutos.modelo,venda.preco,venda.data  from venda inner join cadastro on venda.id_doCliente = cadastro.id_cadastro inner join usuario on usuario.id_usuario = venda.id_doUsuario inner join cadastroprodutos on cadastroprodutos.id_produto = venda.id_doProduto  where  venda.id_doCliente = ? and venda.id_doUsuario = ? ;\r\n"
+				ps = conexao.prepareStatement(" select venda.id_venda,clientes.nome,usuario.nome,produtos.modelo,venda.preco,venda.data  from venda inner join clientes on venda.id_doCliente = clientes.id_cadastro inner join usuario on usuario.id_usuario = venda.id_doUsuario inner join produtos on produtos.id_produto = venda.id_doProduto  where  venda.id_doCliente = ? and venda.id_doUsuario = ? ;\r\n"
 						+ "\r\n"
 						+ "\r\n"
 						+ " ");
@@ -122,9 +122,9 @@ public class RelatorioBD {
 					vc = new VendaCompleto();
 
 					vc.setId(rs.getInt("id_venda"));
-					vc.setCadastro(rs.getString("cadastro.nome"));
+					vc.setCadastro(rs.getString("clientes.nome"));
 					vc.setUsuario(rs.getString("usuario.nome"));
-					vc.setProduto(rs.getString("cadastroprodutos.modelo"));
+					vc.setProduto(rs.getString("produtos.modelo"));
 					vc.setValor(rs.getDouble("preco"));
 					vc.setData(rs.getString("data"));
 					
@@ -142,7 +142,7 @@ public class RelatorioBD {
 			ResultSet rs;
 			ArrayList<VendaCompleto> listarVendasData = new ArrayList<VendaCompleto>();
 			try {
-				ps = conexao.prepareStatement("select venda.id_venda,cadastro.nome,usuario.nome,cadastroprodutos.modelo,venda.preco,venda.data  from venda inner join cadastro on venda.id_doCliente = cadastro.id_cadastro inner join usuario on usuario.id_usuario = venda.id_doUsuario inner join cadastroprodutos on cadastroprodutos.id_produto = venda.id_doProduto  where  venda.data = ? ;\r\n"
+				ps = conexao.prepareStatement("select venda.id_venda,clientes.nome,usuario.nome,produtos.modelo,venda.preco,venda.data  from venda inner join clientes on venda.id_doCliente = clientes.id_cadastro inner join usuario on usuario.id_usuario = venda.id_doUsuario inner join produtos on produtos.id_produto = venda.id_doProduto  where  venda.data = ? ;\r\n"
 						+ "\r\n"
 						+ "\r\n"
 						+ " ");
@@ -153,9 +153,9 @@ public class RelatorioBD {
 					vc = new VendaCompleto();
 
 					vc.setId(rs.getInt("id_venda"));
-					vc.setCadastro(rs.getString("cadastro.nome"));
+					vc.setCadastro(rs.getString("clientes.nome"));
 					vc.setUsuario(rs.getString("usuario.nome"));
-					vc.setProduto(rs.getString("cadastroprodutos.modelo"));
+					vc.setProduto(rs.getString("produtos.modelo"));
 					vc.setValor(rs.getDouble("preco"));
 					vc.setData(rs.getString("data"));
 					

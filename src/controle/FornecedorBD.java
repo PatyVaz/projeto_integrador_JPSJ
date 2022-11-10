@@ -18,7 +18,7 @@ public class FornecedorBD {
 		
 		try {
 			
-			PreparedStatement ps = conexao.prepareStatement("delete from fornecedor where id_fornecedor=?");
+			PreparedStatement ps = conexao.prepareStatement("delete from fornecedores where id_fornecedor=?");
 			
 			ps.setInt(1, fornecedor.getId());
 			
@@ -35,7 +35,7 @@ public class FornecedorBD {
 		ResultSet rs;
 		ArrayList<Fornecedor> listaFornecedor = new ArrayList<Fornecedor>();
 		try {
-			ps = conexao.prepareStatement ("select * from fornecedor order by nome");
+			ps = conexao.prepareStatement ("select * from fornecedores order by nome");
 			rs= ps.executeQuery();
 			while(rs.next( ) ) {
 				Fornecedor fornecedor = new Fornecedor();
@@ -58,7 +58,7 @@ public class FornecedorBD {
 	
 		try {
 
-			PreparedStatement ps = conexao.prepareStatement("insert into fornecedor (nome, cnpj, telefone, email) values(?,?,?,?)");
+			PreparedStatement ps = conexao.prepareStatement("insert into fornecedores (nome, cnpj, telefone, email) values(?,?,?,?)");
 			ps.setString(1, fornecedor.getNome());
 			ps.setString(2, fornecedor.getCnpj());
 			ps.setString(3	, fornecedor.getTelefone());
@@ -79,7 +79,7 @@ public class FornecedorBD {
 		try {
 			
 
-			PreparedStatement ps = conexao.prepareStatement("update fornecedor set nome=?,email=?,cnpj=?,telefone=? where id_fornecedor = ?");
+			PreparedStatement ps = conexao.prepareStatement("update fornecedores set nome=?,email=?,cnpj=?,telefone=? where id_fornecedor = ?");
 			ps.setString(1, fornecedor.getNome());
 			ps.setString(2, fornecedor.getEmail());
 			ps.setString(3, fornecedor.getCnpj());
