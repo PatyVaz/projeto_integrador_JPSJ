@@ -7,9 +7,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -19,6 +21,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 import controle.ClienteBD;
 import modelo.Cliente;
@@ -29,7 +32,7 @@ public class TelaClientes extends JFrame {
 	protected static final int posicaoPessoa = 0;
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
+	private JFormattedTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
@@ -238,10 +241,19 @@ public class TelaClientes extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 
-		textField_1 = new JTextField();
+		textField_1 = new JFormattedTextField();
 		textField_1.setBounds(122, 160, 236, 34);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
+		
+		MaskFormatter maskData;
+		try {
+			maskData = new MaskFormatter("###.###.###-##");
+			maskData.install(textField_1);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		textField_2 = new JTextField();
 		textField_2.setBounds(122, 226, 236, 34);
