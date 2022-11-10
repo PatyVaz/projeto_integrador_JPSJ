@@ -22,7 +22,7 @@ public class ClienteBD {
 		
 		try {
 
-			PreparedStatement ps = conexao.prepareStatement("delete from cadastro where id_cadastro=?");
+			PreparedStatement ps = conexao.prepareStatement("delete from clientes where id_cadastro=?");
 			ps.setInt(1, cliente.getId());
 			return ps.executeUpdate();
 
@@ -43,7 +43,7 @@ public class ClienteBD {
 		ResultSet rs;
 		ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
 		try {
-			ps = conexao.prepareStatement ("select * from cadastro order by nome");
+			ps = conexao.prepareStatement ("select * from clientes order by nome");
 			rs= ps.executeQuery();
 			while(rs.next( ) ) {
 				Cliente cliente = new Cliente();
@@ -74,7 +74,7 @@ public class ClienteBD {
 		try {
 
 			PreparedStatement ps = conexao.prepareStatement(
-					"insert into cadastro (nome, cpf, email, rua,bairro, telefone, cep, cidade) values(?,?,?,?,?,?,?,?)");
+					"insert into clientes (nome, cpf, email, rua,bairro, telefone, cep, cidade) values(?,?,?,?,?,?,?,?)");
 
 			ps.setString(1, cliente.getNome());
 			ps.setInt(2, cliente.getCpf());
@@ -98,7 +98,7 @@ public class ClienteBD {
 		try {
 			
 
-			PreparedStatement ps = conexao.prepareStatement("update cadastro set nome=?,email=?,cpf=?,rua=?,bairro=?,telefone=?,cep=?,cidade=? where id_cadastro = ?");
+			PreparedStatement ps = conexao.prepareStatement("update clientes set nome=?,email=?,cpf=?,rua=?,bairro=?,telefone=?,cep=?,cidade=? where id_cadastro = ?");
 			ps.setString(1, cliente.getNome());
 			ps.setString(2, cliente.getEmail());
 			ps.setInt(3, cliente.getCpf());
@@ -124,7 +124,7 @@ public class ClienteBD {
 		ResultSet rs;
 		Cliente cl = null;
 		try {
-			ps = conexao.prepareStatement("select * from cadastro where  id_cadastro = ? ");
+			ps = conexao.prepareStatement("select * from clientes where  id_cadastro = ? ");
 			ps.setInt(1, cliente.getId());
 			rs = ps.executeQuery();
 			while (rs.next()) {

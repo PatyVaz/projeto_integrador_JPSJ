@@ -255,6 +255,7 @@ public class TelaClientes extends JFrame {
 			e1.printStackTrace();
 		}
 
+		
 		textField_2 = new JTextField();
 		textField_2.setBounds(122, 226, 236, 34);
 		contentPane.add(textField_2);
