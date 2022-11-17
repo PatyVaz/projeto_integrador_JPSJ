@@ -27,6 +27,7 @@ import controle.RelatorioBD;
 import modelo.Perfil;
 import modelo.Venda;
 import modelo.VendaCompleto;
+import java.awt.Color;
 
 public class TelaRelatorio extends JFrame {
 
@@ -59,22 +60,38 @@ public class TelaRelatorio extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 771, 403);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
+		
+		JButton btnNewButton_4 = new JButton("<-");
+		btnNewButton_4.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaInicio telainicio = new TelaInicio(VA);
+				telainicio.setVisible(true);
+				setVisible(false);
+			}
+		});
+		GridBagConstraints gbc_btnNewButton_4 = new GridBagConstraints();
+		gbc_btnNewButton_4.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton_4.gridx = 0;
+		gbc_btnNewButton_4.gridy = 0;
+		contentPane.add(btnNewButton_4, gbc_btnNewButton_4);
 		
 		JLabel lblNewLabel = new JLabel("Estoque  do:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 2;
-		gbc_lblNewLabel.gridy = 0;
+		gbc_lblNewLabel.gridy = 1;
 		contentPane.add(lblNewLabel, gbc_lblNewLabel);
 		
 		JLabel lblNewLabel_5 = new JLabel("Procurar por:");
@@ -82,7 +99,7 @@ public class TelaRelatorio extends JFrame {
 		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
 		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_5.gridx = 4;
-		gbc_lblNewLabel_5.gridy = 0;
+		gbc_lblNewLabel_5.gridy = 1;
 		contentPane.add(lblNewLabel_5, gbc_lblNewLabel_5);
 		
 		txtVendedor = new JTextField();
@@ -94,7 +111,7 @@ public class TelaRelatorio extends JFrame {
 		gbc_txtVendedor.gridwidth = 6;
 		gbc_txtVendedor.insets = new Insets(0, 0, 5, 5);
 		gbc_txtVendedor.gridx = 5;
-		gbc_txtVendedor.gridy = 0;
+		gbc_txtVendedor.gridy = 1;
 		contentPane.add(txtVendedor, gbc_txtVendedor);
 		txtVendedor.setColumns(10);
 		
@@ -109,14 +126,14 @@ public class TelaRelatorio extends JFrame {
 		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
 		gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_2.gridx = 11;
-		gbc_btnNewButton_2.gridy = 0;
+		gbc_btnNewButton_2.gridy = 1;
 		contentPane.add(btnNewButton_2, gbc_btnNewButton_2);
 		
 		JLabel lblNewLabel_2 = new JLabel("Ano:");
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_2.gridx = 15;
-		gbc_lblNewLabel_2.gridy = 0;
+		gbc_lblNewLabel_2.gridy = 1;
 		contentPane.add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
 		JComboBox comboBox_2 = new JComboBox();
@@ -126,26 +143,28 @@ public class TelaRelatorio extends JFrame {
 		gbc_comboBox_2.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBox_2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox_2.gridx = 16;
-		gbc_comboBox_2.gridy = 0;
+		gbc_comboBox_2.gridy = 1;
 		contentPane.add(comboBox_2, gbc_comboBox_2);
 		
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Ano");
+		rdbtnNewRadioButton_2.setBackground(Color.LIGHT_GRAY);
 		buttonGroup.add(rdbtnNewRadioButton_2);
 		GridBagConstraints gbc_rdbtnNewRadioButton_2 = new GridBagConstraints();
 		gbc_rdbtnNewRadioButton_2.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnNewRadioButton_2.gridwidth = 2;
 		gbc_rdbtnNewRadioButton_2.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnNewRadioButton_2.gridx = 2;
-		gbc_rdbtnNewRadioButton_2.gridy = 1;
+		gbc_rdbtnNewRadioButton_2.gridy = 2;
 		contentPane.add(rdbtnNewRadioButton_2, gbc_rdbtnNewRadioButton_2);
 		
 		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("Vendedor");
+		rdbtnNewRadioButton_3.setBackground(Color.LIGHT_GRAY);
 		buttonGroup1.add(rdbtnNewRadioButton_3);
 		GridBagConstraints gbc_rdbtnNewRadioButton_3 = new GridBagConstraints();
 		gbc_rdbtnNewRadioButton_3.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnNewRadioButton_3.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnNewRadioButton_3.gridx = 4;
-		gbc_rdbtnNewRadioButton_3.gridy = 1;
+		gbc_rdbtnNewRadioButton_3.gridy = 2;
 		contentPane.add(rdbtnNewRadioButton_3, gbc_rdbtnNewRadioButton_3);
 		
 		txtCliente = new JTextField();
@@ -157,7 +176,7 @@ public class TelaRelatorio extends JFrame {
 		gbc_txtCliente.insets = new Insets(0, 0, 5, 5);
 		gbc_txtCliente.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtCliente.gridx = 5;
-		gbc_txtCliente.gridy = 1;
+		gbc_txtCliente.gridy = 2;
 		contentPane.add(txtCliente, gbc_txtCliente);
 		txtCliente.setColumns(10);
 		
@@ -172,14 +191,14 @@ public class TelaRelatorio extends JFrame {
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_1.gridx = 11;
-		gbc_btnNewButton_1.gridy = 1;
+		gbc_btnNewButton_1.gridy = 2;
 		contentPane.add(btnNewButton_1, gbc_btnNewButton_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Mes:");
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
 		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_3.gridx = 15;
-		gbc_lblNewLabel_3.gridy = 1;
+		gbc_lblNewLabel_3.gridy = 2;
 		contentPane.add(lblNewLabel_3, gbc_lblNewLabel_3);
 		
 		JComboBox comboBox_1 = new JComboBox();
@@ -189,31 +208,33 @@ public class TelaRelatorio extends JFrame {
 		gbc_comboBox_1.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox_1.gridx = 16;
-		gbc_comboBox_1.gridy = 1;
+		gbc_comboBox_1.gridy = 2;
 		contentPane.add(comboBox_1, gbc_comboBox_1);
 		
 		JRadioButton rdbtnNewRadioButton_7 = new JRadioButton("Marcar Nada");
+		rdbtnNewRadioButton_7.setBackground(Color.LIGHT_GRAY);
 		buttonGroup.add(rdbtnNewRadioButton_7);
 		GridBagConstraints gbc_rdbtnNewRadioButton_7 = new GridBagConstraints();
 		gbc_rdbtnNewRadioButton_7.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnNewRadioButton_7.gridx = 2;
-		gbc_rdbtnNewRadioButton_7.gridy = 2;
+		gbc_rdbtnNewRadioButton_7.gridy = 3;
 		contentPane.add(rdbtnNewRadioButton_7, gbc_rdbtnNewRadioButton_7);
 		
 		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("cliente");
+		rdbtnNewRadioButton_4.setBackground(Color.LIGHT_GRAY);
 		buttonGroup1.add(rdbtnNewRadioButton_4);
 		GridBagConstraints gbc_rdbtnNewRadioButton_4 = new GridBagConstraints();
 		gbc_rdbtnNewRadioButton_4.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnNewRadioButton_4.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnNewRadioButton_4.gridx = 4;
-		gbc_rdbtnNewRadioButton_4.gridy = 2;
+		gbc_rdbtnNewRadioButton_4.gridy = 3;
 		contentPane.add(rdbtnNewRadioButton_4, gbc_rdbtnNewRadioButton_4);
 		
 		JLabel lblNewLabel_4 = new JLabel("Dia:");
 		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
 		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_4.gridx = 15;
-		gbc_lblNewLabel_4.gridy = 2;
+		gbc_lblNewLabel_4.gridy = 3;
 		contentPane.add(lblNewLabel_4, gbc_lblNewLabel_4);
 		
 		JComboBox comboBox = new JComboBox();
@@ -223,28 +244,30 @@ public class TelaRelatorio extends JFrame {
 		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox.gridx = 16;
-		gbc_comboBox.gridy = 2;
+		gbc_comboBox.gridy = 3;
 		contentPane.add(comboBox, gbc_comboBox);
 		
 		JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("Vendedor e Cliente");
+		rdbtnNewRadioButton_5.setBackground(Color.LIGHT_GRAY);
 		buttonGroup1.add(rdbtnNewRadioButton_5);
 		GridBagConstraints gbc_rdbtnNewRadioButton_5 = new GridBagConstraints();
 		gbc_rdbtnNewRadioButton_5.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnNewRadioButton_5.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnNewRadioButton_5.gridx = 4;
-		gbc_rdbtnNewRadioButton_5.gridy = 3;
+		gbc_rdbtnNewRadioButton_5.gridy = 4;
 		contentPane.add(rdbtnNewRadioButton_5, gbc_rdbtnNewRadioButton_5);
 		
 		
 		
 		
 		JRadioButton rdbtnNewRadioButton_6 = new JRadioButton("Tudo");
+		rdbtnNewRadioButton_6.setBackground(Color.LIGHT_GRAY);
 		buttonGroup1.add(rdbtnNewRadioButton_6);
 		GridBagConstraints gbc_rdbtnNewRadioButton_6 = new GridBagConstraints();
 		gbc_rdbtnNewRadioButton_6.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnNewRadioButton_6.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnNewRadioButton_6.gridx = 4;
-		gbc_rdbtnNewRadioButton_6.gridy = 4;
+		gbc_rdbtnNewRadioButton_6.gridy = 5;
 		contentPane.add(rdbtnNewRadioButton_6, gbc_rdbtnNewRadioButton_6);
 		
 		
@@ -264,7 +287,7 @@ public class TelaRelatorio extends JFrame {
 		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
 		gbc_btnNewButton_3.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_3.gridx = 15;
-		gbc_btnNewButton_3.gridy = 5;
+		gbc_btnNewButton_3.gridy = 6;
 		contentPane.add(btnNewButton_3, gbc_btnNewButton_3);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -273,7 +296,7 @@ public class TelaRelatorio extends JFrame {
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 1;
-		gbc_scrollPane.gridy = 6;
+		gbc_scrollPane.gridy = 7;
 		contentPane.add(scrollPane, gbc_scrollPane);
 		
 		table = new JTable();
@@ -286,20 +309,6 @@ public class TelaRelatorio extends JFrame {
 		));
 		scrollPane.setViewportView(table);
 		
-		JButton btnNewButton_4 = new JButton("<-");
-		btnNewButton_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaInicio telainicio = new TelaInicio(VA);
-				telainicio.setVisible(true);
-				setVisible(false);
-			}
-		});
-		GridBagConstraints gbc_btnNewButton_4 = new GridBagConstraints();
-		gbc_btnNewButton_4.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton_4.gridx = 0;
-		gbc_btnNewButton_4.gridy = 7;
-		contentPane.add(btnNewButton_4, gbc_btnNewButton_4);
-		
 	
 		
 		
@@ -307,7 +316,7 @@ public class TelaRelatorio extends JFrame {
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
 		gbc_lblNewLabel_1.gridx = 2;
-		gbc_lblNewLabel_1.gridy = 8;
+		gbc_lblNewLabel_1.gridy = 9;
 		contentPane.add(lblNewLabel_1, gbc_lblNewLabel_1);
 	
 		JButton btnNewButton = new JButton("OK");
@@ -459,7 +468,7 @@ public class TelaRelatorio extends JFrame {
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton.gridx = 2;
-		gbc_btnNewButton.gridy = 5;
+		gbc_btnNewButton.gridy = 6;
 		contentPane.add(btnNewButton, gbc_btnNewButton);
 	}
 	
