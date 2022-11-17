@@ -22,10 +22,12 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
-
+import java.awt.KeyboardFocusManager;
 import controle.FornecedorBD;
 import modelo.Fornecedor;
 import modelo.Perfil;
+import java.awt.KeyEventDispatcher;
+import java.awt.event.KeyEvent;
 public class TelaFornecedores extends JFrame {
 	protected static final int posicaoPessoa = 0;
 	private JPanel contentPane;
@@ -190,6 +192,58 @@ public class TelaFornecedores extends JFrame {
 
 			}
 		});
+		KeyboardFocusManager.getCurrentKeyboardFocusManager()
+        .addKeyEventDispatcher(new KeyEventDispatcher() {
+            @Override
+            public boolean dispatchKeyEvent(KeyEvent event) {
+                if(event.getID() == KeyEvent.KEY_RELEASED 
+		&& event.getKeyCode() == KeyEvent.VK_ENTER){
+                	String nome = textField.getText();
+    				String cnpj = textField_1.getText();
+    				String telefone = textField_2.getText();
+    				String email = textField_3.getText();
+    				
+    				Fornecedor fornecedor = new Fornecedor();
+    				fornecedor.setNome(nome);
+    				fornecedor.setCnpj(cnpj);
+    				fornecedor.setEmail(email);
+    				fornecedor.setTelefone(telefone);
+    				
+
+    				
+    				FornecedorBD bdFornecedor = new FornecedorBD();
+    				bdFornecedor.inserirFornecedor(fornecedor);
+    				
+    				textField.setText("");
+    				textField_2.setText("");
+    				textField_3.setText("");
+    				textField_1.setText("");
+    				
+    				while(tbfornecedor.getModel().getRowCount()>0){
+    					 ((DefaultTableModel) tbfornecedor.getModel()).removeRow(0);
+    				}
+    						 
+    					
+    				FornecedorBD fornecedorbd = new FornecedorBD();
+    				listaFornecedor = fornecedorbd.listarTodosFornecedor();
+    				tbfornecedor = new JTable();
+    				tbfornecedor.setModel(new DefaultTableModel(new Object[][] {},
+    						new String[] { "ID","NOME", "CNPJ", "TELEFONE", "E-MAIL" }));
+    				scrollPane.setViewportView(tbfornecedor);
+
+    				modelo = (DefaultTableModel) tbfornecedor.getModel();
+    				for (int i = 0; i < listaFornecedor.size(); i++) {
+    					Fornecedor f = listaFornecedor.get(i);
+    					modelo.addRow(new Object[] { f.getId(), f.getNome(), f.getCnpj(), f.getTelefone(), f.getEmail() });
+
+    				}
+    				tbfornecedor.setModel(modelo);
+                }
+               return true;
+            }
+            return false;
+            }
+		
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton.setBounds(18, 640, 172, 33);
 		contentPane.add(btnNewButton);
@@ -326,7 +380,8 @@ public class TelaFornecedores extends JFrame {
 		});
 		btnNewButton_2.setBounds(956, 610, 141, 33);
 		contentPane.add(btnNewButton_2);
+            }
+        }
 		
-		
-	}
-}
+	
+
