@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import controle.ProdutoBD;
+import modelo.CadastroProdutos;
 import modelo.Perfil;
 
 import java.awt.Font;
@@ -26,8 +28,10 @@ import java.awt.Color;
 public class ProdutosFornecedores extends JFrame {
 	public JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	public JTextField textField_2;
+	
+	CadastroProdutos Cp = new CadastroProdutos();
+	ProdutoBD produtoBD = new ProdutoBD();
 
 	public ProdutosFornecedores(Perfil VA) {
 		getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -37,9 +41,9 @@ public class ProdutosFornecedores extends JFrame {
 		setBounds(100, 100, 541, 349);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
 		
 		JButton btnvoltar = new JButton("<-");
@@ -136,29 +140,53 @@ public class ProdutosFornecedores extends JFrame {
 		gbc_btnNewButton.gridy = 4;
 		getContentPane().add(btnNewButton, gbc_btnNewButton);
 		
-		JLabel lblNewLabel_3 = new JLabel("Data da aquisição:");
-		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
-		gbc_lblNewLabel_3.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_3.gridx = 0;
-		gbc_lblNewLabel_3.gridy = 6;
-		getContentPane().add(lblNewLabel_3, gbc_lblNewLabel_3);
-		
-		textField_3 = new JTextField();
-		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-		gbc_textField_3.gridwidth = 4;
-		gbc_textField_3.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_3.gridx = 1;
-		gbc_textField_3.gridy = 6;
-		getContentPane().add(textField_3, gbc_textField_3);
-		textField_3.setColumns(10);
+		JButton btnNewButton_2 = new JButton("Adicionar");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				produtoBD = new ProdutoBD();
+				Cp = new CadastroProdutos();
+				String id= textField_2.getText();
+				
+				Cp.setId(Integer.valueOf(id));
+				Cp = produtoBD.listarProdutosID(Cp);
+				
+				int quantidade = Cp.getQuantidade();
+			
+				String id1 = textField_2.getText();
+				String quantidade1 = textField_1.getText();
+				
+			int quantidade2 = Integer.valueOf(quantidade1);
+				
+				int somaTotal = quantidade + quantidade2;
+			
+				
+				  Cp = new CadastroProdutos();
+				Cp.setId(Integer.valueOf(id1));
+				Cp.setQuantidade(somaTotal);
+				System.out.println(Cp.getId());
+				System.out.println(Cp.getQuantidade());
+				 
+				 produtoBD = new ProdutoBD();
+				 produtoBD.alterarQuantidade(Cp);
+
+				
+				textField.setText("");
+				textField_1.setText("");
+				textField_2.setText("");
+				
+			}
+		});
+		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
+		gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton_2.gridx = 4;
+		gbc_btnNewButton_2.gridy = 11;
+		getContentPane().add(btnNewButton_2, gbc_btnNewButton_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 5;
-		gbc_lblNewLabel_1.gridy = 12;
+		gbc_lblNewLabel_1.gridy = 13;
 		getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
 	}
 

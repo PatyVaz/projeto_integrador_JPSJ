@@ -44,13 +44,15 @@ public class TelaCadastroProduto extends JFrame {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	String id;
-	private JTextField textField_6;
+	public JTextField textField_6;
 
 
 	/**
 	 * Create the frame.
 	 */
 	public TelaCadastroProduto(Perfil VA) {
+		TelaCadastroProduto tcp = this;
+		
 		setTitle("Cadastro de Produtos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 702, 471);
@@ -206,6 +208,7 @@ public class TelaCadastroProduto extends JFrame {
 		contentPane.add(lblNewLabel_7, gbc_lblNewLabel_7);
 
 		textField_5 = new JTextField();
+		textField_5.setEditable(false);
 		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
 		gbc_textField_5.gridwidth = 3;
 		gbc_textField_5.insets = new Insets(0, 0, 5, 0);
@@ -235,7 +238,8 @@ public class TelaCadastroProduto extends JFrame {
 		JButton btnNewButton = new JButton("Buscar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				TabelaFornecedorTelaCadastrodeprodutos pfc = new TabelaFornecedorTelaCadastrodeprodutos(tcp);
+				pfc.setVisible(true);
 			}
 		});
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
@@ -278,7 +282,7 @@ public class TelaCadastroProduto extends JFrame {
 				String tamanho = textField_1.getText();
 				String marca = textField_3.getText();
 				String preco = textField_4.getText();
-				String quantidade1 = textField_5.getText();
+				int quantidade1 = 0;
 				String fornecedor = textField_6.getText();
 
 				CadastroProdutos cadastroProdutos = new CadastroProdutos();
@@ -287,7 +291,7 @@ public class TelaCadastroProduto extends JFrame {
 				cadastroProdutos.setTamanho(Integer.valueOf(tamanho));
 				cadastroProdutos.setMarca(marca);
 				cadastroProdutos.setPreco(Double.valueOf(preco));
-				cadastroProdutos.setQuantidade(Integer.valueOf(quantidade1));
+				cadastroProdutos.setQuantidade(quantidade1);
 				cadastroProdutos.setIdfornecedor(Integer.valueOf(fornecedor));
 				
 				ProdutoBD bdProduto = new ProdutoBD();

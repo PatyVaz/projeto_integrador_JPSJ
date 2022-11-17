@@ -95,7 +95,7 @@ int posicaoPessoa = tbProduto.getSelectedRow();
 				if(posicaoPessoa > -1) {
 					
 					
-					pf.textField.setText(tbProduto.getValueAt(tbProduto.getSelectedRow(), 0).toString());
+					pf.textField_2.setText(tbProduto.getValueAt(tbProduto.getSelectedRow(), 0).toString());
 					pf.setVisible(true);
 					setVisible(false);				
 					}else {

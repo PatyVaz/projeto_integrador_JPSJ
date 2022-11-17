@@ -35,10 +35,10 @@ public class TelaClientes extends JFrame {
 	private JFormattedTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	private JTextField textField_4;
+	private JFormattedTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
-	private JTextField textField_7;
+	private JFormattedTextField textField_7;
 	private ArrayList<Cliente> listaClientes;
 	static Connection conexao;
 
@@ -144,47 +144,7 @@ public class TelaClientes extends JFrame {
 				String cep = textField_6.getText();
 				String cidade = textField_7.getText();
 
-				try {
-					Integer.parseInt(cpf);
-
-				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(null, "Digite um numero valido no campo 'Cpf'.");
-					textField.setText(nome);
-					textField_1.setText("");
-					textField_2.setText(email);
-					textField_3.setText(rua);
-					textField_4.setText(telefone);
-					textField_5.setText(bairro);
-					textField_6.setText(cep);
-					textField_7.setText(cidade);
-					try {
-						Integer.parseInt(telefone);
-
-					} catch (NumberFormatException ed) {
-						textField_4.setText("");
-					}
-				}
-
-				try {
-					Integer.parseInt(telefone);
-
-				} catch (NumberFormatException ex) {
-					JOptionPane.showMessageDialog(null, "Digite um numero valido no campo 'Telefone'.");
-					textField.setText(nome);
-					textField_1.setText(cpf);
-					textField_2.setText(email);
-					textField_3.setText(rua);
-					textField_4.setText("");
-					textField_5.setText(bairro);
-					textField_6.setText(cep);
-					textField_7.setText(cidade);
-					try {
-						Integer.parseInt(cpf);
-
-					} catch (NumberFormatException ed) {
-						textField_1.setText("");
-					}
-				}
+			
 				// validar se todos os campos de texto foram realmente preenchidos
 
 				Cliente cliente = new Cliente();
@@ -274,7 +234,7 @@ public class TelaClientes extends JFrame {
 		MaskFormatter maskDataFone;
 		try {
 			maskDataFone = new MaskFormatter("(##) #####-####");
-			maskDataFone.install(textField_1);
+			maskDataFone.install(textField_4);
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -291,19 +251,22 @@ public class TelaClientes extends JFrame {
 		contentPane.add(textField_6);
 		textField_6.setColumns(10);
 		
+		
+		textField_7 = new JFormattedTextField();
+		textField_7.setBounds(122, 575, 236, 34);
+		contentPane.add(textField_7);
+		textField_7.setColumns(10);
+		
 		MaskFormatter maskDataCEP;
 		try {
 			maskDataCEP = new MaskFormatter("#####-###");
-			maskDataCEP.install(textField_1);
+			maskDataCEP.install(textField_7);
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
-		textField_7 = new JTextField();
-		textField_7.setBounds(122, 575, 236, 34);
-		contentPane.add(textField_7);
-		textField_7.setColumns(10);
+	
 		
 		JButton btnNewButton_2 = new JButton("Excluir");
 		btnNewButton_2.setEnabled(false);
