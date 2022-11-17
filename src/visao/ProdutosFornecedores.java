@@ -74,18 +74,19 @@ public class ProdutosFornecedores extends JFrame {
 		getContentPane().add(textField, gbc_textField);
 		textField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Buscar");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnNewButton_1 = new JButton("Buscar");
+		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TabelaAquisicao TA = new TabelaAquisicao(pf);
-				TA.setVisible(true);
+				TabelaFornecedor TF = new TabelaFornecedor(pf);
+				TF.setVisible(true);
+				
 			}
 		});
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton.gridx = 4;
-		gbc_btnNewButton.gridy = 2;
-		getContentPane().add(btnNewButton, gbc_btnNewButton);
+		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
+		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton_1.gridx = 4;
+		gbc_btnNewButton_1.gridy = 2;
+		getContentPane().add(btnNewButton_1, gbc_btnNewButton_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Quantidade:");
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
@@ -122,19 +123,18 @@ public class ProdutosFornecedores extends JFrame {
 		getContentPane().add(textField_2, gbc_textField_2);
 		textField_2.setColumns(10);
 		
-		JButton btnNewButton_1 = new JButton("Buscar");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnNewButton = new JButton("Buscar");
+		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TabelaFornecedor TF = new TabelaFornecedor(pf);
-				TF.setVisible(true);
-				
+				TabelaAquisicao TA = new TabelaAquisicao(pf);
+				TA.setVisible(true);
 			}
 		});
-		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
-		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton_1.gridx = 6;
-		gbc_btnNewButton_1.gridy = 4;
-		getContentPane().add(btnNewButton_1, gbc_btnNewButton_1);
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton.gridx = 6;
+		gbc_btnNewButton.gridy = 4;
+		getContentPane().add(btnNewButton, gbc_btnNewButton);
 		
 		JLabel lblNewLabel_3 = new JLabel("Data da aquisição:");
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
