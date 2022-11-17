@@ -49,10 +49,10 @@ public class ClienteBD {
 				Cliente cliente = new Cliente();
 				cliente.setId(rs.getInt("id_cadastro"));
 				cliente.setNome(rs.getString("nome"));
-				cliente.setCpf(rs.getInt("cpf"));
+				cliente.setCpf(rs.getString("cpf"));
 				cliente.setEmail(rs.getString("email"));
 				cliente.setRua(rs.getString("rua"));
-				cliente.setTelefone(rs.getInt("telefone"));
+				cliente.setTelefone(rs.getString("telefone"));
 				cliente.setBairro(rs.getString("bairro"));
 				cliente.setCep(rs.getString("cep"));
 				cliente.setCidade(rs.getString("cidade"));
@@ -77,11 +77,11 @@ public class ClienteBD {
 					"insert into clientes (nome, cpf, email, rua,bairro, telefone, cep, cidade) values(?,?,?,?,?,?,?,?)");
 
 			ps.setString(1, cliente.getNome());
-			ps.setInt(2, cliente.getCpf());
+			ps.setString(2, cliente.getCpf());
 			ps.setString(3, cliente.getEmail());
 			ps.setString(4, cliente.getRua());
 			ps.setString(5, cliente.getBairro());
-			ps.setInt(6, cliente.getTelefone());
+			ps.setString(6, cliente.getTelefone());
 			ps.setString(7, cliente.getCep());
 			ps.setString(8, cliente.getCidade());
 			ps.executeUpdate();
@@ -101,10 +101,10 @@ public class ClienteBD {
 			PreparedStatement ps = conexao.prepareStatement("update clientes set nome=?,email=?,cpf=?,rua=?,bairro=?,telefone=?,cep=?,cidade=? where id_cadastro = ?");
 			ps.setString(1, cliente.getNome());
 			ps.setString(2, cliente.getEmail());
-			ps.setInt(3, cliente.getCpf());
+			ps.setString(3, cliente.getCpf());
 			ps.setString(4, cliente.getRua());
 			ps.setString(5, cliente.getBairro());
-			ps.setInt(6, cliente.getTelefone());
+			ps.setString(6, cliente.getTelefone());
 			ps.setString(7, cliente.getCep());
 			ps.setString(8, cliente.getCidade());
 			ps.setInt(9, cliente.getId());
@@ -131,10 +131,10 @@ public class ClienteBD {
 				cl = new Cliente();
 				cl.setId(rs.getInt("id_cadastro"));
 				cl.setNome(rs.getString("nome"));
-				cl.setCpf(rs.getInt("cpf"));
+				cl.setCpf(rs.getString("cpf"));
 				cl.setEmail(rs.getString("email"));
 				cl.setRua(rs.getString("rua"));
-				cl.setTelefone(rs.getInt("telefone"));
+				cl.setTelefone(rs.getString("telefone"));
 				cl.setBairro(rs.getString("bairro"));
 				cl.setCep(rs.getString("cep"));
 				cl.setCidade(rs.getString("cidade"));

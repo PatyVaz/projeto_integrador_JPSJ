@@ -189,11 +189,11 @@ public class TelaClientes extends JFrame {
 
 				Cliente cliente = new Cliente();
 				cliente.setNome(nome);
-				cliente.setCpf(Integer.valueOf(cpf));
+				cliente.setCpf(cpf);
 				cliente.setEmail(email);
 				cliente.setRua(rua);
 				cliente.setBairro(bairro);
-				cliente.setTelefone(Integer.valueOf(telefone));
+				cliente.setTelefone(telefone);
 				cliente.setCep(cep);
 				cliente.setCidade(cidade);
 
@@ -246,12 +246,7 @@ public class TelaClientes extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-<<<<<<< HEAD
-
-MaskFormatter maskData;
-=======
 		MaskFormatter maskData;
->>>>>>> main
 		try {
 			maskData = new MaskFormatter("###.###.###-##");
 			maskData.install(textField_1);
@@ -359,11 +354,11 @@ MaskFormatter maskData;
 				
 				Cliente cliente = new Cliente();
 				cliente.setNome(nome);
-				cliente.setCpf(Integer.valueOf(cpf));
+				cliente.setCpf(cpf);
 				cliente.setEmail(email);
 				cliente.setRua(rua);
 				cliente.setBairro(bairro);
-				cliente.setTelefone(Integer.valueOf(telefone));
+				cliente.setTelefone(telefone);
 				cliente.setCep(cep);
 				cliente.setCidade(cidade);
 				cliente.setId(Integer.valueOf(id));

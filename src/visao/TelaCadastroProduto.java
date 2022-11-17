@@ -24,6 +24,8 @@ import javax.swing.table.DefaultTableModel;
 import controle.ProdutoBD;
 import modelo.CadastroProdutos;
 import modelo.Perfil;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class TelaCadastroProduto extends JFrame {
 	protected static final int posicaoPessoa = 0;
@@ -181,6 +183,9 @@ public class TelaCadastroProduto extends JFrame {
 		contentPane.add(lblNewLabel_5, gbc_lblNewLabel_5);
 
 		textField_4 = new JTextField();
+		textField_4.addFocusListener(new FocusAdapter() {
+			
+		});
 		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
 		gbc_textField_4.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;

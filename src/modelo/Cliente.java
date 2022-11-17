@@ -4,11 +4,11 @@ public class Cliente {
 
 	private int id;
 	private String nome;
-	private int cpf;
+	private String cpf;
 	private String email;
 	private String rua;
 	private String bairro;
-	private int telefone;
+	private String telefone;
 	private String cep;
 	private String cidade;
 	public int getId() {
@@ -23,12 +23,7 @@ public class Cliente {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getCpf() {
-		return cpf;
-	}
-	public void setCpf(int cpf) {
-		this.cpf = cpf;
-	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -53,17 +48,24 @@ public class Cliente {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	public int getTelefone() {
-		return telefone;
-	}
-	public void setTelefone(int telefone) {
-		this.telefone = telefone;
-	}
+	
 	public String getCidade() {
 		return cidade;
 	}
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 	
 
