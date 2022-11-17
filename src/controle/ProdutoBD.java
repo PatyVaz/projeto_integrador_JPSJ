@@ -101,6 +101,25 @@ public class ProdutoBD {
 		}
 		return 0;
 	}
+	
+	public int alterarQuantidade(CadastroProdutos cadastroProdutos) {
+
+		try {
+
+			PreparedStatement ps = conexao.prepareStatement("update produtos set quantidade=?   where id_produto = ?");
+		
+			ps.setInt(1, cadastroProdutos.getQuantidade());
+			ps.setInt(2, cadastroProdutos.getId());
+			ps.executeUpdate();
+
+			
+
+		} catch (SQLException e1) {
+
+			e1.printStackTrace();
+		}
+		return 0;
+	}
 
 	public CadastroProdutos listarProdutosID(CadastroProdutos cadastroProdutos) {
 		PreparedStatement ps;

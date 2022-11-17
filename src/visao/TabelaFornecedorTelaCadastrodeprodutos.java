@@ -26,8 +26,8 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class TabelaFornecedor extends JFrame {
-	public TabelaFornecedor() {
+public class TabelaFornecedorTelaCadastrodeprodutos extends JFrame {
+	public TabelaFornecedorTelaCadastrodeprodutos() {
 	}
 
 	
@@ -35,6 +35,7 @@ public class TabelaFornecedor extends JFrame {
 	private JPanel contentPane;
 	private JTable tbFornecedor;
 	private ArrayList<Fornecedor> listaFornecedor;
+	
 	private DefaultTableModel modelo;
 	protected static final int posicaoPessoa = 0;
 
@@ -46,8 +47,8 @@ public class TabelaFornecedor extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TabelaFornecedor( ProdutosFornecedores pf ){
-		setTitle("Vendas do Usuário");
+	public TabelaFornecedorTelaCadastrodeprodutos( TelaCadastroProduto tcp){
+		
 		
 		
 			
@@ -72,7 +73,7 @@ public class TabelaFornecedor extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-					"ID","Nome", "CNPJ"
+					"ID", "Nome", "Cnpj"
 			}
 			
 		));
@@ -104,10 +105,10 @@ int posicaoPessoa = tbFornecedor.getSelectedRow();
 				if(posicaoPessoa > -1) {
 					
 					
-					pf.textField.setText(tbFornecedor.getValueAt(tbFornecedor.getSelectedRow(), 0).toString());
+					tcp.textField_6.setText(tbFornecedor.getValueAt(tbFornecedor.getSelectedRow(), 0).toString());
 					
 					
-					pf.setVisible(true);
+					tcp.setVisible(true);
 					setVisible(false);				
 					}else {
 					JOptionPane.showMessageDialog(null,"escolha uma linha na tabela");
