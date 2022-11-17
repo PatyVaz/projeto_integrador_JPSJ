@@ -189,11 +189,11 @@ public class TelaClientes extends JFrame {
 
 				Cliente cliente = new Cliente();
 				cliente.setNome(nome);
-				cliente.setCpf(Integer.valueOf(cpf));
+				cliente.setCpf(cpf);
 				cliente.setEmail(email);
 				cliente.setRua(rua);
 				cliente.setBairro(bairro);
-				cliente.setTelefone(Integer.valueOf(telefone));
+				cliente.setTelefone(telefone);
 				cliente.setCep(cep);
 				cliente.setCidade(cidade);
 
@@ -373,11 +373,11 @@ public class TelaClientes extends JFrame {
 				
 				Cliente cliente = new Cliente();
 				cliente.setNome(nome);
-				cliente.setCpf(Integer.valueOf(cpf));
+				cliente.setCpf(cpf);
 				cliente.setEmail(email);
 				cliente.setRua(rua);
 				cliente.setBairro(bairro);
-				cliente.setTelefone(Integer.valueOf(telefone));
+				cliente.setTelefone(telefone);
 				cliente.setCep(cep);
 				cliente.setCidade(cidade);
 				cliente.setId(Integer.valueOf(id));
