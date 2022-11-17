@@ -76,7 +76,7 @@ public class TelaVenda extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Vendas:");
-		lblNewLabel.setBounds(41, 5, 126, 22);
+		lblNewLabel.setBounds(86, 12, 126, 22);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblNewLabel);
 
@@ -187,7 +187,7 @@ public class TelaVenda extends JFrame {
 			}
 		});
 		JLabel lblNewLabel_7 = new JLabel("Valor Total:");
-		lblNewLabel_7.setBounds(628, 404, 86, 14);
+		lblNewLabel_7.setBounds(722, 404, 86, 14);
 		contentPane.add(lblNewLabel_7);
 		
 		JButton btnNewButton_1 = new JButton("Finalizar Venda");
@@ -324,7 +324,7 @@ public class TelaVenda extends JFrame {
 			    btnNewButton_3.setEnabled(false);
 			}
 		});
-		btnNewButton_3.setBounds(471, 400, 147, 23);
+		btnNewButton_3.setBounds(552, 404, 147, 23);
 		contentPane.add(btnNewButton_3);
 
 		JButton btnNewButton_4 = new JButton("Buscar(f1)");
@@ -344,7 +344,7 @@ public class TelaVenda extends JFrame {
 		contentPane.add(btnNewButton_5);
 		
 
-		btnNewButton_6.setBounds(348, 400, 105, 22);
+		btnNewButton_6.setBounds(425, 404, 105, 22);
 		contentPane.add(btnNewButton_6);
 		
 		JLabel lblNewLabel_8 = new JLabel("Vendedor:");
@@ -462,7 +462,7 @@ public class TelaVenda extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_10.setBounds(10, 456, 54, 23);
+		btnNewButton_10.setBounds(10, 11, 54, 23);
 		contentPane.add(btnNewButton_10);
 		
 		
