@@ -21,6 +21,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class ProdutosFornecedores extends JFrame {
 	public JTextField textField;
@@ -29,6 +30,7 @@ public class ProdutosFornecedores extends JFrame {
 	private JTextField textField_3;
 
 	public ProdutosFornecedores(Perfil VA) {
+		getContentPane().setBackground(Color.LIGHT_GRAY);
 		 ProdutosFornecedores pf = this;
 		setTitle("Produtos e aquisição:");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
