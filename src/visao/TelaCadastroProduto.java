@@ -28,6 +28,7 @@ import modelo.CadastroProdutos;
 import modelo.Perfil;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.Color;
 
 public class TelaCadastroProduto extends JFrame {
 	protected static final int posicaoPessoa = 0;
@@ -54,6 +55,7 @@ public class TelaCadastroProduto extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 702, 471);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
