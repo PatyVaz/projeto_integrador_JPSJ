@@ -246,10 +246,14 @@ public class TelaClientes extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
+<<<<<<< HEAD
 		MaskFormatter maskData;
+=======
+		MaskFormatter maskDataCPF;
+>>>>>>> main
 		try {
-			maskData = new MaskFormatter("###.###.###-##");
-			maskData.install(textField_1);
+			maskDataCPF = new MaskFormatter("###.###.###-##");
+			maskDataCPF.install(textField_1);
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -266,20 +270,39 @@ public class TelaClientes extends JFrame {
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 
-		textField_4 = new JTextField();
+		textField_4 = new JFormattedTextField();
 		textField_4.setBounds(122, 375, 236, 34);
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
+		
+		MaskFormatter maskDataFone;
+		try {
+			maskDataFone = new MaskFormatter("(##) #####-####");
+			maskDataFone.install(textField_1);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 
 		textField_5 = new JTextField();
 		textField_5.setBounds(122, 444, 236, 34);
 		contentPane.add(textField_5);
 		textField_5.setColumns(10);
 
-		textField_6 = new JTextField();
+		textField_6 = new JFormattedTextField();
 		textField_6.setBounds(122, 515, 236, 34);
 		contentPane.add(textField_6);
 		textField_6.setColumns(10);
+		
+		MaskFormatter maskDataCEP;
+		try {
+			maskDataCEP = new MaskFormatter("#####-###");
+			maskDataCEP.install(textField_1);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		textField_7 = new JTextField();
 		textField_7.setBounds(122, 575, 236, 34);

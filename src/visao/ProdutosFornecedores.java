@@ -14,41 +14,29 @@ import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import modelo.Perfil;
+
 import java.awt.Font;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ProdutosFornecedores extends JFrame {
-	private JTextField textField;
+	public JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_3;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ProdutosFornecedores frame = new ProdutosFornecedores();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public ProdutosFornecedores() {
+	public ProdutosFornecedores(Perfil VA) {
+		 ProdutosFornecedores pf = this;
 		setTitle("Produtos e aquisição:");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 541, 349);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
 		
@@ -78,6 +66,12 @@ public class ProdutosFornecedores extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Buscar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TabelaAquisicao TA = new TabelaAquisicao(pf);
+				TA.setVisible(true);
+			}
+		});
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton.gridx = 4;
@@ -125,6 +119,24 @@ public class ProdutosFornecedores extends JFrame {
 		gbc_btnNewButton_1.gridx = 6;
 		gbc_btnNewButton_1.gridy = 4;
 		getContentPane().add(btnNewButton_1, gbc_btnNewButton_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("Data da aquisição:");
+		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
+		gbc_lblNewLabel_3.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_3.gridx = 0;
+		gbc_lblNewLabel_3.gridy = 6;
+		getContentPane().add(lblNewLabel_3, gbc_lblNewLabel_3);
+		
+		textField_3 = new JTextField();
+		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
+		gbc_textField_3.gridwidth = 4;
+		gbc_textField_3.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_3.gridx = 1;
+		gbc_textField_3.gridy = 6;
+		getContentPane().add(textField_3, gbc_textField_3);
+		textField_3.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
