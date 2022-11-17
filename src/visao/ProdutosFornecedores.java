@@ -42,12 +42,19 @@ public class ProdutosFornecedores extends JFrame {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
 		
-		JButton btnNewButton_4 = new JButton("<-");
-		GridBagConstraints gbc_btnNewButton_4 = new GridBagConstraints();
-		gbc_btnNewButton_4.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton_4.gridx = 0;
-		gbc_btnNewButton_4.gridy = 0;
-		getContentPane().add(btnNewButton_4, gbc_btnNewButton_4);
+		JButton btnvoltar = new JButton("<-");
+		btnvoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaInicio telainicio = new TelaInicio(VA);
+				telainicio.setVisible(true);
+				setVisible(false);
+			}
+		});
+		GridBagConstraints gbc_btnvoltar = new GridBagConstraints();
+		gbc_btnvoltar.insets = new Insets(0, 0, 5, 5);
+		gbc_btnvoltar.gridx = 0;
+		gbc_btnvoltar.gridy = 0;
+		getContentPane().add(btnvoltar, gbc_btnvoltar);
 		
 		JLabel lblNewLabel = new JLabel("Fornecedor:");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
@@ -116,6 +123,13 @@ public class ProdutosFornecedores extends JFrame {
 		textField_2.setColumns(10);
 		
 		JButton btnNewButton_1 = new JButton("Buscar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TabelaFornecedor TF = new TabelaFornecedor(pf);
+				TF.setVisible(true);
+				
+			}
+		});
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_1.gridx = 6;
