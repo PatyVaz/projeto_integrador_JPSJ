@@ -292,7 +292,8 @@ public class TelaFornecedores extends JFrame {
 		
 		
 	
-		JButton btnNewButton_1 = new JButton("â†�");
+		JButton btnNewButton_1 = new JButton("<-");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaInicio telainicio = new TelaInicio(VA);
@@ -300,7 +301,7 @@ public class TelaFornecedores extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_1.setBounds(0, 3, 61, 23);
+		btnNewButton_1.setBounds(0, 3, 86, 23);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Selecionar");
