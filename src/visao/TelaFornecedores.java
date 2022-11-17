@@ -192,6 +192,7 @@ public class TelaFornecedores extends JFrame {
 
 			}
 		});
+		
 		KeyboardFocusManager.getCurrentKeyboardFocusManager()
         .addKeyEventDispatcher(new KeyEventDispatcher() {
             @Override
@@ -238,11 +239,12 @@ public class TelaFornecedores extends JFrame {
 
     				}
     				tbfornecedor.setModel(modelo);
+    				return true;
                 }
-               return true;
+                return false;
             }
-            return false;
-            }
+           
+            });
 		
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton.setBounds(18, 640, 172, 33);
