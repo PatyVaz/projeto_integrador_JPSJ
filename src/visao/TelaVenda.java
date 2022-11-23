@@ -30,6 +30,7 @@ import modelo.CadastroProdutos;
 import modelo.Cliente;
 import modelo.Perfil;
 import modelo.Produto;
+
 import modelo.Usuario;
 import modelo.Venda;
 
@@ -91,7 +92,7 @@ public class TelaVenda extends JFrame {
 		txtNomeProd.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBounds(698, 404, 138, 14);
+		lblNewLabel_1.setBounds(698, 404, 183, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		txtQuantidadeProd = new JTextField();
@@ -194,14 +195,14 @@ public class TelaVenda extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				System.out.println(tbProdutosCarrinho.getRowCount());
+				
 				
 				  for(int i=0; i<tbProdutosCarrinho.getRowCount();i++) { 
-					  System.out.println(i);
+					 
 					 String id_cadastro = textField_3.getText();
 						String id_usuario = textField.getText();
 
-						String id_produto = (tbProdutosCarrinho.getValueAt(i, 0).toString());
+						 String id_produto = (tbProdutosCarrinho.getValueAt(i, 0).toString());
 						String preco = (tbProdutosCarrinho.getValueAt(i, 2).toString());
 						DateTimeFormatter dtf5 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 				        String h =(dtf5.format(LocalDateTime.now()));
@@ -210,14 +211,25 @@ public class TelaVenda extends JFrame {
 						
 						    venda.setCadastro(Integer.valueOf(id_cadastro));
 						    venda.setUsuario(Integer.valueOf(id_usuario));
-						    venda.setProduto(Integer.valueOf(id_produto));
+							 venda.setId_produto(Integer.valueOf(id_produto));
 						    venda.setValor(Double.valueOf(preco));
 						    venda.setData(h);
+						
+						   
+						
 						
 
 						
 						VendaBD bdVenda = new VendaBD();
 						bdVenda.inserirVenda(venda);
+						
+						
+						
+						 
+						 
+						
+						 
+						
 				  }
 				  while(tbProdutosCarrinho.getModel().getRowCount()>0){
 						 ((DefaultTableModel) tbProdutosCarrinho.getModel()).removeRow(0);

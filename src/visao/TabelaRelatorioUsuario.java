@@ -40,7 +40,7 @@ public class TabelaRelatorioUsuario extends JFrame {
 		setTitle("Relatório de Usuários");
 		
 		
-			System.out.println(conexao);
+			
 			
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

@@ -35,7 +35,7 @@ public class TabelaUsuario extends JFrame {
 		setTitle("Usuários");
 		 UsuarioBD usuarioBd = new UsuarioBD();
 		
-		System.out.println(conexao);
+		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

@@ -144,8 +144,14 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+create table estoque(
+id_estoque int not null auto_increment primary key,
+id_fornecedor int not null,
+id_produto int not null,
+quantidade int not null,
+valor varchar(50) not null,
+data varchar(50));
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
