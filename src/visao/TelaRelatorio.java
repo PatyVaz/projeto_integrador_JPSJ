@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
@@ -15,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -34,7 +36,6 @@ public class TelaRelatorio extends JFrame {
 	private JPanel contentPane;
 	private DefaultTableModel modelo;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private final ButtonGroup buttonGroup1 = new ButtonGroup();
 	public  JTextField txtVendedor;
 	private JTable table;
 	public JTextField txtCliente;
@@ -86,19 +87,11 @@ public class TelaRelatorio extends JFrame {
 		gbc_btnNewButton_4.gridy = 0;
 		contentPane.add(btnNewButton_4, gbc_btnNewButton_4);
 		
-		JLabel lblNewLabel = new JLabel("Estoque  do:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 2;
-		gbc_lblNewLabel.gridy = 1;
-		contentPane.add(lblNewLabel, gbc_lblNewLabel);
-		
 		JLabel lblNewLabel_5 = new JLabel("Procurar por:");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 11));
 		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
 		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_5.gridx = 4;
+		gbc_lblNewLabel_5.gridx = 2;
 		gbc_lblNewLabel_5.gridy = 1;
 		contentPane.add(lblNewLabel_5, gbc_lblNewLabel_5);
 		
@@ -146,7 +139,7 @@ public class TelaRelatorio extends JFrame {
 		gbc_comboBox_2.gridy = 1;
 		contentPane.add(comboBox_2, gbc_comboBox_2);
 		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Ano");
+		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Data");
 		rdbtnNewRadioButton_2.setBackground(Color.LIGHT_GRAY);
 		buttonGroup.add(rdbtnNewRadioButton_2);
 		GridBagConstraints gbc_rdbtnNewRadioButton_2 = new GridBagConstraints();
@@ -157,15 +150,15 @@ public class TelaRelatorio extends JFrame {
 		gbc_rdbtnNewRadioButton_2.gridy = 2;
 		contentPane.add(rdbtnNewRadioButton_2, gbc_rdbtnNewRadioButton_2);
 		
-		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("Vendedor");
-		rdbtnNewRadioButton_3.setBackground(Color.LIGHT_GRAY);
-		buttonGroup1.add(rdbtnNewRadioButton_3);
-		GridBagConstraints gbc_rdbtnNewRadioButton_3 = new GridBagConstraints();
-		gbc_rdbtnNewRadioButton_3.anchor = GridBagConstraints.WEST;
-		gbc_rdbtnNewRadioButton_3.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnNewRadioButton_3.gridx = 4;
-		gbc_rdbtnNewRadioButton_3.gridy = 2;
-		contentPane.add(rdbtnNewRadioButton_3, gbc_rdbtnNewRadioButton_3);
+		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("cliente");
+		rdbtnNewRadioButton_4.setBackground(Color.LIGHT_GRAY);
+		buttonGroup.add(rdbtnNewRadioButton_4);
+		GridBagConstraints gbc_rdbtnNewRadioButton_4 = new GridBagConstraints();
+		gbc_rdbtnNewRadioButton_4.anchor = GridBagConstraints.WEST;
+		gbc_rdbtnNewRadioButton_4.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnNewRadioButton_4.gridx = 4;
+		gbc_rdbtnNewRadioButton_4.gridy = 2;
+		contentPane.add(rdbtnNewRadioButton_4, gbc_rdbtnNewRadioButton_4);
 		
 		txtCliente = new JTextField();
 		txtCliente.setEditable(false);
@@ -211,24 +204,25 @@ public class TelaRelatorio extends JFrame {
 		gbc_comboBox_1.gridy = 2;
 		contentPane.add(comboBox_1, gbc_comboBox_1);
 		
-		JRadioButton rdbtnNewRadioButton_7 = new JRadioButton("Marcar Nada");
-		rdbtnNewRadioButton_7.setBackground(Color.LIGHT_GRAY);
-		buttonGroup.add(rdbtnNewRadioButton_7);
-		GridBagConstraints gbc_rdbtnNewRadioButton_7 = new GridBagConstraints();
-		gbc_rdbtnNewRadioButton_7.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnNewRadioButton_7.gridx = 2;
-		gbc_rdbtnNewRadioButton_7.gridy = 3;
-		contentPane.add(rdbtnNewRadioButton_7, gbc_rdbtnNewRadioButton_7);
+		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("Vendedor");
+		rdbtnNewRadioButton_3.setBackground(Color.LIGHT_GRAY);
+		buttonGroup.add(rdbtnNewRadioButton_3);
+		GridBagConstraints gbc_rdbtnNewRadioButton_3 = new GridBagConstraints();
+		gbc_rdbtnNewRadioButton_3.anchor = GridBagConstraints.WEST;
+		gbc_rdbtnNewRadioButton_3.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnNewRadioButton_3.gridx = 2;
+		gbc_rdbtnNewRadioButton_3.gridy = 3;
+		contentPane.add(rdbtnNewRadioButton_3, gbc_rdbtnNewRadioButton_3);
 		
-		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("cliente");
-		rdbtnNewRadioButton_4.setBackground(Color.LIGHT_GRAY);
-		buttonGroup1.add(rdbtnNewRadioButton_4);
-		GridBagConstraints gbc_rdbtnNewRadioButton_4 = new GridBagConstraints();
-		gbc_rdbtnNewRadioButton_4.anchor = GridBagConstraints.WEST;
-		gbc_rdbtnNewRadioButton_4.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnNewRadioButton_4.gridx = 4;
-		gbc_rdbtnNewRadioButton_4.gridy = 3;
-		contentPane.add(rdbtnNewRadioButton_4, gbc_rdbtnNewRadioButton_4);
+		JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("Vendedor e Cliente");
+		rdbtnNewRadioButton_5.setBackground(Color.LIGHT_GRAY);
+		buttonGroup.add(rdbtnNewRadioButton_5);
+		GridBagConstraints gbc_rdbtnNewRadioButton_5 = new GridBagConstraints();
+		gbc_rdbtnNewRadioButton_5.anchor = GridBagConstraints.WEST;
+		gbc_rdbtnNewRadioButton_5.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnNewRadioButton_5.gridx = 4;
+		gbc_rdbtnNewRadioButton_5.gridy = 3;
+		contentPane.add(rdbtnNewRadioButton_5, gbc_rdbtnNewRadioButton_5);
 		
 		JLabel lblNewLabel_4 = new JLabel("Dia:");
 		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
@@ -247,36 +241,14 @@ public class TelaRelatorio extends JFrame {
 		gbc_comboBox.gridy = 3;
 		contentPane.add(comboBox, gbc_comboBox);
 		
-		JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("Vendedor e Cliente");
-		rdbtnNewRadioButton_5.setBackground(Color.LIGHT_GRAY);
-		buttonGroup1.add(rdbtnNewRadioButton_5);
-		GridBagConstraints gbc_rdbtnNewRadioButton_5 = new GridBagConstraints();
-		gbc_rdbtnNewRadioButton_5.anchor = GridBagConstraints.WEST;
-		gbc_rdbtnNewRadioButton_5.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnNewRadioButton_5.gridx = 4;
-		gbc_rdbtnNewRadioButton_5.gridy = 4;
-		contentPane.add(rdbtnNewRadioButton_5, gbc_rdbtnNewRadioButton_5);
-		
-		
-		
-		
-		JRadioButton rdbtnNewRadioButton_6 = new JRadioButton("Tudo");
-		rdbtnNewRadioButton_6.setBackground(Color.LIGHT_GRAY);
-		buttonGroup1.add(rdbtnNewRadioButton_6);
-		GridBagConstraints gbc_rdbtnNewRadioButton_6 = new GridBagConstraints();
-		gbc_rdbtnNewRadioButton_6.anchor = GridBagConstraints.WEST;
-		gbc_rdbtnNewRadioButton_6.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnNewRadioButton_6.gridx = 4;
-		gbc_rdbtnNewRadioButton_6.gridy = 5;
-		contentPane.add(rdbtnNewRadioButton_6, gbc_rdbtnNewRadioButton_6);
-		
 		
 		
 		JButton btnNewButton_3 = new JButton("Limpar");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				buttonGroup.clearSelection();
-				buttonGroup1.clearSelection();
+				txtCliente.setText("Cliente");
+				txtVendedor.setText("Vendedor");
 				while(table.getModel().getRowCount()>0){
 					 ((DefaultTableModel) table.getModel()).removeRow(0);
 				}
@@ -284,6 +256,16 @@ public class TelaRelatorio extends JFrame {
 		
 			}
 		});
+		
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("Tudo");
+		rdbtnNewRadioButton.setBackground(new Color(192, 192, 192));
+		buttonGroup.add(rdbtnNewRadioButton);
+		GridBagConstraints gbc_rdbtnNewRadioButton = new GridBagConstraints();
+		gbc_rdbtnNewRadioButton.anchor = GridBagConstraints.WEST;
+		gbc_rdbtnNewRadioButton.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnNewRadioButton.gridx = 4;
+		gbc_rdbtnNewRadioButton.gridy = 4;
+		contentPane.add(rdbtnNewRadioButton, gbc_rdbtnNewRadioButton);
 		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
 		gbc_btnNewButton_3.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_3.gridx = 15;
@@ -345,7 +327,7 @@ public class TelaRelatorio extends JFrame {
 				
 				if(rdbtnNewRadioButton_2.isSelected() == true ) {
 					
-					if(rdbtnNewRadioButton_2.isSelected() == true && rdbtnNewRadioButton_6.isSelected() == true) {
+					if(rdbtnNewRadioButton_2.isSelected() == true ) {
 						String dia = (String) comboBox.getSelectedItem();
 						String mes = (String) comboBox_1.getSelectedItem();
 						String ano = (String) comboBox_2.getSelectedItem();
@@ -374,13 +356,15 @@ public class TelaRelatorio extends JFrame {
 						
 						
 						
-						mensagem += "ano e tudo";
+						mensagem += "Data";
 					}
 				}
 				
 				
 				
-				if(rdbtnNewRadioButton_3.isSelected() == true && rdbtnNewRadioButton_7.isSelected() == true) {
+				
+				if(rdbtnNewRadioButton_3.isSelected() == true ) {
+					try {
 					String id = txtVendedor.getText();
 					RelatorioBD relatorioBD = new RelatorioBD();
 				
@@ -400,8 +384,17 @@ public class TelaRelatorio extends JFrame {
 					}
 					
 					mensagem += "vendedor";
+					}catch (NumberFormatException e2) {
+						JOptionPane.showMessageDialog(null, "selecione um usuario");
+						return;
+					}
+					
 				}
-				if(rdbtnNewRadioButton_4.isSelected() == true && rdbtnNewRadioButton_7.isSelected() == true ) {
+				
+		
+				
+				if(rdbtnNewRadioButton_4.isSelected() == true  ) {
+					try {
 					String id = txtCliente.getText();
 					RelatorioBD relatorioBD = new RelatorioBD();
 				
@@ -420,9 +413,17 @@ public class TelaRelatorio extends JFrame {
 					
 					}
 					mensagem += "cliente ";
+					}catch (NumberFormatException e2) {
+						JOptionPane.showMessageDialog(null, "selecione um Cliente");
+						return;
+					}
 				}
-				if(rdbtnNewRadioButton_5.isSelected() == true && rdbtnNewRadioButton_7.isSelected() == true) {
-					
+				
+				
+				
+				
+				if(rdbtnNewRadioButton_5.isSelected() == true) {
+					try{
 					String id = txtCliente.getText();
 					String id1 = txtVendedor.getText();
 					RelatorioBD relatorioBD = new RelatorioBD();
@@ -444,11 +445,22 @@ public class TelaRelatorio extends JFrame {
 					}
 					
 					mensagem += "vendedor e cliente ";
+					}catch (NumberFormatException e2) {
+						JOptionPane.showMessageDialog(null, "selecione um Cliente e um vendedor");
+						return;
+					}
 				}
-				if(rdbtnNewRadioButton_6.isSelected() == true && rdbtnNewRadioButton_7.isSelected() == true ) {
-					mensagem += "tudo ";
+				
+				
+				
+				if(rdbtnNewRadioButton.isSelected() == true) {
+					try{
+					
 					RelatorioBD relatorioBD = new RelatorioBD();
-					listaVenda = relatorioBD.listarTodasVendas();
+				
+					
+					listaVenda = relatorioBD.listarTodasVendas(vc);
+					
 					table = new JTable();
 					table.setModel(new DefaultTableModel(new Object[][] {},
 							new String[] { "Cliente", "Usuario", "Produto", "Preço", "Data"}));
@@ -458,9 +470,16 @@ public class TelaRelatorio extends JFrame {
 					for (int i = 0; i < listaVenda.size(); i++) {
 						VendaCompleto vc = listaVenda.get(i);
 					modelo.addRow(new Object[] {vc.getCadastro(), vc.getUsuario(), vc.getProduto(), vc.getValor(), vc.getData() });
-
+					
+					}
+					
+					mensagem += "Todas as vendas ";
+					}catch (NumberFormatException e2) {
+						JOptionPane.showMessageDialog(null, "selecione um Cliente e um vendedor");
+						return;
 					}
 				}
+			
 			
 				lblNewLabel_1.setText(mensagem);
 			}

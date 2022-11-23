@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 
@@ -49,16 +50,29 @@ public class VendaBD {
 
 		try {
 			
-			  PreparedStatement ps = conexao.prepareStatement("insert into venda ( id_doCliente , id_doUsuario , id_doProduto , preco , data) values(?,?,?,?,?)");
+			  PreparedStatement ps = conexao.prepareStatement("insert into venda ( clientes_id_cadastro , usuario_id_usuario  , preco , data) values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 			
 			ps.setInt(1,v.getCadastro());
 			ps.setInt(2,v.getUsuario());
-			ps.setInt(3,v.getProduto());
-			ps.setDouble(4,v.getValor());
-			ps.setString(5,v.getData());
+			ps.setDouble(3,v.getValor());
+			ps.setString(4,v.getData());
 			
-			ps.executeUpdate();
-		
+		    ps.executeUpdate();
+			
+			ResultSet rs=ps.getGeneratedKeys();
+			if (rs.next()){
+				
+			    int resultado = rs.getInt(1);
+			
+			    ps = conexao.prepareStatement("insert into venda_has_produtos (venda_id_venda,produtos_id_produto) values(?,?)");	
+			  
+			     ps.setInt(1,resultado);
+			
+			     ps.setInt(2,v.getId_produto());
+			
+			     ps.executeUpdate();
+			   
+			}
 			
 			}catch(SQLException e1)
 			{
@@ -66,4 +80,8 @@ public class VendaBD {
 			}
 	return 0;
 }
+	
+
+	
+	
 }
