@@ -19,6 +19,9 @@ import controle.ClienteBD;
 import controle.EstoqueBD;
 import modelo.Cliente;
 import modelo.Estoque;
+import java.awt.Insets;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class HistoricoCompra extends JFrame {
 
@@ -37,13 +40,14 @@ public class HistoricoCompra extends JFrame {
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0};
 		gbl_contentPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
 		gbc_scrollPane.gridy = 0;
@@ -64,6 +68,19 @@ public class HistoricoCompra extends JFrame {
 		table.setModel(new DefaultTableModel(new Object[][] {},
 				new String[] { "ID", "Fornecedor", "Produto", "Quantidade", "Valor", "Data" }));
 		scrollPane.setViewportView(table);
+		
+		JButton btnNewButton = new JButton("Voltar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ProdutosFornecedores pf = new ProdutosFornecedores(null);
+				pf.setVisible(true);
+				setVisible(false);
+			}
+		});
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.gridx = 0;
+		gbc_btnNewButton.gridy = 1;
+		contentPane.add(btnNewButton, gbc_btnNewButton);
 
 		modelo = (DefaultTableModel) table.getModel();
 		for (int i = 0; i < listaEstoque.size(); i++) {
