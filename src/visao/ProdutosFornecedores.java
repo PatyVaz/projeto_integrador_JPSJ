@@ -41,6 +41,7 @@ public class ProdutosFornecedores extends JFrame {
 	private JTextField textField_3;
 
 	public ProdutosFornecedores(Perfil VA) {
+		setExtendedState(MAXIMIZED_BOTH);
 		getContentPane().setBackground(Color.LIGHT_GRAY);
 		 ProdutosFornecedores pf = this;
 		setTitle("Produtos e aquisição:");
@@ -146,6 +147,7 @@ public class ProdutosFornecedores extends JFrame {
 			}
 		});
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.gridwidth = 2;
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton.gridx = 8;
 		gbc_btnNewButton.gridy = 4;
