@@ -42,7 +42,7 @@ public class ProdutosFornecedores extends JFrame {
 
 	public ProdutosFornecedores(Perfil VA) {
 		setExtendedState(MAXIMIZED_BOTH);
-		getContentPane().setBackground(Color.LIGHT_GRAY);
+		getContentPane().setBackground(new Color(32, 178, 170));
 		 ProdutosFornecedores pf = this;
 		setTitle("Produtos e aquisição:");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,6 +55,7 @@ public class ProdutosFornecedores extends JFrame {
 		getContentPane().setLayout(gridBagLayout);
 		
 		JButton btnvoltar = new JButton("<-");
+		btnvoltar.setBackground(new Color(0, 0, 0));
 		btnvoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaInicio telainicio = new TelaInicio(VA);
@@ -88,6 +89,7 @@ public class ProdutosFornecedores extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnNewButton_1 = new JButton("Buscar");
+		btnNewButton_1.setBackground(new Color(0, 0, 0));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -103,6 +105,7 @@ public class ProdutosFornecedores extends JFrame {
 		getContentPane().add(btnNewButton_1, gbc_btnNewButton_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Quantidade:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
@@ -139,6 +142,7 @@ public class ProdutosFornecedores extends JFrame {
 		textField_2.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Buscar");
+		btnNewButton.setBackground(new Color(0, 0, 0));
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -154,7 +158,8 @@ public class ProdutosFornecedores extends JFrame {
 		getContentPane().add(btnNewButton, gbc_btnNewButton);
 		
 		JButton btnNewButton_2 = new JButton("Adicionar");
-		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnNewButton_2.setBackground(new Color(0, 0, 0));
+		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				produtoBD = new ProdutoBD();
@@ -238,6 +243,7 @@ public class ProdutosFornecedores extends JFrame {
 		getContentPane().add(btnNewButton_2, gbc_btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Histórico");
+		btnNewButton_3.setBackground(new Color(0, 0, 0));
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				HistoricoCompra hc = new HistoricoCompra();
@@ -245,7 +251,7 @@ public class ProdutosFornecedores extends JFrame {
 				setVisible(false);
 				}
 		});
-		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
 		gbc_btnNewButton_3.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_3.gridx = 5;

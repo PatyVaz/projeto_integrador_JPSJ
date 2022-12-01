@@ -31,17 +31,20 @@ public class CadastroUsuario extends JFrame {
 	 * Create the frame.
 	 */
 	public CadastroUsuario(Perfil VA) {
+		setForeground(new Color(32, 178, 170));
+		setBackground(new Color(32, 178, 170));
 		setTitle("Cadastro de Usuários");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1329, 753);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBackground(new Color(32, 178, 170));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("<-");
+		btnNewButton.setBackground(new Color(0, 0, 0));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -69,6 +72,7 @@ public class CadastroUsuario extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		textField = new JTextField();
+		textField.setBackground(new Color(255, 255, 255));
 		textField.setBounds(567, 148, 274, 31);
 		contentPane.add(textField);
 		textField.setColumns(10);
@@ -84,6 +88,7 @@ public class CadastroUsuario extends JFrame {
 		contentPane.add(textField_2);
 		
 		JButton btnNewButton_1 = new JButton("Adicionar");
+		btnNewButton_1.setBackground(new Color(0, 0, 0));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String nome= textField.getText();

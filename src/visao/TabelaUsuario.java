@@ -40,7 +40,7 @@ public class TabelaUsuario extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBackground(new Color(32, 178, 170));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -61,6 +61,8 @@ public class TabelaUsuario extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JButton btnNewButton = new JButton("Excluir");
+		btnNewButton.setBackground(Color.BLACK);
+		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -77,6 +79,8 @@ public class TabelaUsuario extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("<-");
+		btnNewButton_1.setForeground(Color.WHITE);
+		btnNewButton_1.setBackground(Color.BLACK);
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
