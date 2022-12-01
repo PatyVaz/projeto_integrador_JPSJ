@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -15,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controle.UsuarioBD;
+import modelo.Cliente;
 import modelo.Perfil;
 import modelo.Usuario;
 import java.awt.Color;
@@ -68,11 +70,20 @@ public class TabelaUsuario extends JFrame {
 
 				
 				 int posicaoPessoa = table.getSelectedRow();
-				 Usuario u=listaUsuarios.get(posicaoPessoa);
-				 int result = usuarioBd.removerUsuario(u);
-			
-			
-				 ((DefaultTableModel) table.getModel()).removeRow(table.getSelectedRow());
+					
+
+					if (posicaoPessoa > -1) {
+						 Usuario u=listaUsuarios.get(posicaoPessoa);
+						 int result = usuarioBd.removerUsuario(u);
+					
+					
+						 ((DefaultTableModel) table.getModel()).removeRow(table.getSelectedRow());
+						 
+						 JOptionPane.showMessageDialog(null, "Cadastro excluido com sucesso");
+					} else {
+						JOptionPane.showMessageDialog(null, "escolha uma linha na tabela");
+					}
+				
 			}
 		});
 		btnNewButton.setBounds(179, 238, 89, 23);

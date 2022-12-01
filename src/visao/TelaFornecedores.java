@@ -191,7 +191,8 @@ public class TelaFornecedores extends JFrame {
 
 				}
 				tbfornecedor.setModel(modelo);
-
+				
+				JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 			}
 		});
 		
@@ -282,6 +283,8 @@ public class TelaFornecedores extends JFrame {
 				 btnExcluirFornecedor.setEnabled(false);
 				 btnAlterarDados.setEnabled(false);
 				 btnNewButton.setEnabled(true);
+				 
+				 JOptionPane.showMessageDialog(null, "Cadastro excluido com sucesso");
 			
 			}
 			
@@ -342,7 +345,7 @@ public class TelaFornecedores extends JFrame {
 								btnNewButton.setEnabled(true);
 		      
 					
-					
+								JOptionPane.showMessageDialog(null, "Dados alterados com sucesso");
 				
 			}
 			

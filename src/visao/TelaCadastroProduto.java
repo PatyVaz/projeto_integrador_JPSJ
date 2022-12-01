@@ -323,6 +323,7 @@ public class TelaCadastroProduto extends JFrame {
 
 				}
 				tbProduto.setModel(modelo);
+				JOptionPane.showMessageDialog(null, "Produto adicionado com sucesso");
 
 			}
 		});
@@ -356,6 +357,8 @@ public class TelaCadastroProduto extends JFrame {
 				btnExcluir.setEnabled(false);
 				btnAlterar.setEnabled(false);
 				btnAdicionar.setEnabled(true);
+				
+				 JOptionPane.showMessageDialog(null, "Cadastro excluido com sucesso");
 			}
 		});
 		GridBagConstraints gbc_btnExcluir = new GridBagConstraints();
@@ -415,6 +418,8 @@ public class TelaCadastroProduto extends JFrame {
 				btnExcluir.setEnabled(false);
 				btnAlterar.setEnabled(false);
 				btnAdicionar.setEnabled(true);
+				
+				 JOptionPane.showMessageDialog(null, "Alterado com sucesso");
 			}
 		});
 		GridBagConstraints gbc_btnAlterar = new GridBagConstraints();
