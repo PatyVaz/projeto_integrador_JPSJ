@@ -4,12 +4,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -26,6 +28,7 @@ import javax.swing.text.MaskFormatter;
 import controle.ClienteBD;
 import modelo.Cliente;
 import modelo.Perfil;
+import javax.swing.ImageIcon;
 
 public class TelaClientes extends JFrame {
 
@@ -435,7 +438,18 @@ public class TelaClientes extends JFrame {
 
 		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		contentPane.add(btnNewButton_3);
+		
+		//setando a imagem
+		ImageIcon imageIcon = new ImageIcon(TelaClientes.class.getResource("/img/logo.png"));
+		Image image = imageIcon.getImage(); 
+		Image newimg = image.getScaledInstance(125, 125,  java.awt.Image.SCALE_SMOOTH);
+		imageIcon = new ImageIcon(newimg);
+		
+		///////só mudar o nome do label
+		JLabel lblNewLabel_2 = new JLabel();
+		lblNewLabel_2.setIcon(imageIcon);
+		lblNewLabel_2.setBounds(1209, 611, 133, 115);
+		contentPane.add(lblNewLabel_2);
 
 	}
-
 }
