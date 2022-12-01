@@ -23,6 +23,8 @@ import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class HistoricoCompra extends JFrame {
 
@@ -42,17 +44,25 @@ public class HistoricoCompra extends JFrame {
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0};
 		gbl_contentPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
+		
+		JLabel lblHistricoDeCompras = new JLabel("HISTÓRICO DE COMPRA DE MERCADORIAS");
+		lblHistricoDeCompras.setFont(new Font("Palatino Linotype", Font.BOLD, 16));
+		GridBagConstraints gbc_lblHistricoDeCompras = new GridBagConstraints();
+		gbc_lblHistricoDeCompras.insets = new Insets(0, 0, 5, 0);
+		gbc_lblHistricoDeCompras.gridx = 0;
+		gbc_lblHistricoDeCompras.gridy = 0;
+		contentPane.add(lblHistricoDeCompras, gbc_lblHistricoDeCompras);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
-		gbc_scrollPane.gridy = 0;
+		gbc_scrollPane.gridy = 1;
 		contentPane.add(scrollPane, gbc_scrollPane);
 		
 		table = new JTable();
@@ -82,7 +92,7 @@ public class HistoricoCompra extends JFrame {
 		});
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.gridx = 0;
-		gbc_btnNewButton.gridy = 1;
+		gbc_btnNewButton.gridy = 2;
 		contentPane.add(btnNewButton, gbc_btnNewButton);
 
 		modelo = (DefaultTableModel) table.getModel();

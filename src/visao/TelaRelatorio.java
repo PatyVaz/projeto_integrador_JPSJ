@@ -89,6 +89,14 @@ public class TelaRelatorio extends JFrame {
 		gbc_btnNewButton_4.gridy = 0;
 		contentPane.add(btnNewButton_4, gbc_btnNewButton_4);
 		
+		JLabel lblRelatrio = new JLabel("RELATÓRIO");
+		lblRelatrio.setFont(new Font("Palatino Linotype", Font.BOLD, 16));
+		GridBagConstraints gbc_lblRelatrio = new GridBagConstraints();
+		gbc_lblRelatrio.insets = new Insets(0, 0, 5, 5);
+		gbc_lblRelatrio.gridx = 2;
+		gbc_lblRelatrio.gridy = 0;
+		contentPane.add(lblRelatrio, gbc_lblRelatrio);
+		
 		JLabel lblNewLabel_5 = new JLabel("Procurar por:");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 11));
 		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();

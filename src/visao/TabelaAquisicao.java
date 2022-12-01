@@ -20,6 +20,8 @@ import controle.UsuarioBD;
 import modelo.CadastroProdutos;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class TabelaAquisicao extends JFrame {
 	
@@ -50,10 +52,8 @@ public class TabelaAquisicao extends JFrame {
 		contentPane.setBackground(new Color(32, 178, 170));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(2, 0, 0, 0));
 		
 		JPanel panel = new JPanel();
-		contentPane.add(panel);
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -87,7 +87,6 @@ public class TabelaAquisicao extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setForeground(new Color(0, 0, 0));
 		panel_1.setBackground(new Color(32, 178, 170));
-		contentPane.add(panel_1);
 		
 		JButton btnNewButton = new JButton("Selecionar");
 		btnNewButton.setBackground(new Color(0, 0, 0));
@@ -109,6 +108,19 @@ int posicaoPessoa = tbProduto.getSelectedRow();
 			
 		});
 		panel_1.add(btnNewButton);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addComponent(panel, GroupLayout.PREFERRED_SIZE, 424, GroupLayout.PREFERRED_SIZE)
+				.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 424, GroupLayout.PREFERRED_SIZE)
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE))
+		);
+		contentPane.setLayout(gl_contentPane);
 	}
 
 }
