@@ -45,7 +45,7 @@ public class TabelaVendaUsuario extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBackground(new Color(32, 178, 170));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(2, 0, 0, 0));
@@ -83,10 +83,12 @@ public class TabelaVendaUsuario extends JFrame {
 		tbUsuario.setModel(modelo);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.LIGHT_GRAY);
+		panel_1.setBackground(new Color(32, 178, 170));
 		contentPane.add(panel_1);
 		
 		JButton btnNewButton = new JButton("Selecionar");
+		btnNewButton.setBackground(new Color(0, 0, 0));
+		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 int posicaoPessoa = tbUsuario.getSelectedRow();

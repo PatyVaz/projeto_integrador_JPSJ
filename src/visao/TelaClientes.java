@@ -58,7 +58,7 @@ public class TelaClientes extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1600, 1200);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBackground(new Color(32, 178, 170));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -66,7 +66,7 @@ public class TelaClientes extends JFrame {
 
 		JLabel lblNewLabel = new JLabel("Dados Pessoais:");
 		lblNewLabel.setBounds(10, 42, 274, 53);
-		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		lblNewLabel.setFont(new Font("Perpetua Titling MT", Font.BOLD, 25));
 		contentPane.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Nome:\r\n");
@@ -130,6 +130,8 @@ public class TelaClientes extends JFrame {
 		tbClientes.setModel(modelo);
 
 		JButton btnNewButton_1 = new JButton("Salvar");
+		btnNewButton_1.setForeground(Color.WHITE);
+		btnNewButton_1.setBackground(new Color(0, 0, 0));
 		btnNewButton_1.setBounds(24, 652, 116, 35);
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -269,12 +271,18 @@ public class TelaClientes extends JFrame {
 	
 		
 		JButton btnNewButton_2 = new JButton("Excluir");
+		btnNewButton_2.setForeground(Color.WHITE);
+		btnNewButton_2.setBackground(new Color(0, 0, 0));
 		btnNewButton_2.setEnabled(false);
 		btnNewButton_2.setBounds(269, 652, 109, 35);
 
 		JButton btnNewButton_4 = new JButton("Alterar");
+		btnNewButton_4.setForeground(Color.WHITE);
+		btnNewButton_4.setBackground(new Color(0, 0, 0));
 
 		JButton btnNewButton_3 = new JButton("Selecionar");
+		btnNewButton_3.setForeground(new Color(255, 255, 255));
+		btnNewButton_3.setBackground(new Color(0, 0, 0));
 		btnNewButton_3.setBounds(811, 652, 148, 35);
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -305,6 +313,8 @@ public class TelaClientes extends JFrame {
 		});
 
 		JButton btnNewButton = new JButton("<-");
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setBackground(new Color(0, 0, 0));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton.setBounds(0, 0, 68, 23);
 		btnNewButton.addActionListener(new ActionListener() {

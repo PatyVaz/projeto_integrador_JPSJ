@@ -28,7 +28,7 @@ public class Administrador extends JFrame {
 	 */
 	public Administrador(Perfil VA) {
 		setTitle("Administrador");
-		setBackground(Color.LIGHT_GRAY);
+		setBackground(new Color(0, 0, 255));
 		setMaximumSize(new Dimension(450, 300));
 		setMinimumSize(new Dimension(450, 300));
 		setSize(new Dimension(450, 300));
@@ -42,13 +42,13 @@ public class Administrador extends JFrame {
 		panel_1.setLayout(new GridLayout(3, 1, 0, 0));
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(Color.LIGHT_GRAY);
+		panel_3.setBackground(new Color(32, 178, 170));
 		panel_1.add(panel_3);
 		panel_3.setLayout(null);
 		
 		JButton btnNewButton_2 = new JButton("<-");
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btnNewButton_2.setBackground(Color.LIGHT_GRAY);
+		btnNewButton_2.setBackground(new Color(0, 0, 0));
 		btnNewButton_2.setBounds(10, 0, 62, 29);
 		panel_3.add(btnNewButton_2);
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -61,24 +61,24 @@ public class Administrador extends JFrame {
 		});
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(Color.LIGHT_GRAY);
+		panel_4.setBackground(new Color(32, 178, 170));
 		panel_1.add(panel_4);
 		
 		JLabel lblNewLabel = new JLabel("ADMINISTRADOR");
 		panel_4.add(lblNewLabel);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel.setFont(new Font("Palatino Linotype", Font.BOLD, 16));
 		
 		JPanel panel_5 = new JPanel();
-		panel_5.setBackground(Color.LIGHT_GRAY);
+		panel_5.setBackground(new Color(32, 178, 170));
 		panel_1.add(panel_5);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(Color.LIGHT_GRAY);
+		panel_2.setBackground(new Color(32, 178, 170));
 		getContentPane().add(panel_2);
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnNewButton = new JButton("Cadastrar Usuários");
-		btnNewButton.setBackground(Color.LIGHT_GRAY);
+		btnNewButton.setBackground(new Color(0, 0, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CadastroUsuario cadastroUsuario= new CadastroUsuario(VA);
@@ -90,12 +90,13 @@ public class Administrador extends JFrame {
 		panel_2.add(btnNewButton);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBackground(new Color(32, 178, 170));
 		getContentPane().add(panel);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnNewButton_1 = new JButton("Tabela de Usuários");
-		btnNewButton_1.setBackground(Color.LIGHT_GRAY);
+		btnNewButton_1.setForeground(new Color(0, 0, 0));
+		btnNewButton_1.setBackground(new Color(0, 0, 0));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TabelaUsuario tabelaUsuario= new TabelaUsuario(VA);

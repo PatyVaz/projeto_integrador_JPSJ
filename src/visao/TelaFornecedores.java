@@ -52,7 +52,7 @@ public class TelaFornecedores extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 1200);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBackground(new Color(32, 178, 170));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -145,6 +145,8 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(textField_3);
 		
 		JButton btnNewButton = new JButton("Cadastrar Fornecedor");
+		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setBackground(new Color(0, 0, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -250,9 +252,13 @@ public class TelaFornecedores extends JFrame {
 		btnNewButton.setBounds(18, 640, 172, 33);
 		contentPane.add(btnNewButton);
 		JButton btnAlterarDados = new JButton("Alterar Dados");
+		btnAlterarDados.setForeground(new Color(255, 255, 255));
+		btnAlterarDados.setBackground(new Color(0, 0, 0));
 		btnAlterarDados.setEnabled(false);
 		
 		JButton btnExcluirFornecedor = new JButton("Excluir Fornecedor");
+		btnExcluirFornecedor.setForeground(new Color(255, 255, 255));
+		btnExcluirFornecedor.setBackground(new Color(0, 0, 0));
 		btnExcluirFornecedor.setEnabled(false);
 		btnExcluirFornecedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -349,6 +355,8 @@ public class TelaFornecedores extends JFrame {
 		
 	
 		JButton btnNewButton_1 = new JButton("<-");
+		btnNewButton_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_1.setBackground(new Color(0, 0, 0));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -361,6 +369,8 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Selecionar");
+		btnNewButton_2.setBackground(new Color(0, 0, 0));
+		btnNewButton_2.setForeground(new Color(255, 255, 255));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int posicaoPessoa = tbfornecedor.getSelectedRow();

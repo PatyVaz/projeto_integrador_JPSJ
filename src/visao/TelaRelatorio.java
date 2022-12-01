@@ -61,7 +61,7 @@ public class TelaRelatorio extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 771, 403);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBackground(new Color(32, 178, 170));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -73,6 +73,8 @@ public class TelaRelatorio extends JFrame {
 		contentPane.setLayout(gbl_contentPane);
 		
 		JButton btnNewButton_4 = new JButton("<-");
+		btnNewButton_4.setForeground(new Color(255, 255, 255));
+		btnNewButton_4.setBackground(new Color(0, 0, 0));
 		btnNewButton_4.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -109,6 +111,8 @@ public class TelaRelatorio extends JFrame {
 		txtVendedor.setColumns(10);
 		
 		JButton btnNewButton_2 = new JButton("Buscar");
+		btnNewButton_2.setBackground(new Color(0, 0, 0));
+		btnNewButton_2.setForeground(new Color(255, 255, 255));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TabelaRelatorioUsuario TVU = new TabelaRelatorioUsuario(TR);
@@ -140,7 +144,7 @@ public class TelaRelatorio extends JFrame {
 		contentPane.add(comboBox_2, gbc_comboBox_2);
 		
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Data");
-		rdbtnNewRadioButton_2.setBackground(Color.LIGHT_GRAY);
+		rdbtnNewRadioButton_2.setBackground(new Color(32, 178, 170));
 		buttonGroup.add(rdbtnNewRadioButton_2);
 		GridBagConstraints gbc_rdbtnNewRadioButton_2 = new GridBagConstraints();
 		gbc_rdbtnNewRadioButton_2.anchor = GridBagConstraints.WEST;
@@ -151,7 +155,7 @@ public class TelaRelatorio extends JFrame {
 		contentPane.add(rdbtnNewRadioButton_2, gbc_rdbtnNewRadioButton_2);
 		
 		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("cliente");
-		rdbtnNewRadioButton_4.setBackground(Color.LIGHT_GRAY);
+		rdbtnNewRadioButton_4.setBackground(new Color(32, 178, 170));
 		buttonGroup.add(rdbtnNewRadioButton_4);
 		GridBagConstraints gbc_rdbtnNewRadioButton_4 = new GridBagConstraints();
 		gbc_rdbtnNewRadioButton_4.anchor = GridBagConstraints.WEST;
@@ -174,6 +178,8 @@ public class TelaRelatorio extends JFrame {
 		txtCliente.setColumns(10);
 		
 		JButton btnNewButton_1 = new JButton("Buscar");
+		btnNewButton_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_1.setBackground(new Color(0, 0, 0));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TabelaRelatorioCliente TVC = new TabelaRelatorioCliente(TR);
@@ -205,7 +211,7 @@ public class TelaRelatorio extends JFrame {
 		contentPane.add(comboBox_1, gbc_comboBox_1);
 		
 		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("Vendedor");
-		rdbtnNewRadioButton_3.setBackground(Color.LIGHT_GRAY);
+		rdbtnNewRadioButton_3.setBackground(new Color(32, 178, 170));
 		buttonGroup.add(rdbtnNewRadioButton_3);
 		GridBagConstraints gbc_rdbtnNewRadioButton_3 = new GridBagConstraints();
 		gbc_rdbtnNewRadioButton_3.anchor = GridBagConstraints.WEST;
@@ -215,7 +221,7 @@ public class TelaRelatorio extends JFrame {
 		contentPane.add(rdbtnNewRadioButton_3, gbc_rdbtnNewRadioButton_3);
 		
 		JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("Vendedor e Cliente");
-		rdbtnNewRadioButton_5.setBackground(Color.LIGHT_GRAY);
+		rdbtnNewRadioButton_5.setBackground(new Color(32, 178, 170));
 		buttonGroup.add(rdbtnNewRadioButton_5);
 		GridBagConstraints gbc_rdbtnNewRadioButton_5 = new GridBagConstraints();
 		gbc_rdbtnNewRadioButton_5.anchor = GridBagConstraints.WEST;
@@ -258,7 +264,7 @@ public class TelaRelatorio extends JFrame {
 		});
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Tudo");
-		rdbtnNewRadioButton.setBackground(new Color(192, 192, 192));
+		rdbtnNewRadioButton.setBackground(new Color(32, 178, 170));
 		buttonGroup.add(rdbtnNewRadioButton);
 		GridBagConstraints gbc_rdbtnNewRadioButton = new GridBagConstraints();
 		gbc_rdbtnNewRadioButton.anchor = GridBagConstraints.WEST;
@@ -302,6 +308,8 @@ public class TelaRelatorio extends JFrame {
 		contentPane.add(lblNewLabel_1, gbc_lblNewLabel_1);
 	
 		JButton btnNewButton = new JButton("OK");
+		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setBackground(new Color(0, 0, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String mensagem = "";

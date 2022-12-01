@@ -71,10 +71,29 @@ public class TelaVenda extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 905, 529);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBackground(new Color(32, 178, 170));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JButton btnNewButton_8 = new JButton("OK");
+		btnNewButton_8.setForeground(Color.WHITE);
+		btnNewButton_8.setBackground(Color.BLACK);
+		btnNewButton_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 clienteBD = new   ClienteBD();
+				 c = new Cliente();
+				String id1= textField_3.getText();
+				
+				c.setId(Integer.valueOf(id1));
+				c = clienteBD.listarClientesID(c);
+					String nome1 = c.getNome();
+					
+					textField_4.setText(nome1);
+			}
+		});
+		btnNewButton_8.setBounds(214, 244, 54, 23);
+		contentPane.add(btnNewButton_8);
 
 		JLabel lblNewLabel = new JLabel("Vendas:");
 		lblNewLabel.setBounds(86, 12, 126, 22);
@@ -115,6 +134,8 @@ public class TelaVenda extends JFrame {
 		model.addColumn("Preco");
 
 		JButton btnNewButton_2 = new JButton("Adicionar");
+		btnNewButton_2.setBackground(Color.BLACK);
+		btnNewButton_2.setForeground(Color.WHITE);
 		btnNewButton_2.setEnabled(false);
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -169,6 +190,8 @@ public class TelaVenda extends JFrame {
 			
 		});
 		JButton btnNewButton_5 = new JButton("OK");
+		btnNewButton_5.setBackground(Color.BLACK);
+		btnNewButton_5.setForeground(Color.WHITE);
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 produtoBD = new ProdutoBD();
@@ -192,6 +215,8 @@ public class TelaVenda extends JFrame {
 		contentPane.add(lblNewLabel_7);
 		
 		JButton btnNewButton_1 = new JButton("Finalizar Venda");
+		btnNewButton_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_1.setBackground(new Color(0, 0, 0));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -296,8 +321,12 @@ public class TelaVenda extends JFrame {
 		contentPane.add(btnNewButton_2);
 
 		JButton btnNewButton_3 = new JButton("Remover Produto");
+		btnNewButton_3.setForeground(Color.WHITE);
+		btnNewButton_3.setBackground(Color.BLACK);
 		btnNewButton_3.setEnabled(false);
 		JButton btnNewButton_6 = new JButton("Selecionar");
+		btnNewButton_6.setForeground(Color.WHITE);
+		btnNewButton_6.setBackground(Color.BLACK);
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int posicaoPessoa = tbProdutosCarrinho.getSelectedRow();
@@ -340,6 +369,8 @@ public class TelaVenda extends JFrame {
 		contentPane.add(btnNewButton_3);
 
 		JButton btnNewButton_4 = new JButton("Buscar(f1)");
+		btnNewButton_4.setForeground(Color.WHITE);
+		btnNewButton_4.setBackground(Color.BLACK);
 		
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -375,6 +406,8 @@ public class TelaVenda extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("OK");
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 usuarioBD = new  UsuarioBD();
@@ -393,6 +426,8 @@ public class TelaVenda extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_7 = new JButton("Buscar");
+		btnNewButton_7.setBackground(Color.BLACK);
+		btnNewButton_7.setForeground(Color.WHITE);
 		btnNewButton_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TabelaVendaUsuario TVU = new TabelaVendaUsuario(TV);
@@ -428,24 +463,9 @@ public class TelaVenda extends JFrame {
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
-		JButton btnNewButton_8 = new JButton("OK");
-		btnNewButton_8.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				 clienteBD = new   ClienteBD();
-				 c = new Cliente();
-				String id1= textField_3.getText();
-				
-				c.setId(Integer.valueOf(id1));
-				c = clienteBD.listarClientesID(c);
-					String nome1 = c.getNome();
-					
-					textField_4.setText(nome1);
-			}
-		});
-		btnNewButton_8.setBounds(214, 244, 54, 23);
-		contentPane.add(btnNewButton_8);
-		
 		JButton btnNewButton_9 = new JButton("Buscar");
+		btnNewButton_9.setBackground(Color.BLACK);
+		btnNewButton_9.setForeground(Color.WHITE);
 		btnNewButton_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaVendaCliente TVC = new TelaVendaCliente(TV);
@@ -467,6 +487,8 @@ public class TelaVenda extends JFrame {
 		textField_4.setColumns(10);
 		
 		JButton btnNewButton_10 = new JButton("<-");
+		btnNewButton_10.setForeground(Color.WHITE);
+		btnNewButton_10.setBackground(Color.BLACK);
 		btnNewButton_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaInicio telainicio = new TelaInicio(VA);
