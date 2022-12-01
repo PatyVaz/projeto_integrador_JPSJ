@@ -112,5 +112,14 @@ public class CadastroUsuario extends JFrame {
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		btnNewButton_1.setBounds(608, 626, 175, 41);
 		contentPane.add(btnNewButton_1);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(new Color(32, 178, 170));
+		panel_4.setBounds(441, 54, 434, 29);
+		contentPane.add(panel_4);
+		
+		JLabel lblCadastroDeUsurio = new JLabel("CADASTRO DE USUÁRIOS");
+		lblCadastroDeUsurio.setFont(new Font("Palatino Linotype", Font.BOLD, 16));
+		panel_4.add(lblCadastroDeUsurio);
 	}
 }

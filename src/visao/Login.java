@@ -126,5 +126,10 @@ public class Login extends JFrame {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(177, 118, 106, 20);
 		contentPane.add(passwordField);
+		
+		JLabel lblLogin = new JLabel("LOGIN");
+		lblLogin.setFont(new Font("Palatino Linotype", Font.BOLD, 16));
+		lblLogin.setBounds(166, 11, 147, 22);
+		contentPane.add(lblLogin);
 	}
 }
