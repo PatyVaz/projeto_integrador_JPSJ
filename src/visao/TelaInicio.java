@@ -158,7 +158,7 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_3.setBounds(388, 355, 215, 64);
+		btnNewButton_3.setBounds(324, 355, 288, 64);
 		contentPane.add(btnNewButton_3);
 
 		JButton btnNewButton_4 = new JButton("Fornecedor");
