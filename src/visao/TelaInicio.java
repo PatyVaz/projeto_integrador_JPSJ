@@ -26,11 +26,11 @@ public class TelaInicio extends JFrame {
 	
 
 	public TelaInicio(Perfil VA) {
-		
+		setExtendedState(MAXIMIZED_BOTH);
 		setTitle("Tela Inicial");
-		setMinimumSize(new Dimension(450, 300));
-		setMaximumSize(new Dimension(460, 300));
-		setSize(new Dimension(450, 300));
+		setMinimumSize(new Dimension(960, 800));
+		setMaximumSize(new Dimension(1200, 1040));
+		setSize(new Dimension(1200, 1040));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -42,7 +42,7 @@ public class TelaInicio extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		JPanel panel1 = new JPanel();
-		panel1.setBounds(0, 30, 123, 231);
+		panel1.setBounds(0, 57, 163, 704);
 		contentPane.add(panel1);
 		panel1.setLayout(new GridLayout(4, 0, 0, 0));
 
@@ -121,7 +121,7 @@ public class TelaInicio extends JFrame {
 
 		JButton btnNewButton_1 = new JButton("Clientes");
 		btnNewButton_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnNewButton_1.setBackground(new Color(0, 0, 0));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -130,12 +130,12 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_1.setBounds(42, 73, 89, 23);
+		btnNewButton_1.setBounds(256, 254, 174, 59);
 		contentPane.add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("Vendas");
 		btnNewButton_2.setForeground(new Color(255, 255, 255));
-		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnNewButton_2.setBackground(new Color(0, 0, 0));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -144,12 +144,12 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_2.setBounds(269, 73, 89, 23);
+		btnNewButton_2.setBounds(646, 352, 174, 70);
 		contentPane.add(btnNewButton_2);
 
 		JButton btnNewButton_3 = new JButton("Cadastro de Produtos");
 		btnNewButton_3.setForeground(new Color(255, 255, 255));
-		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnNewButton_3.setBackground(new Color(0, 0, 0));
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -158,12 +158,12 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_3.setBounds(86, 119, 163, 23);
+		btnNewButton_3.setBounds(388, 355, 215, 64);
 		contentPane.add(btnNewButton_3);
 
 		JButton btnNewButton_4 = new JButton("Fornecedor");
 		btnNewButton_4.setForeground(new Color(255, 255, 255));
-		btnNewButton_4.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnNewButton_4.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnNewButton_4.setBackground(new Color(0, 0, 0));
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -172,14 +172,14 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_4.setBounds(141, 73, 108, 23);
+		btnNewButton_4.setBounds(473, 252, 189, 62);
 		contentPane.add(btnNewButton_4);
 
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(new Color(102, 205, 170));
 		FlowLayout flowLayout = (FlowLayout) panel_4.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
-		panel_4.setBounds(0, 0, 434, 32);
+		panel_4.setBounds(0, 0, 944, 62);
 		contentPane.add(panel_4);
 
 		JButton btnNewButton = new JButton("...");
@@ -187,8 +187,9 @@ public class TelaInicio extends JFrame {
 		btnNewButton.setBackground(Color.LIGHT_GRAY);
 		panel_4.add(btnNewButton);
 		
-		JButton btnNewButton_7 = new JButton("Estoque");
+		JButton btnNewButton_7 = new JButton("Compra de Produtos");
 		btnNewButton_7.setForeground(new Color(255, 255, 255));
+		btnNewButton_7.setFont(new Font("Tahoma", Font.BOLD, 17));
 		btnNewButton_7.setBackground(new Color(0, 0, 0));
 		btnNewButton_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -197,7 +198,7 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_7.setBounds(259, 120, 89, 23);
+		btnNewButton_7.setBounds(706, 252, 238, 62);
 		contentPane.add(btnNewButton_7);
 		
 		btnNewButton.addActionListener(new ActionListener() {

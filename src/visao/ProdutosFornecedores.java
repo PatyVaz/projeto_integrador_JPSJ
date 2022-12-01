@@ -12,6 +12,7 @@ import java.awt.GridBagConstraints;
 import javax.swing.JScrollPane;
 import java.awt.Insets;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -41,6 +42,7 @@ public class ProdutosFornecedores extends JFrame {
 	private JTextField textField_3;
 
 	public ProdutosFornecedores(Perfil VA) {
+		
 		setExtendedState(MAXIMIZED_BOTH);
 		getContentPane().setBackground(new Color(32, 178, 170));
 		 ProdutosFornecedores pf = this;
@@ -55,7 +57,7 @@ public class ProdutosFornecedores extends JFrame {
 		getContentPane().setLayout(gridBagLayout);
 		
 		JButton btnvoltar = new JButton("<-");
-		btnvoltar.setBackground(new Color(0, 0, 0));
+		btnvoltar.setBackground(new Color(0, 255, 0));
 		btnvoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaInicio telainicio = new TelaInicio(VA);
@@ -97,7 +99,7 @@ public class ProdutosFornecedores extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnNewButton_1 = new JButton("Buscar");
-		btnNewButton_1.setBackground(new Color(0, 0, 0));
+		btnNewButton_1.setBackground(new Color(0, 255, 0));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -150,7 +152,7 @@ public class ProdutosFornecedores extends JFrame {
 		textField_2.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Buscar");
-		btnNewButton.setBackground(new Color(0, 0, 0));
+		btnNewButton.setBackground(new Color(0, 255, 0));
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -166,7 +168,7 @@ public class ProdutosFornecedores extends JFrame {
 		getContentPane().add(btnNewButton, gbc_btnNewButton);
 		
 		JButton btnNewButton_2 = new JButton("Adicionar");
-		btnNewButton_2.setBackground(new Color(0, 0, 0));
+		btnNewButton_2.setBackground(new Color(0, 255, 0));
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -206,8 +208,8 @@ public class ProdutosFornecedores extends JFrame {
 					
 
 					Estoque estoque = new Estoque();
-					estoque.setFornecedor(Integer.parseInt(fornecedor));
-					estoque.setProduto(Integer.parseInt(produto));
+					estoque.setFornecedor(fornecedor);
+					estoque.setProduto(produto);
 					estoque.setQuantidade(Integer.parseInt(quantidade3));
 					estoque.setValor(valor);
 					estoque.setData(data);
@@ -224,6 +226,7 @@ public class ProdutosFornecedores extends JFrame {
 				textField_2.setText("");
 				textField_3.setText("");
 				
+				JOptionPane.showMessageDialog(null, "Adicionado com sucesso");
 			}
 		});
 		
@@ -251,10 +254,10 @@ public class ProdutosFornecedores extends JFrame {
 		getContentPane().add(btnNewButton_2, gbc_btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Histórico");
-		btnNewButton_3.setBackground(new Color(0, 0, 0));
+		btnNewButton_3.setBackground(new Color(0, 255, 0));
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				HistoricoCompra hc = new HistoricoCompra();
+				HistoricoCompra hc = new HistoricoCompra(pf);
 				hc.setVisible(true);
 				setVisible(false);
 				}

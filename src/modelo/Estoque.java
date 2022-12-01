@@ -2,8 +2,8 @@ package modelo;
 
 public class Estoque {
 private int id_estoque;
-private int fornecedor;
-private int produto;
+private String fornecedor;
+private String produto;
 private int quantidade;
 private String valor;
 private String data;
@@ -13,18 +13,7 @@ public int getId_estoque() {
 public void setId_estoque(int id_estoque) {
 	this.id_estoque = id_estoque;
 }
-public int getFornecedor() {
-	return fornecedor;
-}
-public void setFornecedor(int fornecedor) {
-	this.fornecedor = fornecedor;
-}
-public int getProduto() {
-	return produto;
-}
-public void setProduto(int produto) {
-	this.produto = produto;
-}
+
 public int getQuantidade() {
 	return quantidade;
 }
@@ -42,5 +31,17 @@ public String getData() {
 }
 public void setData(String data) {
 	this.data = data;
+}
+public String getProduto() {
+	return produto;
+}
+public void setProduto(String produto) {
+	this.produto = produto;
+}
+public String getFornecedor() {
+	return fornecedor;
+}
+public void setFornecedor(String fornecedor) {
+	this.fornecedor = fornecedor;
 }
 }

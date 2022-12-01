@@ -33,7 +33,7 @@ public class HistoricoCompra extends JFrame {
 	private ArrayList<Estoque> listaEstoque;
 	private DefaultTableModel modelo;
 	
-	public HistoricoCompra() {
+	public HistoricoCompra( ProdutosFornecedores pf) {
 		setTitle("Histórico de Compras de Mercadorias");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -82,10 +82,10 @@ public class HistoricoCompra extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JButton btnNewButton = new JButton("Voltar");
-		btnNewButton.setBackground(new Color(0, 0, 0));
+		btnNewButton.setBackground(new Color(0, 255, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ProdutosFornecedores pf = new ProdutosFornecedores(null);
+		 
 				pf.setVisible(true);
 				setVisible(false);
 			}

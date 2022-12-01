@@ -10,6 +10,7 @@ import java.sql.Connection;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -107,6 +108,8 @@ public class CadastroUsuario extends JFrame {
 			textField.setText("");
 			textField_1.setText("");
 			textField_2.setText("");
+			
+			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 22));

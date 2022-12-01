@@ -37,7 +37,7 @@ public class TelaClientes extends JFrame {
 	private JTextField textField_3;
 	private JFormattedTextField textField_4;
 	private JTextField textField_5;
-	private JTextField textField_6;
+	private JFormattedTextField textField_6;
 	private JFormattedTextField textField_7;
 	private ArrayList<Cliente> listaClientes;
 	static Connection conexao;
@@ -147,7 +147,7 @@ public class TelaClientes extends JFrame {
 				String cidade = textField_7.getText();
 
 			
-				// validar se todos os campos de texto foram realmente preenchidos
+				
 
 				Cliente cliente = new Cliente();
 				cliente.setNome(nome);
@@ -193,6 +193,8 @@ public class TelaClientes extends JFrame {
 
 				}
 				tbClientes.setModel(modelo);
+				
+				JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
 
 			}
 		});
@@ -262,7 +264,7 @@ public class TelaClientes extends JFrame {
 		MaskFormatter maskDataCEP;
 		try {
 			maskDataCEP = new MaskFormatter("#####-###");
-			maskDataCEP.install(textField_7);
+			maskDataCEP.install(textField_6);
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -393,6 +395,8 @@ public class TelaClientes extends JFrame {
 				btnNewButton_2.setEnabled(false);
 				btnNewButton_4.setEnabled(false);
 				
+				 JOptionPane.showMessageDialog(null, "Alterado com sucesso");
+				
 			}
 		});
 		btnNewButton_4.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -423,6 +427,8 @@ public class TelaClientes extends JFrame {
 				btnNewButton_1.setEnabled(true);
 				btnNewButton_2.setEnabled(false);
 				btnNewButton_4.setEnabled(false);
+				
+				 JOptionPane.showMessageDialog(null, "Cadastro excluido com sucesso");
 			}
 		});
 		contentPane.add(btnNewButton_2);
