@@ -6,18 +6,22 @@ import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import modelo.Perfil;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class TelaInicio extends JFrame {
 
@@ -27,10 +31,10 @@ public class TelaInicio extends JFrame {
 
 	public TelaInicio(Perfil VA) {
 		setExtendedState(MAXIMIZED_BOTH);
-		setTitle("Tela Inicial");
+		setTitle("Menu Principal");
 		setMinimumSize(new Dimension(960, 800));
 		setMaximumSize(new Dimension(1200, 1040));
-		setSize(new Dimension(1200, 1040));
+		setSize(new Dimension(975, 800));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -130,7 +134,7 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_1.setBounds(256, 254, 174, 59);
+		btnNewButton_1.setBounds(299, 254, 174, 59);
 		contentPane.add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("Vendas");
@@ -144,7 +148,7 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_2.setBounds(646, 352, 174, 70);
+		btnNewButton_2.setBounds(788, 352, 174, 70);
 		contentPane.add(btnNewButton_2);
 
 		JButton btnNewButton_3 = new JButton("Cadastro de Produtos");
@@ -158,7 +162,7 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_3.setBounds(324, 355, 288, 64);
+		btnNewButton_3.setBounds(405, 355, 288, 64);
 		contentPane.add(btnNewButton_3);
 
 		JButton btnNewButton_4 = new JButton("Fornecedor");
@@ -172,20 +176,8 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_4.setBounds(473, 252, 189, 62);
+		btnNewButton_4.setBounds(535, 252, 189, 62);
 		contentPane.add(btnNewButton_4);
-
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(new Color(102, 205, 170));
-		FlowLayout flowLayout = (FlowLayout) panel_4.getLayout();
-		flowLayout.setAlignment(FlowLayout.LEFT);
-		panel_4.setBounds(0, 0, 944, 62);
-		contentPane.add(panel_4);
-
-		JButton btnNewButton = new JButton("...");
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btnNewButton.setBackground(Color.LIGHT_GRAY);
-		panel_4.add(btnNewButton);
 		
 		JButton btnNewButton_7 = new JButton("Compra de Produtos");
 		btnNewButton_7.setForeground(new Color(255, 255, 255));
@@ -198,8 +190,36 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_7.setBounds(706, 252, 238, 62);
+		btnNewButton_7.setBounds(799, 252, 238, 62);
 		contentPane.add(btnNewButton_7);
+		
+				JPanel panel_4 = new JPanel();
+				panel_4.setBackground(new Color(102, 205, 170));
+				FlowLayout flowLayout = (FlowLayout) panel_4.getLayout();
+				flowLayout.setAlignment(FlowLayout.LEFT);
+				panel_4.setBounds(0, 0, 1500, 62);
+				contentPane.add(panel_4);
+				
+						JButton btnNewButton = new JButton("...");
+						btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+						btnNewButton.setBackground(Color.LIGHT_GRAY);
+						panel_4.add(btnNewButton);
+						
+						JLabel lblNewLabel = new JLabel("MENU PRINCIPAL");
+						lblNewLabel.setFont(new Font("Palatino Linotype", Font.PLAIN, 20));
+						lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+						lblNewLabel.setBounds(562, 86, 218, 70);
+						contentPane.add(lblNewLabel);
+						
+						ImageIcon imageIcon = new ImageIcon(TelaInicio.class.getResource("/img/logo.png"));
+						Image image = imageIcon.getImage(); 
+						Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+						imageIcon = new ImageIcon(newimg);
+						
+						JLabel lblNewLabel_1 = new JLabel();
+						lblNewLabel_1.setIcon(imageIcon);
+						lblNewLabel_1.setBounds(1200, 520, 640, 203);
+						contentPane.add(lblNewLabel_1);
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -210,6 +230,7 @@ public class TelaInicio extends JFrame {
 					btnNewButton_2.setVisible(true);
 					btnNewButton_3.setVisible(true);
 					btnNewButton_7.setVisible(true);
+					lblNewLabel.setVisible(true);
 					
 				} else {
 					panel1.setVisible(true);
@@ -218,6 +239,8 @@ public class TelaInicio extends JFrame {
 					btnNewButton_2.setVisible(false);
 					btnNewButton_3.setVisible(false);
 					btnNewButton_7.setVisible(false);
+					lblNewLabel.setVisible(false);
+					
 				}
 			}
 		});
