@@ -37,7 +37,7 @@ public class TabelaVendaUsuario extends JFrame {
 	 * Create the frame.
 	 */
 	public TabelaVendaUsuario(TelaVenda TV ){
-		setTitle("Vendas do Usuário");
+		setTitle("Busca de Usuário para Venda");
 		
 		
 			

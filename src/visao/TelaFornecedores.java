@@ -3,6 +3,7 @@ package visao;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -58,7 +60,7 @@ public class TelaFornecedores extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Fornecedores:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 25));
+		lblNewLabel.setFont(new Font("Palatino Linotype", Font.BOLD, 25));
 		lblNewLabel.setBounds(10, 37, 180, 59);
 		contentPane.add(lblNewLabel);
 		
@@ -395,6 +397,18 @@ public class TelaFornecedores extends JFrame {
 		});
 		btnNewButton_2.setBounds(956, 610, 141, 33);
 		contentPane.add(btnNewButton_2);
+		
+		
+		
+		ImageIcon imageIcon = new ImageIcon(TelaFornecedores.class.getResource("/img/logo.png"));
+		Image image = imageIcon.getImage(); 
+		Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+		imageIcon = new ImageIcon(newimg);
+		
+		JLabel lblNewLabel_5 = new JLabel();
+		lblNewLabel_5.setIcon(imageIcon);
+		lblNewLabel_5.setBounds(1231, 599, 435, 139);
+		contentPane.add(lblNewLabel_5);
             }
         }
 		

@@ -93,6 +93,8 @@ public class TelaCadastroProduto extends JFrame {
 		tbProduto.setModel(modelo);
 
 		JButton btnVoltarTela = new JButton("<-");
+		btnVoltarTela.setBackground(new Color(0, 0, 0));
+		btnVoltarTela.setForeground(new Color(255, 255, 255));
 		btnVoltarTela.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaInicio ti = new TelaInicio(VA);
@@ -107,7 +109,7 @@ public class TelaCadastroProduto extends JFrame {
 		contentPane.add(btnVoltarTela, gbc_btnVoltarTela);
 
 		JLabel lblNewLabel = new JLabel("Cadastro Produtos:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel.setFont(new Font("Palatino Linotype", Font.PLAIN, 20));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.gridwidth = 3;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
@@ -236,6 +238,8 @@ public class TelaCadastroProduto extends JFrame {
 		textField_6.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Buscar");
+		btnNewButton.setBackground(new Color(0, 0, 0));
+		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TabelaFornecedorTelaCadastrodeprodutos pfc = new TabelaFornecedorTelaCadastrodeprodutos(tcp);
@@ -268,6 +272,8 @@ public class TelaCadastroProduto extends JFrame {
 		scrollPane.setViewportView(tbProduto);
 
 		JButton btnSelecionar = new JButton("Selecionar");
+		btnSelecionar.setForeground(new Color(255, 255, 255));
+		btnSelecionar.setBackground(new Color(0, 0, 0));
 		GridBagConstraints gbc_btnSelecionar = new GridBagConstraints();
 		gbc_btnSelecionar.insets = new Insets(0, 0, 0, 5);
 		gbc_btnSelecionar.gridx = 0;
@@ -275,6 +281,8 @@ public class TelaCadastroProduto extends JFrame {
 		contentPane.add(btnSelecionar, gbc_btnSelecionar);
 
 		JButton btnAdicionar = new JButton("Adicionar Produto");
+		btnAdicionar.setBackground(new Color(0, 0, 0));
+		btnAdicionar.setForeground(new Color(255, 255, 255));
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String modelo1 = textField.getText();
@@ -334,7 +342,11 @@ public class TelaCadastroProduto extends JFrame {
 		contentPane.add(btnAdicionar, gbc_btnAdicionar);
 
 		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.setForeground(new Color(255, 255, 255));
+		btnAlterar.setBackground(new Color(0, 0, 0));
 		JButton btnExcluir = new JButton("Excluir Produto");
+		btnExcluir.setBackground(new Color(0, 0, 0));
+		btnExcluir.setForeground(new Color(255, 255, 255));
 
 		btnExcluir.setEnabled(false);
 		btnExcluir.addActionListener(new ActionListener() {

@@ -3,10 +3,12 @@ package visao;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -45,6 +47,7 @@ public class CadastroUsuario extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("<-");
+		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(0, 0, 0));
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -89,6 +92,7 @@ public class CadastroUsuario extends JFrame {
 		contentPane.add(textField_2);
 		
 		JButton btnNewButton_1 = new JButton("Adicionar");
+		btnNewButton_1.setForeground(new Color(255, 255, 255));
 		btnNewButton_1.setBackground(new Color(0, 0, 0));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -122,7 +126,19 @@ public class CadastroUsuario extends JFrame {
 		contentPane.add(panel_4);
 		
 		JLabel lblCadastroDeUsurio = new JLabel("CADASTRO DE USUÁRIOS");
-		lblCadastroDeUsurio.setFont(new Font("Palatino Linotype", Font.BOLD, 16));
+		lblCadastroDeUsurio.setFont(new Font("Palatino Linotype", Font.BOLD, 25));
 		panel_4.add(lblCadastroDeUsurio);
+		
+		
+		
+		ImageIcon imageIcon = new ImageIcon(CadastroUsuario.class.getResource("/img/logo.png"));
+		Image image = imageIcon.getImage(); 
+		Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+		imageIcon = new ImageIcon(newimg);
+		
+		JLabel lblNewLabel_3 = new JLabel();
+		lblNewLabel_3.setIcon(imageIcon);
+		lblNewLabel_3.setBounds(1147, 558, 166, 131);
+		contentPane.add(lblNewLabel_3);
 	}
 }

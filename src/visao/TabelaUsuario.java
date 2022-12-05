@@ -34,7 +34,7 @@ public class TabelaUsuario extends JFrame {
 	 * Create the frame.
 	 */
 	public TabelaUsuario(Perfil VA) {
-		setTitle("Usuários");
+		setTitle("Excluir Usuários");
 		 UsuarioBD usuarioBd = new UsuarioBD();
 		
 		
@@ -100,7 +100,7 @@ public class TabelaUsuario extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_1.setBounds(0, 0, 47, 23);
+		btnNewButton_1.setBounds(0, 0, 58, 23);
 		contentPane.add(btnNewButton_1);
 		
 			

@@ -69,7 +69,7 @@ public class TelaClientes extends JFrame {
 
 		JLabel lblNewLabel = new JLabel("Dados Pessoais:");
 		lblNewLabel.setBounds(10, 42, 274, 53);
-		lblNewLabel.setFont(new Font("Perpetua Titling MT", Font.BOLD, 25));
+		lblNewLabel.setFont(new Font("Palatino Linotype", Font.BOLD, 25));
 		contentPane.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Nome:\r\n");
@@ -442,13 +442,13 @@ public class TelaClientes extends JFrame {
 		//setando a imagem
 		ImageIcon imageIcon = new ImageIcon(TelaClientes.class.getResource("/img/logo.png"));
 		Image image = imageIcon.getImage(); 
-		Image newimg = image.getScaledInstance(125, 125,  java.awt.Image.SCALE_SMOOTH);
+		Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
 		imageIcon = new ImageIcon(newimg);
 		
 		///////só mudar o nome do label
 		JLabel lblNewLabel_2 = new JLabel();
 		lblNewLabel_2.setIcon(imageIcon);
-		lblNewLabel_2.setBounds(1209, 611, 133, 115);
+		lblNewLabel_2.setBounds(1209, 611, 125, 109);
 		contentPane.add(lblNewLabel_2);
 
 	}

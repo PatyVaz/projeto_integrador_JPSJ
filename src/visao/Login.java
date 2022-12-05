@@ -20,6 +20,9 @@ import modelo.Usuario;
 import modelo.Perfil;
 
 import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 
 public class Login extends JFrame {
 
@@ -104,7 +107,7 @@ public class Login extends JFrame {
 					}
 
 				});
-				btnEntar.setBounds(177, 208, 89, 23);
+				btnEntar.setBounds(177, 175, 106, 23);
 				contentPane.add(btnEntar);
 
 		JLabel lblSenha = new JLabel("SENHA:");
@@ -129,7 +132,19 @@ public class Login extends JFrame {
 		
 		JLabel lblLogin = new JLabel("LOGIN");
 		lblLogin.setFont(new Font("Palatino Linotype", Font.BOLD, 16));
-		lblLogin.setBounds(166, 11, 147, 22);
+		lblLogin.setBounds(199, 11, 112, 22);
 		contentPane.add(lblLogin);
+		
+		ImageIcon imageIcon = new ImageIcon(Login.class.getResource("/img/logo.png"));
+		Image image = imageIcon.getImage(); 
+		Image newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
+		imageIcon = new ImageIcon(newimg);
+		
+		JLabel lblNewLabel = new JLabel();
+		lblNewLabel.setIcon(imageIcon);
+		lblNewLabel.setBounds(291, 175, 130, 115);
+		contentPane.add(lblNewLabel);
+		
+		
 	}
 }
