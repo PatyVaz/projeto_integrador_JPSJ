@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,7 +23,6 @@ import modelo.Perfil;
 import java.awt.Font;
 import java.awt.Image;
 
-import javax.swing.ImageIcon;
 
 public class Login extends JFrame {
 
@@ -53,12 +53,13 @@ public class Login extends JFrame {
 	 */
 	public Login() {
 		
-		
+		setExtendedState(MAXIMIZED_BOTH);
 		Perfil VA = new Perfil() ;
 		setBackground(new Color(128, 128, 128));
 		setTitle("Login");
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 437, 329);
+		setBounds(100, 100, 1400, 740);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.MAGENTA);
 		contentPane.setBackground(new Color(32, 178, 170));
@@ -107,44 +108,45 @@ public class Login extends JFrame {
 					}
 
 				});
-				btnEntar.setBounds(177, 175, 106, 23);
+				btnEntar.setBounds(598, 524, 172, 55);
 				contentPane.add(btnEntar);
 
 		JLabel lblSenha = new JLabel("SENHA:");
-		lblSenha.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblSenha.setBounds(85, 121, 67, 14);
+		lblSenha.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblSenha.setBounds(386, 311, 172, 38);
 		contentPane.add(lblSenha);
 
 		JLabel lblUsuario = new JLabel("USUÁRIO:");
-		lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblUsuario.setBounds(85, 73, 82, 14);
+		lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblUsuario.setBounds(386, 213, 172, 55);
 		contentPane.add(lblUsuario);
 
 		textUsuario = new JTextField();
 		textUsuario.setBackground(Color.WHITE);
-		textUsuario.setBounds(177, 70, 106, 20);
+		textUsuario.setBounds(566, 213, 303, 38);
 		contentPane.add(textUsuario);
 		textUsuario.setColumns(20);
 
 		passwordField = new JPasswordField();
-		passwordField.setBounds(177, 118, 106, 20);
+		passwordField.setBounds(566, 307, 303, 38);
 		contentPane.add(passwordField);
 		
 		JLabel lblLogin = new JLabel("LOGIN");
-		lblLogin.setFont(new Font("Palatino Linotype", Font.BOLD, 16));
-		lblLogin.setBounds(199, 11, 112, 22);
+		lblLogin.setFont(new Font("Palatino Linotype", Font.BOLD, 30));
+		lblLogin.setBounds(647, 72, 255, 55);
 		contentPane.add(lblLogin);
 		
+	
 		ImageIcon imageIcon = new ImageIcon(Login.class.getResource("/img/logo.png"));
 		Image image = imageIcon.getImage(); 
 		Image newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);
 		imageIcon = new ImageIcon(newimg);
-		
+
 		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setIcon(imageIcon);
-		lblNewLabel.setBounds(291, 175, 130, 115);
+		lblNewLabel.setBounds(1264, 571, 178, 149);
 		contentPane.add(lblNewLabel);
-		
+
 		
 	}
 }
