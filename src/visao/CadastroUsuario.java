@@ -96,25 +96,31 @@ public class CadastroUsuario extends JFrame {
 		btnNewButton_1.setBackground(new Color(0, 0, 0));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			String nome= textField.getText();
-			String login = textField_1.getText();
-			String senha = textField_2.getText();
-			
-			Usuario usuario = new Usuario();
-			usuario.setLogin(login);
-			usuario.setNome(nome);
-			usuario.setSenha(senha);
-			
-			UsuarioBD usuariobd = new UsuarioBD();
-			usuariobd.inserirUsuario(usuario);
-			
+				if(textField.getText().isEmpty() || textField_1.getText().isEmpty() || textField_2.getText().isEmpty() ) {
+					JOptionPane.showMessageDialog(null, "Prencha todos os campos");
+				}else
+					if(textField.getText()!="" && textField_1.getText()!="" && textField_2.getText()!="") {
+						String nome= textField.getText();
+						String login = textField_1.getText();
+						String senha = textField_2.getText();
+						
+						Usuario usuario = new Usuario();
+						usuario.setLogin(login);
+						usuario.setNome(nome);
+						usuario.setSenha(senha);
+						
+						UsuarioBD usuariobd = new UsuarioBD();
+						usuariobd.inserirUsuario(usuario);
+						
 
-			textField.setText("");
-			textField_1.setText("");
-			textField_2.setText("");
+						textField.setText("");
+						textField_1.setText("");
+						textField_2.setText("");
+						
+						JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
+						}
+					}
 			
-			JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
-			}
 		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		btnNewButton_1.setBounds(608, 626, 175, 41);

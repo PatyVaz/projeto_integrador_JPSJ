@@ -34,6 +34,7 @@ public class HistoricoCompra extends JFrame {
 	private DefaultTableModel modelo;
 	
 	public HistoricoCompra( ProdutosFornecedores pf) {
+		setExtendedState(MAXIMIZED_BOTH);
 		setTitle("Histórico de Compras de Mercadorias");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

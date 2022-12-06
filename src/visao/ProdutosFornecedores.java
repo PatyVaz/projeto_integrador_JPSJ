@@ -27,6 +27,7 @@ import modelo.Perfil;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.awt.event.ActionEvent;
@@ -177,6 +178,11 @@ public class ProdutosFornecedores extends JFrame {
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+				if(textField.getText().isEmpty() || textField_1.getText().isEmpty() || textField_2.getText().isEmpty() || textField_3.getText().isEmpty() ) {
+					JOptionPane.showMessageDialog(null, "Prencha todos os campos");
+				}else
+					if(textField.getText()!="" && textField_1.getText()!="" && textField_2.getText()!="" && textField_3.getText()!="") {
 				produtoBD = new ProdutoBD();
 				Cp = new CadastroProdutos();
 				String id= textField_2.getText();
@@ -232,6 +238,13 @@ public class ProdutosFornecedores extends JFrame {
 				textField_3.setText("");
 				
 				JOptionPane.showMessageDialog(null, "Adicionado com sucesso");
+					
+			
+			}
+			}catch (Exception e1) {
+				JOptionPane.showMessageDialog(null,"escolha o codigo de um produto válido");
+				JOptionPane.showMessageDialog(null,"A quantidade e o valor tem que ser um numero valido");
+			}
 			}
 		});
 		

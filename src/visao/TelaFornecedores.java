@@ -50,7 +50,7 @@ public class TelaFornecedores extends JFrame {
 	public TelaFornecedores(Perfil VA) {
 		setTitle("Fornecedores");
 		
-
+		setExtendedState(MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1500, 1200);
 		contentPane = new JPanel();
@@ -152,7 +152,10 @@ public class TelaFornecedores extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-			
+				if(textField.getText().isEmpty() || textField_1.getText().isEmpty() || textField_2.getText().isEmpty() || textField_3.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Prencha todos os campos");
+				}else
+					if(textField.getText()!="" && textField_1.getText()!="" && textField_2.getText()!="" && textField_3.getText()!="" ) {
 				String nome = textField.getText();
 				String cnpj = textField_1.getText();
 				String telefone = textField_2.getText();
@@ -195,6 +198,7 @@ public class TelaFornecedores extends JFrame {
 				tbfornecedor.setModel(modelo);
 				
 				JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
+			}
 			}
 		});
 		

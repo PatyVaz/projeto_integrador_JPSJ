@@ -48,7 +48,7 @@ public class TabelaFornecedor extends JFrame {
 	 */
 	public TabelaFornecedor( ProdutosFornecedores pf ){
 		setTitle("Vendas do Usuário");
-		
+		setExtendedState(MAXIMIZED_BOTH);
 		
 			
 			

@@ -56,7 +56,7 @@ public class TelaClientes extends JFrame {
 	 */
 	public TelaClientes(Perfil VA) {
 		setTitle("Clientes");
-
+		setExtendedState(MAXIMIZED_BOTH);
 		setMinimumSize(new Dimension(10, 10));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1600, 1200);
@@ -139,7 +139,10 @@ public class TelaClientes extends JFrame {
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				if(textField.getText().isEmpty() || textField_1.getText().isEmpty() || textField_2.getText().isEmpty() || textField_3.getText().isEmpty() || textField_4.getText().isEmpty() || textField_5.getText().isEmpty()|| textField_6.getText().isEmpty() || textField_7.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Prencha todos os campos");
+				}else
+					if(textField.getText()!="" && textField_1.getText()!="" && textField_2.getText()!="" && textField_3.getText()!="" && textField_4.getText()!="" && textField_5.getText()!="" && textField_6.getText()!="" && textField_7.getText()!="") {
 				String nome = textField.getText();
 				String cpf = textField_1.getText();
 				String email = textField_2.getText();
@@ -198,7 +201,7 @@ public class TelaClientes extends JFrame {
 				tbClientes.setModel(modelo);
 				
 				JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
-
+					}
 			}
 		});
 		contentPane.add(btnNewButton_1);

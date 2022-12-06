@@ -134,7 +134,7 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_1.setBounds(299, 254, 174, 59);
+		btnNewButton_1.setBounds(402, 252, 174, 62);
 		contentPane.add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("Vendas");
@@ -148,7 +148,7 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_2.setBounds(788, 352, 174, 70);
+		btnNewButton_2.setBounds(770, 355, 174, 62);
 		contentPane.add(btnNewButton_2);
 
 		JButton btnNewButton_3 = new JButton("Cadastro de Produtos");
@@ -162,7 +162,7 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_3.setBounds(405, 355, 288, 64);
+		btnNewButton_3.setBounds(472, 355, 288, 62);
 		contentPane.add(btnNewButton_3);
 
 		JButton btnNewButton_4 = new JButton("Fornecedor");
@@ -176,7 +176,7 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_4.setBounds(535, 252, 189, 62);
+		btnNewButton_4.setBounds(586, 252, 189, 62);
 		contentPane.add(btnNewButton_4);
 		
 		JButton btnNewButton_7 = new JButton("Compra de Produtos");
@@ -190,7 +190,7 @@ public class TelaInicio extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnNewButton_7.setBounds(799, 252, 238, 62);
+		btnNewButton_7.setBounds(785, 252, 238, 62);
 		contentPane.add(btnNewButton_7);
 		
 				JPanel panel_4 = new JPanel();
